@@ -1,4 +1,4 @@
-package sovelluslogiikka;
+package applicationLogic;
 
 public class Inproceedings {
     
