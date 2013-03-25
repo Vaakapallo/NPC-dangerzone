@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class userIO implements IO{
 
     Scanner scanner;
+    Bibtextifier bib;
     
     public userIO(){
         scanner = new Scanner(System.in);
+        bib = new Bibtextifier();
     }
     
     public int read() {
@@ -20,6 +22,18 @@ public class userIO implements IO{
 
     public void printLineChange() {
         System.out.println();
+    }
+
+    public void addReference() {
+        bib.addReference();
+    }
+
+    public void saveReferences() {
+        bib.saveReferences();
+    }
+
+    public void printReferences() {
+        bib.printReferences();
     }
     
 }
