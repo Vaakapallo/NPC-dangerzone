@@ -1,26 +1,63 @@
 package textUI;
 
-import java.util.Scanner;
-
 public class TextUI {
 
-    Scanner scanner;
+    IO io;
+    Bibtextifier bib;
 
-    public TextUI() {
-        scanner = new Scanner(System.in);
+    public TextUI(IO io) {
+        this.io = io;
+        bib = new Bibtextifier();
     }
 
     public void launchUberUI() {
 
-        System.out.println("1. Lisää uusi viite");
-        System.out.println("2. Lopeta ohjelma");
-        System.out.println();
+        printCommands();
 
         while (true) {
-            System.out.print("Anna komento: ");
-            String command = scanner.nextLine();
-            System.out.println();
-        }
+            io.printSomething("Anna komento: ");
 
+            try {
+
+                int command = io.read();
+
+                io.printSomething("");
+
+                if (command == 9) {
+                    io.printSomething("suljetaan");
+                    break;
+                }
+                checkCommand(command);
+
+            } catch (NumberFormatException e) {
+                io.printSomething("Anna komento numerona");
+            }
+        }
+    }
+
+    private void checkCommand(int command) {
+        switch (command) {
+            case 1:
+                bib.addReference();
+                break;
+            case 2:
+                bib.saveReferences();
+                break;
+            case 3:
+                bib.printReferences();
+                break;
+            default:
+                io.printSomething("Väärä komento");
+                io.printSomething("");
+                printCommands();
+        }
+    }
+
+    private void printCommands() {
+        io.printSomething("1. Lisää uusi viite");
+        io.printSomething("2. Tallenna viitteet");
+        io.printSomething("3. Tulostaviitteet");
+        io.printSomething("9. Lopeta");
+        io.printSomething("");
     }
 }

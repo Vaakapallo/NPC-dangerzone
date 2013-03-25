@@ -4,7 +4,9 @@
  */
 package applicationLogic;
 
+import textUI.IO;
 import textUI.TextUI;
+import textUI.userIO;
 
 /**
  *
@@ -17,7 +19,7 @@ public class Main {
         esko.metodi();
         System.out.println(esko);
         
-        TextUI UI = new TextUI();
+        TextUI UI = new TextUI(new userIO());
         UI.launchUberUI();
     }
 }
