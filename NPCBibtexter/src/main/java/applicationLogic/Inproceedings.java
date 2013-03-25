@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 
 
-public class Inproceedings {
-    HashMap<Class<? extends Field>, Field> list;
+public class Inproceedings extends Entry {
+    
     private String author;
     private String title;
     private String booktitle;
