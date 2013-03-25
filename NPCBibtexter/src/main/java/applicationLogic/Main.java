@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Inproceedings esko = new Inproceedings(new Author("Fleuri", true), "On notions", "Proc. jotain", "1983");
-        esko.metodi();
+        esko.testimetodi(); //Pitäisi tulostaa true, false, Fleuri
         System.out.println(esko);
         
         TextUI UI = new TextUI();

@@ -20,7 +20,7 @@ public class Inproceedings {
         list.put(author.getClass(), author);
     }
     
-    public void metodi() {
+    public void testimetodi() {
         System.out.println(list.containsKey((Author.class)));
         System.out.println(list.containsKey((Title.class)));
         System.out.println(list.get(Author.class).getField());
