@@ -17,5 +17,9 @@ public class userIO implements IO{
     public void printSomething(String text) {
         System.out.println(text);
     }
+
+    public void printLineChange() {
+        System.out.println();
+    }
     
 }

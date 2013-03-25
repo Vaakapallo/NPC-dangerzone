@@ -39,12 +39,15 @@ public class TextUI {
         switch (command) {
             case 1:
                 bib.addReference();
+                io.printLineChange();
                 break;
             case 2:
                 bib.saveReferences();
+                io.printLineChange();
                 break;
             case 3:
                 bib.printReferences();
+                io.printLineChange();
                 break;
             default:
                 io.printSomething("Väärä komento");
