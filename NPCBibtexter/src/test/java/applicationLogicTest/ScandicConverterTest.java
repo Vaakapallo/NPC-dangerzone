@@ -36,11 +36,23 @@ public class ScandicConverterTest extends TestCase {
         assertEquals(ScandicConverter.convertScandicsToBibText("ö"), "\"{o}");
     }
 
+    public void testSingleSwedishOConversion() {
+        assertEquals(ScandicConverter.convertScandicsToBibText("å"), "\"{aa}");
+    }
+
     public void testMayra() {
         assertEquals(ScandicConverter.convertScandicsToBibText("Mäyrä"), "M\"{a}yr\"{a}");
     }
 
     public void testPolja() {
         assertEquals(ScandicConverter.convertScandicsToBibText("Pöljä"), "P\"{o}lj\"{a}");
+    }
+
+    public void testOland() {
+        assertEquals(ScandicConverter.convertScandicsToBibText("Åland"), "\"{AA}land");
+    }
+
+    public void testTorta() {
+        assertEquals(ScandicConverter.convertScandicsToBibText("Tårta"), "T\"{aa}rta");
     }
 }
