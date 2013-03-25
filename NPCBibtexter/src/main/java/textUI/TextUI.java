@@ -1,15 +1,28 @@
 package textUI;
 
+/**
+ * Tekstikäyttöliittymä Bibtext viitteiden hallintaan
+ *
+ * @author vito
+ */
 public class TextUI {
 
     IO io;
-    Bibtextifier bib;
 
+    /**
+     * Konstruktori tekstikäyttöliittymää varten
+     *
+     * @param io Saa parametrina IO olion, jonka tarkoituksena on poistaa
+     * riippuvuuksia itse käyttöliittymältä
+     */
     public TextUI(IO io) {
         this.io = io;
-        bib = new Bibtextifier();
     }
 
+    /**
+     * Metodi jolla käynnistetään itse käyttöliittymä, pyörittää käskyn kyselyjä
+     * kunnes suljetaan.
+     */
     public void launchUberUI() {
 
         printCommands();
@@ -35,18 +48,22 @@ public class TextUI {
         }
     }
 
+    /*
+     * Tarkistaa komennon ja toimii sen mukaan
+     * @param command Saa parametrina komennon numeroarvon
+     */
     private void checkCommand(int command) {
         switch (command) {
             case 1:
-                bib.addReference();
+                io.addReference();
                 io.printLineChange();
                 break;
             case 2:
-                bib.saveReferences();
+                io.saveReferences();
                 io.printLineChange();
                 break;
             case 3:
-                bib.printReferences();
+                io.printReferences();
                 io.printLineChange();
                 break;
             default:
@@ -56,6 +73,9 @@ public class TextUI {
         }
     }
 
+    /*
+     * Metodin ainoa tarkoitus on tulostaa lista sallituista komennoista
+     */
     private void printCommands() {
         io.printSomething("1. Lisää uusi viite");
         io.printSomething("2. Tallenna viitteet");
