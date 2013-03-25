@@ -9,10 +9,10 @@ package applicationLogic;
  * @author lvapaaka
  */
 public class ScandicConverter {
-    
-    public static String convertScandicsToBibText(String convertee){
-        
-        return "";
+
+    public static String convertScandicsToBibText(String convertee) {
+        convertee = convertee.replace("ä", "\"{a}");
+        convertee = convertee.replace("ö", "\"{o}");
+        return convertee;
     }
-    
 }

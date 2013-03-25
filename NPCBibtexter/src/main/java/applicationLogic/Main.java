@@ -4,9 +4,11 @@
  */
 package applicationLogic;
 
+import textUI.TextUI;
+
 /**
  *
- * @author jjoonia
+ * @author jjoonia<3
  */
 public class Main {
 
@@ -14,5 +16,8 @@ public class Main {
         Inproceedings esko = new Inproceedings(new Author("Fleuri", true), "On notions", "Proc. jotain", "1983");
         esko.metodi();
         System.out.println(esko);
+        
+        TextUI UI = new TextUI();
+        UI.launchUberUI();
     }
 }
