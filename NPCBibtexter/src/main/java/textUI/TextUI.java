@@ -79,7 +79,7 @@ public class TextUI {
     private void printCommands() {
         io.printSomething("1. Lisää uusi viite");
         io.printSomething("2. Tallenna viitteet");
-        io.printSomething("3. Tulostaviitteet");
+        io.printSomething("3. Tulosta viitteet");
         io.printSomething("9. Lopeta");
         io.printLineChange();
     }
