@@ -8,6 +8,22 @@ package sovelluslogiikka;
  *
  * @author jjoonia
  */
-class Title {
+class Title extends Field {
+    private String name;
+    
+    public Title(String name, boolean required) {
+        super(required);
+        this.name = name;
+    }
+
+    @Override
+    public String getField() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "title = { " + name + " }";
+    }
     
 }

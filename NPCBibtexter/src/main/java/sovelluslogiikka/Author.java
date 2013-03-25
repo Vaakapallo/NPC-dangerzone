@@ -12,7 +12,7 @@ class Author extends Field{
     private String name;
     
     public Author(String name, boolean required) {
-	super(required)
+	super(required);
         this.name = name;
     }
 

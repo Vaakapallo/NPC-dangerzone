@@ -11,7 +11,8 @@ package sovelluslogiikka;
 public class Main {
 
     public static void main(String[] args) {
-        Inproceedings esko = new Inproceedings("Alfred V. Oaho", "On notions", "Proc. jotain", "1983");
+        Inproceedings esko = new Inproceedings(new Author("Fleuri", true), "On notions", "Proc. jotain", "1983");
+        esko.metodi();
         System.out.println(esko);
     }
 }
