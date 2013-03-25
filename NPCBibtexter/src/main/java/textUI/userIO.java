@@ -26,7 +26,15 @@ public class userIO implements IO {
      * @return Palauttaa komennon numeroarvon
      */
     public int read() {
-        return Integer.parseInt(scanner.nextLine());
+        int palautettava = 0;
+        try {
+            palautettava = Integer.parseInt(scanner.nextLine());
+
+        } catch (NumberFormatException e) {
+            printSomething("Anna komento numerona");
+        }
+
+        return palautettava;
     }
 
     /**

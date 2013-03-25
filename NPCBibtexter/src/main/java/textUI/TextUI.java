@@ -30,21 +30,16 @@ public class TextUI {
         while (true) {
             io.printSomething("Anna komento: ");
 
-            try {
+            int command = io.read();
 
-                int command = io.read();
+            io.printLineChange();
 
-                io.printLineChange();
-
-                if (command == 9) {
-                    io.printSomething("suljetaan");
-                    break;
-                }
-                checkCommand(command);
-
-            } catch (NumberFormatException e) {
-                io.printSomething("Anna komento numerona");
+            if (command == 9) {
+                io.printSomething("suljetaan");
+                break;
             }
+            checkCommand(command);
+
         }
     }
 
