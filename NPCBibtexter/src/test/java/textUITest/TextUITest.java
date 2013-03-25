@@ -1,15 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package textUITest;
 
 import junit.framework.TestCase;
 
-/**
- *
- * @author vito
- */
 public class TextUITest extends TestCase {
     
     public TextUITest(String testName) {
@@ -28,7 +20,7 @@ public class TextUITest extends TestCase {
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}
     
-    public void testtrololo(){
+    public void test(){
         
     }
 }
