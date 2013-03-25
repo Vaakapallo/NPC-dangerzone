@@ -8,6 +8,7 @@ package sovelluslogiikka;
  *
  * @author jjoonia
  */
-class Field {
-    
+public abstract class Field {
+    public abstract boolean isRequired();
+    public abstract String getField();
 }
