@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 
 public class Inproceedings {
-    HashMap<Class<? extends Field>, Object> list;
+    HashMap<Class<? extends Field>, Field> list;
     private String author;
     private String title;
     private String booktitle;
@@ -17,12 +17,14 @@ public class Inproceedings {
         this.booktitle = booktitle;
         this.year = year;
         list = new HashMap();
-        list.put(author.getClass(),(Object) author);
+        list.put(author.getClass(), author);
     }
     
     public void metodi() {
         System.out.println(list.containsKey((Author.class)));
         System.out.println(list.containsKey((Title.class)));
+        System.out.println(list.get(Author.class).getField());
+        ;
         
     }
     
