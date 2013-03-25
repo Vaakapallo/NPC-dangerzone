@@ -10,16 +10,10 @@ package sovelluslogiikka;
  */
 class Author extends Field{
     private String name;
-    private boolean required;
     
     public Author(String name, boolean required) {
+	super(required)
         this.name = name;
-        this.required = required;
-    }
-
-    @Override
-    public boolean isRequired() {
-        return required;
     }
 
     @Override

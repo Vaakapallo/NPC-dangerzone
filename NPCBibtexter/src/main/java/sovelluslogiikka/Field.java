@@ -9,6 +9,16 @@ package sovelluslogiikka;
  * @author jjoonia
  */
 public abstract class Field {
-    public abstract boolean isRequired();
+
+    protected boolean required;
+
+    public Field(boolean required){
+	this.required = required;
+    }	
+
+    public boolean isRequired(){
+	return required;
+    }
+
     public abstract String getField();
 }
