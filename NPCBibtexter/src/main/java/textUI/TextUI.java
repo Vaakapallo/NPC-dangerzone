@@ -21,7 +21,7 @@ public class TextUI {
 
                 int command = io.read();
 
-                io.printSomething("");
+                io.printLineChange();
 
                 if (command == 9) {
                     io.printSomething("suljetaan");
@@ -48,7 +48,7 @@ public class TextUI {
                 break;
             default:
                 io.printSomething("Väärä komento");
-                io.printSomething("");
+                io.printLineChange();
                 printCommands();
         }
     }
@@ -58,6 +58,6 @@ public class TextUI {
         io.printSomething("2. Tallenna viitteet");
         io.printSomething("3. Tulostaviitteet");
         io.printSomething("9. Lopeta");
-        io.printSomething("");
+        io.printLineChange();
     }
 }
