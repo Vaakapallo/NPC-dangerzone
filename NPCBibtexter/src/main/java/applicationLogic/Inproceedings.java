@@ -63,21 +63,3 @@ public class Inproceedings extends Entry {
 }
 
 
-    public Class[] getRequiredFields() {
-        return requiredFields;
-    }
-
-    public void testimetodi() {
-        System.out.println(list.containsKey((Author.class)));
-        System.out.println(list.containsKey((Title.class)));
-        System.out.println(list.get(Author.class).getField());
-        ;
-
-    }
-
-    @Override
-    public String toString() {
-        String palautettava = "";
-        return palautettava;
-    }
-}
