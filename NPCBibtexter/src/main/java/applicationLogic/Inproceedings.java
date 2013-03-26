@@ -25,15 +25,19 @@ public class Inproceedings extends Entry {
 //        list.put(author.getClass(), author);
 //    }
     
-    public Inproceedings(HashMap<Class<? extends Field>, Field> mappi) {
-        list = new HashMap();
+    public boolean Inproceedings(HashMap<Class<? extends Field>, Field> map) {
+        
         for (Class field : requiredFields) {
-            if (fields.contains(field))
+            if (!map.containsKey(field)) {
+                return false;
+        } else {
+            list.put(field, map.get(field));
+            map.remove(field);
         }
-        
-        
+    } for (Class class) {
+            
+        }
     }
-    
     public void testimetodi() {
         System.out.println(list.containsKey((Author.class)));
         System.out.println(list.containsKey((Title.class)));
@@ -41,7 +45,7 @@ public class Inproceedings extends Entry {
         ;
         
     }
-    
+    @Override
     public String toString() {
         String palautettava = "@INPROCEEDINGS{inproceedings-minimal,\n"
                 + "\tauthor = "+"\""+author+"\","+"\n"
