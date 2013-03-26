@@ -15,11 +15,9 @@ import textUI.userIO;
 public class Main {
 
     public static void main(String[] args) {
-        Inproceedings esko = new Inproceedings(new Author("Fleuri", true), "On notions", "Proc. jotain", "1983");
-        esko.testimetodi(); //Pitäisi tulostaa true, false, Fleuri
-        System.out.println(esko);
-        
-        TextUI UI = new TextUI(new userIO());
-        UI.launchUberUI();
+        Class[] luokat = Inproceedings.getRequiredFields();
+        for (Class classy : luokat) {
+            System.out.println(classy);
+        }
     }
 }
