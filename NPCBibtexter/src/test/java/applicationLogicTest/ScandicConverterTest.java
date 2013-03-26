@@ -43,6 +43,10 @@ public class ScandicConverterTest extends TestCase {
     public void testMayra() {
         assertEquals(ScandicConverter.convertScandicsToBibText("Mäyrä"), "M\"{a}yr\"{a}");
     }
+    
+    public void testAalio(){
+        assertEquals(ScandicConverter.convertScandicsToBibText("Ääliö"), "\"{A}\"{a}li\"{o}");
+    }
 
     public void testPolja() {
         assertEquals(ScandicConverter.convertScandicsToBibText("Pöljä"), "P\"{o}lj\"{a}");
@@ -55,4 +59,6 @@ public class ScandicConverterTest extends TestCase {
     public void testTorta() {
         assertEquals(ScandicConverter.convertScandicsToBibText("Tårta"), "T\"{aa}rta");
     }
+    
+    
 }
