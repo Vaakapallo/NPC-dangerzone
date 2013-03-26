@@ -14,6 +14,8 @@ import java.util.HashSet;
  */
 public abstract class Entry {
     protected HashMap<Class<? extends Field>, Field> list;
+    @Override
+    public abstract String toString();
     
 
 }
