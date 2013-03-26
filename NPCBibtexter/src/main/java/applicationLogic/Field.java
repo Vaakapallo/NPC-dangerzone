@@ -10,16 +10,6 @@ package applicationLogic;
  */
 public abstract class Field {
 
-    protected boolean required;
-
-    public Field(boolean required){
-	this.required = required;
-    }	
-
-    public boolean isRequired(){
-	return required;
-    }
-
     public abstract String getField();
     @Override
     public abstract String toString();
