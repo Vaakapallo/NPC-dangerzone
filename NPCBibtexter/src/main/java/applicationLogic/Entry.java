@@ -4,7 +4,9 @@
  */
 package applicationLogic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  *
@@ -13,5 +15,6 @@ import java.util.HashMap;
 public abstract class Entry {
     protected HashMap<Class<? extends Field>, Field> list;
     
-    }
+
+}
 
