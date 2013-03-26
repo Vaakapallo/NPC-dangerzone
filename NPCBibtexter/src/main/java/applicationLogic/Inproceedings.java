@@ -4,11 +4,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
+
 public class Inproceedings extends Entry {
 
-    final public Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
-    private Class[] optionalarray = {};
-    final public HashSet optionalFields = new HashSet(Arrays.asList(optionalarray));
+
+    final static private Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
+    final static private Class[] optionalFields = {};
+    final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
 
     public Inproceedings(HashMap<Class<? extends Field>, Field> map) {
         list = new HashMap();
@@ -22,7 +24,7 @@ public class Inproceedings extends Entry {
                 }
             }
             for (Class field2 : map.keySet()) {
-                if (!optionalFields.contains(field2)) {
+                if (!optionalSet.contains(field2)) {
                     throw new Exception();
                 } else {
                     list.put(field2, map.get(field2));
@@ -34,6 +36,32 @@ public class Inproceedings extends Entry {
             System.out.println("Fields are not valid!");
         }
     }
+
+    public void testimetodi() {
+        System.out.println(list.containsKey((Author.class)));
+        System.out.println(list.containsKey((Title.class)));
+        System.out.println(list.get(Author.class).getField());
+        ;
+
+    }
+
+    @Override
+    public String toString() {
+        String palautettava = "";
+        return palautettava;
+    }
+
+    
+    public static Class[] getRequiredFields() {
+        return requiredFields;
+    }
+
+    
+    public static Class[] getOptionalFields() {
+        return optionalFields;
+    }
+}
+
 
     public Class[] getRequiredFields() {
         return requiredFields;
