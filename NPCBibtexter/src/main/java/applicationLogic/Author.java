@@ -11,7 +11,7 @@ package applicationLogic;
 class Author extends Field{
     private String name;
     
-    public Author(String name, boolean required) {
+    public Author(String name) {
         this.name = name;
     }
 

@@ -15,8 +15,10 @@ public class EntryBuilder {
     public static Inproceedings buildInproceedings(String author, String title, String booktitle, int year) {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
+        constructor.put(Title.class, new Title(title));
+//        constructor.put(Year.class, new Year(year));
+//        constructor.put(BookTitle.class, new BookTitle(booktitle));
 
-
-        return new Inproceedings(new HashMap());
+        return new Inproceedings(constructor);
     }
 }
