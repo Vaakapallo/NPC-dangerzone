@@ -39,7 +39,6 @@ public class TextUI {
                 break;
             }
             checkCommand(command);
-
         }
     }
 
@@ -47,25 +46,26 @@ public class TextUI {
      * Tarkistaa komennon ja toimii sen mukaan
      * @param command Saa parametrina komennon numeroarvon
      */
-    private void checkCommand(int command) {
+    public boolean checkCommand(int command) {
         switch (command) {
             case 1:
                 io.addReference();
                 io.printLineChange();
-                break;
+                return true;
             case 2:
                 io.saveReferences();
                 io.printLineChange();
-                break;
+                return true;
             case 3:
                 io.printReferences();
                 io.printLineChange();
-                break;
+                return true;
             default:
                 io.printSomething("Väärä komento");
                 io.printLineChange();
                 printCommands();
         }
+        return false;
     }
 
     /*
