@@ -1,6 +1,8 @@
 package ambassador;
 
+import applicationLogic.Entry;
 import java.io.*;
+import java.util.List;
 
 public class Bibwriter {
     
@@ -14,9 +16,19 @@ public class Bibwriter {
         }
     }
     
-    public void writeSomething(String viite) throws IOException {
+    public void writeReference(String viite) throws IOException {
         out.append(viite);
         out.append("\n");
         out.close();
+    }
+    
+    public void writeReferencesFromList(List<Entry> referenceList) throws IOException {
+        for (Entry entry : referenceList) {
+            writeReference(entry.toString());
+        }
+    }
+    
+    public void readAndListReferences() {
+        
     }
 }
