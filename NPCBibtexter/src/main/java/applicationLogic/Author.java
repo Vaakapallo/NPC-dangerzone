@@ -21,6 +21,6 @@ class Author extends Field{
     }
     @Override
     public String toString(){
-    return "author = { " + name + " }";
+    return "author = {" + name + "},\n";
     }
 }

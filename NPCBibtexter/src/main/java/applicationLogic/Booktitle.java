@@ -13,8 +13,8 @@ public class Booktitle extends Field {
     
     private String name;
     
-    public Booktitle(String name, boolean required) {
-    super(required);
+    public Booktitle(String name) {
+    
     this.name = name;
     }
     
@@ -25,6 +25,6 @@ public class Booktitle extends Field {
 
     @Override
     public String toString() {
-        return "booktitle = { " + name + " }";
+        return "booktitle = {" + name + "},\n";
     }
 }

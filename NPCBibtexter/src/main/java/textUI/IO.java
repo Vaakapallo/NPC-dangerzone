@@ -13,6 +13,8 @@ public interface IO {
      * @return Palauttaa käskyn numeron
      */
     public int read();
+    
+    public String readString();
 
     /**
      * Tulostaa System.out.Printin avulla halutun tekstin
@@ -25,19 +27,4 @@ public interface IO {
      * Tulostaa rivinvaihdon
      */
     public void printLineChange();
-
-    /**
-     * Hoitaa viitteiden lisäykseen siirtymisen
-     */
-    public void addReference();
-
-    /**
-     * Hoitaa viitteiden tallentamiseen siirtymisen
-     */
-    public void saveReferences();
-
-    /**
-     * Hoitaa viitteiden tulostamiseen siirtymisen
-     */
-    public void printReferences();
 }

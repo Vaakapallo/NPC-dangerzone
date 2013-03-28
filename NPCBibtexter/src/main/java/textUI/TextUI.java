@@ -7,7 +7,8 @@ package textUI;
  */
 public class TextUI {
 
-    IO io;
+    private IO io;
+    private Bibtextifier bib;
 
     /**
      * Konstruktori tekstikäyttöliittymää varten
@@ -17,6 +18,7 @@ public class TextUI {
      */
     public TextUI(IO io) {
         this.io = io;
+        this.bib = new Bibtextifier(io);
     }
 
     /**
@@ -49,15 +51,15 @@ public class TextUI {
     public boolean checkCommand(int command) {
         switch (command) {
             case 1:
-                io.addReference();
+                bib.addReference();
                 io.printLineChange();
                 return true;
             case 2:
-                io.saveReferences();
+                bib.saveReferences();
                 io.printLineChange();
                 return true;
             case 3:
-                io.printReferences();
+                bib.printReferences();
                 io.printLineChange();
                 return true;
             default:

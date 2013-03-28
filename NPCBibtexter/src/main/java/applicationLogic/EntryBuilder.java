@@ -12,13 +12,13 @@ import java.util.HashMap;
  */
 public class EntryBuilder {
 
-    public static Inproceedings buildInproceedings(String author, String title, String booktitle, int year) {
+    public static Inproceedings buildInproceedings(String author, String title, String booktitle, int year, String tag) {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
         constructor.put(Title.class, new Title(title));
-//        constructor.put(Year.class, new Year(year));
-//        constructor.put(BookTitle.class, new BookTitle(booktitle));
+        constructor.put(Year.class, new Year(year));
+        constructor.put(Booktitle.class, new Booktitle(booktitle));
 
-        return new Inproceedings(constructor);
+        return new Inproceedings(constructor, tag);
     }
 }

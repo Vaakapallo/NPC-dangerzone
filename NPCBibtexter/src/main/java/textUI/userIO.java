@@ -9,15 +9,13 @@ import java.util.Scanner;
  */
 public class userIO implements IO {
 
-    Scanner scanner;
-    Bibtextifier bib;
+    private Scanner scanner;
 
     /**
      * Konstruktori alustaa userIO:n ja alustaa scannerin sekä bibtextifierin
      */
     public userIO() {
         scanner = new Scanner(System.in);
-        bib = new Bibtextifier();
     }
 
     /**
@@ -53,24 +51,7 @@ public class userIO implements IO {
         System.out.println();
     }
 
-    /**
-     * Käskee Bibtextifieria siirtymään viitteiden lisäykseen
-     */
-    public void addReference() {
-        bib.addReference();
-    }
-
-    /**
-     * Käskee Bibtextifieria siirtymään viitteiden tallentamiseen
-     */
-    public void saveReferences() {
-        bib.saveReferences();
-    }
-
-    /**
-     * Käskee Bibtextifieria siirtymään viitteiden tulostamiseen
-     */
-    public void printReferences() {
-        bib.printReferences();
+    public String readString() {
+        return scanner.nextLine();
     }
 }

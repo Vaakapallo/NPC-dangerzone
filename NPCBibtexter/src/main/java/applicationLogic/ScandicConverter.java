@@ -14,16 +14,16 @@ import java.util.Map;
  */
 public class ScandicConverter {
 
-    private static Map<CharSequence, CharSequence> charAndReplacement;
+    private static final Map<String, String> charAndReplacement;
 
-    public ScandicConverter() {
-        charAndReplacement = new HashMap();
-        charAndReplacement.put("ä", "\"{a}");
-        charAndReplacement.put("å", "\"{aa}");
-        charAndReplacement.put("ö", "\"{o}");
-        charAndReplacement.put("Ä", "\"{A}");
-        charAndReplacement.put("Å", "\"{AA}");
-        charAndReplacement.put("Ö", "\"{O}");
+    static {
+        charAndReplacement = new HashMap<String, String>();
+        charAndReplacement.put("ä", "\\\"{a}");
+        charAndReplacement.put("å", "\\\"{aa}");
+        charAndReplacement.put("ö", "\\\"{o}");
+        charAndReplacement.put("Ä", "\\\"{A}");
+        charAndReplacement.put("Å", "\\\"{AA}");
+        charAndReplacement.put("Ö", "\\\"{O}");
     }
 
     /**

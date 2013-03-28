@@ -29,34 +29,43 @@ public class ScandicConverterTest extends TestCase {
     // TODO add test methods here. The name must begin with 'test'. For example:
 
     public void testSingleScandicAConversion() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("ä"), "\"{a}");
+        assertEquals("\\\"{a}", ScandicConverter.convertScandicsToBibText("ä"));
     }
 
     public void testSingleScandicOConversion() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("ö"), "\"{o}");
+        assertEquals("\\\"{o}", ScandicConverter.convertScandicsToBibText("ö"));
     }
 
     public void testSingleSwedishOConversion() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("å"), "\"{aa}");
+        assertEquals("\\\"{aa}", ScandicConverter.convertScandicsToBibText("å"));
     }
 
     public void testMayra() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("Mäyrä"), "M\"{a}yr\"{a}");
+        assertEquals("M\\\"{a}yr\\\"{a}", ScandicConverter.convertScandicsToBibText("Mäyrä"));
     }
 
     public void testAalio() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("Ääliö"), "\"{A}\"{a}li\"{o}");
+        assertEquals("\\\"{A}\\\"{a}li\\\"{o}", ScandicConverter.convertScandicsToBibText("Ääliö"));
     }
 
     public void testPolja() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("Pöljä"), "P\"{o}lj\"{a}");
+        assertEquals("P\\\"{o}lj\\\"{a}", ScandicConverter.convertScandicsToBibText("Pöljä"));
     }
 
     public void testOland() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("Åland"), "\"{AA}land");
+        assertEquals("\\\"{AA}land", ScandicConverter.convertScandicsToBibText("Åland"));
     }
 
     public void testTorta() {
-        assertEquals(ScandicConverter.convertScandicsToBibText("Tårta"), "T\"{aa}rta");
+        assertEquals("T\\\"{aa}rta", ScandicConverter.convertScandicsToBibText("Tårta"));
+    }
+
+    public void testOljylaikka() {
+        assertEquals("\\\"{O}ljyl\\\"{a}ikk\\\"{a}", ScandicConverter.convertScandicsToBibText("Öljyläikkä"));
+    }
+
+    public void testNames() {
+        System.out.println(ScandicConverter.convertScandicsToBibText("Hassinen, Marko and Mäyrä, Hannu"));
+        assertEquals("Hassinen, Marko and M\\\"{a}yr\\\"{a}, Hannu", ScandicConverter.convertScandicsToBibText("Hassinen, Marko and Mäyrä, Hannu"));
     }
 }

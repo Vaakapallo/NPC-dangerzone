@@ -34,6 +34,10 @@ public class TextUITest extends TestCase {
             public void printReferences() {
                 testCommandInt = 3;
             }
+
+            public String readString() {
+                return "string";
+            }
         };
         return io;
     }

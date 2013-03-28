@@ -13,6 +13,6 @@ public class TestMain {
                 + "\nyear = 1983,"
                 + "\n}";
 
-        b.writeSomething(jotain);
+        b.writeReference(jotain);
     }
 }

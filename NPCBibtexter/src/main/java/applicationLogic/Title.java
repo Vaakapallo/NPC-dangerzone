@@ -22,7 +22,7 @@ class Title extends Field {
 
     @Override
     public String toString() {
-        return "title = { " + name + " }";
+        return "title = {" + name + "},\n";
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package applicationLogic;
 
+import java.util.HashMap;
 import textUI.IO;
 import textUI.TextUI;
 import textUI.userIO;
@@ -15,9 +16,12 @@ import textUI.userIO;
 public class Main {
 
     public static void main(String[] args) {
-        Class[] luokat = Inproceedings.getRequiredFields();
-        for (Class classy : luokat) {
-            System.out.println(classy);
-        }
+        Inproceedings inproceedings = EntryBuilder.buildInproceedings("Luukkainen, Matti", "Extreme Apprenticeship Method in Teaching Programming for Beginners.", "SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education", 2011, "VPL11");
+        System.out.println(inproceedings.isValid());
+
+        System.out.println(inproceedings);
+
+        TextUI ui = new TextUI(new userIO());
+        ui.launchUberUI();
     }
 }
