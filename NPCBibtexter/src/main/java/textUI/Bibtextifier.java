@@ -25,11 +25,13 @@ public class Bibtextifier {
     public Bibtextifier(IO io) {
         this.io = io;
         entries = new ArrayList();
+        
         try {
             this.bw = new Bibwriter();
         } catch (IOException ex) {
-            Logger.getLogger(Bibtextifier.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Can't create a new Bibwriter for some strange reason.");
         }
+        
     }
 
     /**
@@ -56,9 +58,8 @@ public class Bibtextifier {
         try {
             this.bw.writeReferencesFromList(entries);
         } catch (IOException ex) {
-            Logger.getLogger(Bibtextifier.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Something funny happened while saving the reference");
         }
-        System.out.println("Saving not implemented");
     }
 
     /**
