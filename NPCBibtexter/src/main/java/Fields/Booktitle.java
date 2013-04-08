@@ -1,20 +1,25 @@
+package Fields;
+
+
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
 
 /**
  *
- * @author jjoonia
+ * @author lauri
  */
-class Title extends Field {
+public class Booktitle extends Field {
+    
     private String name;
     
-    public Title(String name) {
-        this.name = name;
+    public Booktitle(String name) {
+    
+    this.name = name;
     }
-
+    
     @Override
     public String getField() {
         return name;
@@ -22,7 +27,6 @@ class Title extends Field {
 
     @Override
     public String toString() {
-        return "title = {" + name + "},\n";
+        return "booktitle = {" + name + "},\n";
     }
-    
 }

@@ -4,6 +4,8 @@
  */
 package applicationLogic;
 
+import Entries.*;
+import Fields.*;
 import java.util.HashMap;
 
 /**
