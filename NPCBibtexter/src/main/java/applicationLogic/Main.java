@@ -4,6 +4,8 @@
  */
 package applicationLogic;
 
+
+import Entries.Inproceedings;
 import java.util.HashMap;
 import textUI.IO;
 import textUI.TextUI;

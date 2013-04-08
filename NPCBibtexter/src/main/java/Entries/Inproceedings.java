@@ -1,5 +1,12 @@
-package applicationLogic;
+package Entries;
 
+import Fields.Year;
+import Fields.Field;
+import Fields.Author;
+import Fields.Title;
+import Fields.Booktitle;
+import applicationLogic.ScandicConverter;
+import applicationLogic.ScandicConverter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,6 +59,10 @@ public class Inproceedings extends Entry {
         resString = resString + "}";
         resString = ScandicConverter.convertScandicsToBibText(resString);
         return resString;
+    }
+    
+    public HashMap<Class<? extends Field>, Field> getList() {
+        return list;
     }
 
     public static Class[] getRequiredFields() {

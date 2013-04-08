@@ -2,10 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
+package Entries;
 
+
+import Fields.Author;
+import Fields.Field;
 import java.util.HashMap;
 import junit.framework.TestCase;
+import applicationLogic.EntryBuilder;
 
 /**
  *
@@ -34,6 +38,7 @@ public class InproceedingsTest extends TestCase {
     
     @Override
     protected void setUp() throws Exception {
+        
         inproceedings = EntryBuilder.buildInproceedings("Luukkainen, Matti", "Extreme Apprenticeship Method in Teaching Programming for Beginners.", "SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education", 2011, "VPL11");
     }
     

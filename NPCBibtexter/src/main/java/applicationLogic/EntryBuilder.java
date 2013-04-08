@@ -4,6 +4,13 @@
  */
 package applicationLogic;
 
+
+import Entries.Inproceedings;
+import Fields.Author;
+import Fields.Booktitle;
+import Fields.Field;
+import Fields.Title;
+import Fields.Year;
 import java.util.HashMap;
 
 /**

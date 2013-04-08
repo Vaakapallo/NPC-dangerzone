@@ -1,7 +1,7 @@
 package textUI;
 
 import ambassador.Bibwriter;
-import applicationLogic.Entry;
+import Entries.Entry;
 import applicationLogic.EntryBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
