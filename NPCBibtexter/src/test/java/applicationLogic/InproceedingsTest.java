@@ -4,9 +4,6 @@
  */
 package applicationLogic;
 
-import Entries.Inproceedings;
-import Fields.Author;
-import Fields.Field;
 import java.util.HashMap;
 import junit.framework.TestCase;
 

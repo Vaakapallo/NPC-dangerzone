@@ -1,7 +1,5 @@
-package Entries;
+package applicationLogic;
 
-import Fields.*;
-import applicationLogic.ScandicConverter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,8 +9,7 @@ public class Inproceedings extends Entry {
     final static private Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    private String tag;
-    public HashMap<Class<? extends Field>, Field> list;
+    String tag;
 
     public Inproceedings(HashMap<Class<? extends Field>, Field> map, String tag) {
         list = map;

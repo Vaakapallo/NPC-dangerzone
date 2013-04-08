@@ -2,15 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fields;
-
-
+package applicationLogic;
 
 /**
  *
  * @author jjoonia
  */
-public class Author extends Field{
+class Author extends Field{
     private String name;
     
     public Author(String name) {

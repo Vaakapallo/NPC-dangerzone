@@ -2,29 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fields;
-
-
+package applicationLogic;
 
 /**
  *
  * @author jjoonia
  */
-public class Title extends Field {
-    private String name;
+public class Year extends Field {
+    private int year;
     
-    public Title(String name) {
-        this.name = name;
+    public Year(int year) {
+        
+        this.year= year;
     }
 
     @Override
     public String getField() {
-        return name;
+        return String.valueOf(year);
     }
 
     @Override
     public String toString() {
-        return "title = {" + name + "},\n";
+        return "year = {" + year + "},\n";
     }
     
 }
+

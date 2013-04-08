@@ -1,6 +1,6 @@
 package ambassador;
 
-import Entries.Entry;
+import applicationLogic.Entry;
 import java.io.*;
 import java.util.List;
 
