@@ -2,14 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entries;
+package EntriesTest;
 
 
+import Entries.Inproceedings;
 import Fields.Author;
 import Fields.Field;
-import java.util.HashMap;
-import junit.framework.TestCase;
 import applicationLogic.EntryBuilder;
+import junit.framework.TestCase;
 
 /**
  *
@@ -67,9 +67,6 @@ public class InproceedingsTest extends TestCase {
     public void testToString() {
         String expString = "@Inproceedings{ VPL11,\nauthor = {Luukkainen, Matti},\ntitle = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},\n"
                 + "booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},\nyear = {2011},\n}";
-        assertEquals(expString, inproceedings.toString());
-        String expString2 = "@Inproceedings{ VPL11,\nauthor = {M},\ntitle = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},\n"
-                + "booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},\nyear = {2011},\n}";
-        
+        assertEquals(expString, inproceedings.toString());    
     }
 }
