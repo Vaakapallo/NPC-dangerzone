@@ -72,28 +72,4 @@ public class InproceedingsTest extends TestCase {
                 + "booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},\nyear = {2011},\n}";
         
     }
-
-    /**
-     * Test of getRequiredFields method, of class Inproceedings.
-     */
-//    public void testGetRequiredFields() {
-//        System.out.println("getRequiredFields");
-//        Class[] expResult = null;
-//        Class[] result = Inproceedings.getRequiredFields();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getOptionalFields method, of class Inproceedings.
-//     */
-//    public void testGetOptionalFields() {
-//        System.out.println("getOptionalFields");
-//        Class[] expResult = null;
-//        Class[] result = Inproceedings.getOptionalFields();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
 }
