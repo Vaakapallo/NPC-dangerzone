@@ -17,6 +17,7 @@ public abstract class Entry {
     public HashMap<Class<? extends Field>, Field> list;
     @Override
     public abstract String toString();
+    public abstract boolean isValid();
     
 
 }
