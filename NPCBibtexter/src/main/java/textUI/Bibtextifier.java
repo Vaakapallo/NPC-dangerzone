@@ -62,6 +62,6 @@ public class Bibtextifier {
     }
     
     public void readReferencesToMemory() {
-        this.bw.readAndListReferences();
+        this.entries.addAll(this.bw.readAndListReferences());
     }
 }

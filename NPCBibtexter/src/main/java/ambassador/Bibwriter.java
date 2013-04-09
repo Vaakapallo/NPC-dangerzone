@@ -3,10 +3,9 @@ package ambassador;
 import Entries.Entry;
 import applicationLogic.EntryBuilder;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Bibwriter {
 
@@ -32,7 +31,7 @@ public class Bibwriter {
         }
     }
 
-    public void readAndListReferences() {
+    public List<Entry> readAndListReferences() {
         System.out.println("reading and listing");
         try {
             Scanner s = new Scanner(new File("references.bib"));
@@ -40,10 +39,27 @@ public class Bibwriter {
             String tag = s.nextLine();
             tag = tag.substring(16, tag.length()-1);
             System.out.println(tag);
-            EntryBuilder.buildInproceedings(null, null, null, 1999, null);
+            String author = s.nextLine();
+            author = author.substring(10, author.length()-2);
+            System.out.println(author);
+            String title = s.nextLine();
+            title = title.substring(9, title.length()-2);
+            System.out.println(title);
+            String booktitle = s.nextLine();
+            booktitle = booktitle.substring(13, booktitle.length()-2);
+            System.out.println(booktitle);
+            String yearString = s.nextLine();
+            yearString = yearString.substring(8, yearString.length()-2);
+            int year = Integer.parseInt(yearString);
+            System.out.println(year);
+            Entry e = EntryBuilder.buildInproceedings(author, title, booktitle, year, tag);
+            ArrayList<Entry> entries = new ArrayList<Entry>();
+            entries.add(e);
+            return entries;
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Bibwriter.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("File not found, it should be there.");
         }
+        return null;
 
     }
 }
