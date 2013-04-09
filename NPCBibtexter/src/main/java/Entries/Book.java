@@ -14,22 +14,28 @@ import java.util.HashSet;
  *
  * @author laursuom
  */
-public class Article extends Entry{
-
-       final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
+public class Book extends Entry {
+    final static private Class[] requiredFields = {Author.class, Editor.class, Title.class, Publisher.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     String tag;
 
-    public Article(HashMap<Class<? extends Field>, Field> map, String tag) {
+    public Book(HashMap<Class<? extends Field>, Field> map, String tag) {
         list = map;
         this.tag = tag;
 
     }
+    
+    //Note, that Book class has to contain either Author or Editor or both.
+    
     @Override
     public boolean isValid() {
         HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
-        for (Class field : requiredFields) {
+        if (!(tmpHashMap.containsKey(Author.class) || tmpHashMap.containsKey(Editor.class))) {
+            return false;
+        }
+        for (int i = 2; i < requiredFields.length; i++) {
+            Class field = requiredFields[i];
             if (!tmpHashMap.containsKey(field)) {
                 return false;
             } else {
@@ -48,7 +54,7 @@ public class Article extends Entry{
 
     @Override
     public String toString() {
-        String resString = "@Article{ " + tag + ",\n";
+        String resString = "@Book{ " + tag + ",\n";
         for (Class class1 : requiredFields) {
             if (list.containsKey(class1)) {
                 resString = resString + list.get(class1);
@@ -76,3 +82,4 @@ public class Article extends Entry{
         return optionalFields;
     }
 }
+
