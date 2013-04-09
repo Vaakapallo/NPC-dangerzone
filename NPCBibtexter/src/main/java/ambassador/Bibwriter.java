@@ -2,6 +2,7 @@ package ambassador;
 
 import Entries.Entry;
 import applicationLogic.EntryBuilder;
+import applicationLogic.ScandicConverter;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Bibwriter {
             scribe = new FileWriter(new File("references.bib"), true);
             for (Entry e : referenceList) {
                 scribe.append(e.toString());
+                scribe.append("\n\n");
             }
             scribe.close();
         } catch (IOException ex) {
@@ -32,34 +34,41 @@ public class Bibwriter {
     }
 
     public List<Entry> readAndListReferences() {
-        System.out.println("reading and listing");
         try {
             Scanner s = new Scanner(new File("references.bib"));
-            System.out.println("Scanner open");
-            String tag = s.nextLine();
-            tag = tag.substring(16, tag.length()-1);
-            System.out.println(tag);
-            String author = s.nextLine();
-            author = author.substring(10, author.length()-2);
-            System.out.println(author);
-            String title = s.nextLine();
-            title = title.substring(9, title.length()-2);
-            System.out.println(title);
-            String booktitle = s.nextLine();
-            booktitle = booktitle.substring(13, booktitle.length()-2);
-            System.out.println(booktitle);
-            String yearString = s.nextLine();
-            yearString = yearString.substring(8, yearString.length()-2);
-            int year = Integer.parseInt(yearString);
-            System.out.println(year);
-            Entry e = EntryBuilder.buildInproceedings(author, title, booktitle, year, tag);
             ArrayList<Entry> entries = new ArrayList<Entry>();
-            entries.add(e);
+            while (s.hasNextLine()) {
+                Entry e = parseInproceedings(s);
+                entries.add(e);
+            }
             return entries;
         } catch (FileNotFoundException ex) {
             System.out.println("File not found, it should be there.");
         }
         return null;
 
+    }
+
+    public Entry parseInproceedings(Scanner s) {
+        String tag = s.nextLine();
+        ScandicConverter.convertScandicsToBibText(tag = tag.substring(16, tag.length() - 1));
+        
+        String author = s.nextLine();
+        ScandicConverter.convertScandicsToBibText(author = author.substring(10, author.length() - 2));
+        
+        String title = s.nextLine();
+        ScandicConverter.convertScandicsToBibText(title = title.substring(9, title.length() - 2));
+        
+        String booktitle = s.nextLine();
+        ScandicConverter.convertScandicsToBibText(booktitle = booktitle.substring(13, booktitle.length() - 2));
+        
+        String yearString = s.nextLine();
+        yearString = yearString.substring(8, yearString.length() - 2);
+        int year = Integer.parseInt(yearString);
+        
+        s.nextLine();
+        s.nextLine();
+        
+        return EntryBuilder.buildInproceedings(author, title, booktitle, year, tag);
     }
 }
