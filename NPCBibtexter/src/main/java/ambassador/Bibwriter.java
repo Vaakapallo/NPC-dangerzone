@@ -6,26 +6,16 @@ import java.util.List;
 
 public class Bibwriter {
     
-    private File references = new File("references.bib");
-    private FileWriter out = new FileWriter("references.bib", true);
-    
     public Bibwriter() throws IOException {
-        if (references.exists()) {
-        } else {
-            references.createNewFile();
-        }
-    }
-    
-    public void writeReference(String viite) throws IOException {
-        out.append(viite);
-        out.append("\n");
-        out.close();
+
     }
     
     public void writeReferencesFromList(List<Entry> referenceList) throws IOException {
-        for (Entry entry : referenceList) {
-            writeReference(entry.toString());
+        FileWriter scribe = new FileWriter(new File("references.bib"), true);
+        for (Entry e : referenceList) {
+            scribe.append(e.toString());
         }
+        scribe.close();
     }
     
     public void readAndListReferences() {
