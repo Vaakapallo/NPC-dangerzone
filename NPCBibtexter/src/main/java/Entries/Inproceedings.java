@@ -6,7 +6,6 @@ import Fields.Author;
 import Fields.Title;
 import Fields.Booktitle;
 import applicationLogic.ScandicConverter;
-import applicationLogic.ScandicConverter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
