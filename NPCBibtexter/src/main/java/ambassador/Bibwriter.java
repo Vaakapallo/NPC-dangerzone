@@ -8,11 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Bibwriter is used to communicate with BibTeX -formatted files. It offers basic file writing functionality
+ * and also enables you to fetch all the references from the file to the program as Entry-objects.
+ */
 public class Bibwriter {
 
+    /**
+     * Creates a standard Bibwriter.
+     */
     public Bibwriter() {
     }
 
+    /**
+     * Writes all the references given in the list to a file 'references.bib' in the program's root folder.
+     * @param referenceList
+     */
     public void writeReferencesFromList(List<Entry> referenceList) {
         FileWriter scribe = null;
         try {
@@ -33,6 +44,11 @@ public class Bibwriter {
         }
     }
 
+    /**
+     * Reads the references from a file and converts them into Entry-objects. So far it has the capability to
+     * understand @Inproceedings.
+     * @return A list of Entries (references).
+     */
     public List<Entry> readAndListReferences() {
         try {
             Scanner s = new Scanner(new File("references.bib"));
@@ -49,6 +65,11 @@ public class Bibwriter {
 
     }
 
+    /**
+     * 
+     * @param s Contains the information in the file where @Inproceedings has been written.
+     * @return Entry-object of the @Inproceedings.
+     */
     public Entry parseInproceedings(Scanner s) {
         String tag = s.nextLine();
         ScandicConverter.convertScandicsToBibText(tag = tag.substring(16, tag.length() - 1));

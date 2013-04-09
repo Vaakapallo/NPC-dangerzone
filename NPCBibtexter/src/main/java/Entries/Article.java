@@ -14,9 +14,9 @@ import java.util.HashSet;
  *
  * @author laursuom
  */
-public class Article extends Entry{
+public class Article extends Entry {
 
-       final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
+    final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     String tag;
@@ -26,6 +26,7 @@ public class Article extends Entry{
         this.tag = tag;
 
     }
+
     @Override
     public boolean isValid() {
         HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
@@ -63,7 +64,7 @@ public class Article extends Entry{
         resString = ScandicConverter.convertScandicsToBibText(resString);
         return resString;
     }
-    
+
     public HashMap<Class<? extends Field>, Field> getList() {
         return list;
     }
