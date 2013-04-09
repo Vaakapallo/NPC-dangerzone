@@ -1,24 +1,27 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Entries;
 
-import Fields.Year;
-import Fields.Field;
-import Fields.Author;
-import Fields.Title;
-import Fields.Booktitle;
-import applicationLogic.ScandicConverter;
+import Fields.*;
 import applicationLogic.ScandicConverter;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.HashMap;
 
-public class Inproceedings extends Entry {
+/**
+ *
+ * @author laursuom
+ */
+public class Article extends Entry{
 
-    final static private Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
+       final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     String tag;
 
-    public Inproceedings(HashMap<Class<? extends Field>, Field> map, String tag) {
+    public Article(HashMap<Class<? extends Field>, Field> map, String tag) {
         list = map;
         this.tag = tag;
 
@@ -45,7 +48,7 @@ public class Inproceedings extends Entry {
 
     @Override
     public String toString() {
-        String resString = "@Inproceedings{ " + tag + ",\n";
+        String resString = "@Article{ " + tag + ",\n";
         for (Class class1 : requiredFields) {
             if (list.containsKey(class1)) {
                 resString = resString + list.get(class1);
