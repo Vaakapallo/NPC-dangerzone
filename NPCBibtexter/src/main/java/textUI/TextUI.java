@@ -81,6 +81,7 @@ public class TextUI {
         io.printSomething("1. Lisää uusi viite");
         io.printSomething("2. Tallenna viitteet");
         io.printSomething("3. Tulosta viitteet");
+        io.printSomething("4. Lue viitteet tiedostosta ja siirrä ohjelmaan");
         io.printSomething("9. Lopeta");
         io.printLineChange();
     }
