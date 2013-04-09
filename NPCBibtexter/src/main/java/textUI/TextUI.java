@@ -62,6 +62,10 @@ public class TextUI {
                 bib.printReferences();
                 io.printLineChange();
                 return true;
+            case 4:
+                bib.readReferencesToMemory();
+                io.printLineChange();
+                return true;
             default:
                 io.printSomething("Väärä komento");
                 io.printLineChange();

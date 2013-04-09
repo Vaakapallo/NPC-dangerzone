@@ -60,4 +60,8 @@ public class Bibtextifier {
             io.printSomething(entry.toString());
         }
     }
+    
+    public void readReferencesToMemory() {
+        this.bw.readAndListReferences();
+    }
 }

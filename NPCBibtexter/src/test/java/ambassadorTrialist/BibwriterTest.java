@@ -31,7 +31,8 @@ public class BibwriterTest extends TestCase {
         Entry e = EntryBuilder.buildInproceedings("Luukkainen, Matti", "Extreme Apprenticeship Method in Teaching Programming for Beginners.", "SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education", 2011, "VPL11");
         ArrayList<Entry> things = new ArrayList<Entry>();
         bw.writeReferencesFromList(things);
-        File f = new File("references.bib");
-        f.exists();
+//        File f = new File("references.bib");
+//        f.exists();1
+        
     }
 }
