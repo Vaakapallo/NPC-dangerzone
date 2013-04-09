@@ -23,7 +23,7 @@ public class userIO implements IO {
      *
      * @return Palauttaa komennon numeroarvon
      */
-    public int read() {
+    public int readInt() {
         int palautettava = 0;
         try {
             palautettava = Integer.parseInt(scanner.nextLine());

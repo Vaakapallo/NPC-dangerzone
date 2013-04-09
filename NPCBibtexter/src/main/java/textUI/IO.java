@@ -12,7 +12,7 @@ public interface IO {
      *
      * @return Palauttaa käskyn numeron
      */
-    public int read();
+    public int readInt();
     
     public String readString();
 

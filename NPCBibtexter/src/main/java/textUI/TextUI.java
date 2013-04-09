@@ -32,7 +32,7 @@ public class TextUI {
         while (true) {
             io.printSomething("Anna komento: ");
 
-            int command = io.read();
+            int command = io.readInt();
 
             io.printLineChange();
 

@@ -41,7 +41,7 @@ public class Bibtextifier {
         io.printSomething("Give the booktitle:");
         String booktitle = io.readString();
         io.printSomething("Give the year:");
-        int year = io.read();
+        int year = io.readInt();
         entries.add(EntryBuilder.buildInproceedings(author, title, booktitle, year, tag));
     }
 

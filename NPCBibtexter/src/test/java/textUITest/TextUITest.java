@@ -13,7 +13,7 @@ public class TextUITest extends TestCase {
 
     public IO getIOStub() {
         IO io = new IO() {
-            public int read() {
+            public int readInt() {
                 return command;
             }
 
