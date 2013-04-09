@@ -25,13 +25,7 @@ public class Bibtextifier {
     public Bibtextifier(IO io) {
         this.io = io;
         entries = new ArrayList();
-        
-        try {
-            this.bw = new Bibwriter();
-        } catch (IOException ex) {
-            System.out.println("Can't create a new Bibwriter for some strange reason.");
-        }
-        
+        this.bw = new Bibwriter();
     }
 
     /**
@@ -55,11 +49,7 @@ public class Bibtextifier {
      * Hoitaa viitteiden tallentamisen
      */
     public void saveReferences() {
-        try {
-            this.bw.writeReferencesFromList(entries);
-        } catch (IOException ex) {
-            System.out.println("Something funny happened while saving the reference");
-        }
+        this.bw.writeReferencesFromList(entries);
     }
 
     /**
