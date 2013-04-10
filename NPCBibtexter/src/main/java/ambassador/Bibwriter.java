@@ -24,6 +24,10 @@ public class Bibwriter {
      */
     public Bibwriter() {
     }
+    
+    public Bibwriter(String filename) {
+        this.referenceFileName = filename;
+    }
 
     /**
      * Writes all the references given in the list to a file 'references.bib' in
