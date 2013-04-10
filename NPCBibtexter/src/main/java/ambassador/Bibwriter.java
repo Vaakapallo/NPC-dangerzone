@@ -24,6 +24,10 @@ public class Bibwriter {
      */
     public Bibwriter() {
     }
+    
+    public Bibwriter(String filename) {
+        this.referenceFileName = filename;
+    }
 
     /**
      * Writes all the references given in the list to a file 'references.bib' in
@@ -96,7 +100,7 @@ public class Bibwriter {
      * @return Entry-object of the
      * @Inproceedings.
      */
-    public Entry parseInproceedings(Scanner s) {
+    private Entry parseInproceedings(Scanner s) {
         String tag = s.nextLine();
         ScandicConverter.convertScandicsToBibText(tag = tag.substring(16, tag.length() - 1));
 
