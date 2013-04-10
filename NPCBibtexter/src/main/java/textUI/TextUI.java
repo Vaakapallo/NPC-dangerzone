@@ -25,11 +25,10 @@ public class TextUI {
      * Metodi jolla käynnistetään itse käyttöliittymä, pyörittää käskyn kyselyjä
      * kunnes suljetaan.
      */
-    public void launchUberUI() {
-
-        printCommands();
-
+    public void run() {
         while (true) {
+            printCommands();
+
             io.printSomething("Anna komento: ");
 
             int command = io.readInt();

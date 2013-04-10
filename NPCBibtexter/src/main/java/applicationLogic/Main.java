@@ -22,6 +22,6 @@ public class Main {
 //        System.out.println(inproceedings);
 
         TextUI ui = new TextUI(new userIO());
-        ui.launchUberUI();
+        ui.run();
     }
 }

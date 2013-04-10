@@ -59,7 +59,7 @@ public class TextUITest extends TestCase {
 
     public void testLoopEndsWhenExiting() {
         command = 9;
-        ui.launchUberUI();
+        ui.run();
     }
 
     public void testAddingReferenceReturnsTrue() {

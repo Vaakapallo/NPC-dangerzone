@@ -1,4 +1,4 @@
-import NPCBibtexter.*
+import textUI.*
 
 description 'Käyttäjä voi tallentaa käyttämänsä viitteet'
 

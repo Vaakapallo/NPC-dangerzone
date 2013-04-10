@@ -5,6 +5,7 @@
 package textUI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +15,7 @@ public class IOStub implements IO {
     
     private String[] input;
     private int inputIndex;
-    private ArrayList<String> output;
+    private List<String> output;
     
     public IOStub(String[] input) {
         this.input = input;
@@ -36,5 +37,9 @@ public class IOStub implements IO {
     
     public void printLineChange() {
         output.add("\n");
+    }
+    
+    public List<String> getOutput(){
+        return output;
     }
 }

@@ -3,10 +3,7 @@ package textUI;
 import ambassador.Bibwriter;
 import Entries.Entry;
 import applicationLogic.EntryBuilder;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Väliaikainen luokka joka hoitaa käyttöliittymälle annettuja käskyjä
@@ -42,7 +39,14 @@ public class Bibtextifier {
         String booktitle = io.readString();
         io.printSomething("Give the year:");
         int year = io.readInt();
-        entries.add(EntryBuilder.buildInproceedings(author, title, booktitle, year, tag));
+        Entry entry = EntryBuilder.buildInproceedings(author, title, booktitle, year, tag);
+        if (entry.isValid()) {
+            entries.add(entry);
+            io.printSomething(entry.toString());
+        } else {
+            io.printSomething("Invalid information. Back to menu.");
+        }
+
     }
 
     /**
@@ -60,7 +64,7 @@ public class Bibtextifier {
             io.printSomething(entry.toString());
         }
     }
-    
+
     public void readReferencesToMemory() {
         this.entries.addAll(this.bw.readAndListReferences());
     }
