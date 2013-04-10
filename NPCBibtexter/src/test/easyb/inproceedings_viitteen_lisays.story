@@ -18,9 +18,3 @@ scenario "Käyttäjä lisää inproceedings-viitteen ja saa sen BibTex-muodossa 
         io.getOutput().shouldHave("EasyB made Easy")
     }
 }
-
-scenario "Käyttäjä lisää year -viitteen väärillä tiedoilla ja saa huonon Bibtext-viitteen ", {
-    given 'Käyttäjä valitsee lisää viite ja syöttää year viitettä'
-    when 'Käyttäjä syöttää väärät tiedot'
-    then 'Käyttäjä saa huonon Bibtext-viitteen'
-}
