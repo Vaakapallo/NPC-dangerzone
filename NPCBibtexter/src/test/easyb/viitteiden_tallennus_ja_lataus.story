@@ -36,9 +36,3 @@ scenario "Käyttäjä lataa viitteen tiedostosta", {
         io.getOutput().shouldHave("EasyB made Easy")
     }
 }
-
-scenario "Käyttäjä haluaa tallentaa viitteitä, muttei ole lisännyt niitä", {
-    given 'Käyttäjä ei ole lisännyt viitteitä'
-    when 'Käyttäjä valitsee tallenna viitteet'
-    then 'Käyttäjälle ilmoitetaan että viitteet on lisättävä aluksi'
-}
