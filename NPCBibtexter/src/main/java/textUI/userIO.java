@@ -32,6 +32,10 @@ public class userIO implements IO {
             printSomething("Anna komento numerona");
         }
 
+        if (palautettava == 0) {
+            return readInt();
+        }
+
         return palautettava;
     }
 
@@ -52,6 +56,11 @@ public class userIO implements IO {
     }
 
     public String readString() {
-        return scanner.nextLine();
+        String luettava = scanner.nextLine();
+        if (luettava.isEmpty()) {
+            System.out.println("Syöte ei saa olla tyhjä: ");
+            return readString();
+        }
+        return luettava;
     }
 }
