@@ -12,7 +12,7 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-class SaveReferences extends Command {
+public class SaveReferences extends Command {
 
     public SaveReferences(IO io) {
         super(io);

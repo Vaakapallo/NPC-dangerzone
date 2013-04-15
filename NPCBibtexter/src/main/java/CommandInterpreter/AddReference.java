@@ -4,7 +4,6 @@
  */
 package CommandInterpreter;
 
-import CommandInterpreter.Command;
 import Entries.Entry;
 import applicationLogic.EntryBuilder;
 import applicationLogic.EntryStorage;
@@ -14,7 +13,7 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-class AddReference extends Command {
+public class AddReference extends Command {
 
     public AddReference(IO io) {
         super(io);

@@ -13,9 +13,9 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-class ReadReferencesFromMemory extends Command {
+public class LoadReferences extends Command {
 
-    public ReadReferencesFromMemory(IO io) {
+    public LoadReferences(IO io) {
         super(io);
     }
 

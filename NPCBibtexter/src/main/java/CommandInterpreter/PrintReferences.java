@@ -13,7 +13,7 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-class PrintReferences extends Command {
+public class PrintReferences extends Command {
 
     public PrintReferences(IO io) {
         super(io);

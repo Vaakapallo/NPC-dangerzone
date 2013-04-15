@@ -10,9 +10,9 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-class ShutDown extends Command {
+public class Quit extends Command {
 
-    public ShutDown(IO io) {
+    public Quit(IO io) {
         super(io);
     }
 
