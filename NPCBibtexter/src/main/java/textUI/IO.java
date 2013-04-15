@@ -21,7 +21,7 @@ public interface IO {
      *
      * @param text Parametrinä annetaan tulostettava teksti
      */
-    public void printSomething(String text);
+    public void printLine(String text);
 
     /**
      * Tulostaa rivinvaihdon

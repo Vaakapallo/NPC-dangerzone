@@ -29,7 +29,7 @@ public class userIO implements IO {
             palautettava = Integer.parseInt(scanner.nextLine());
 
         } catch (NumberFormatException e) {
-            printSomething("Anna komento numerona");
+            printLine("Anna komento numerona");
         }
 
         if (palautettava == 0) {
@@ -44,7 +44,7 @@ public class userIO implements IO {
      *
      * @param text Parametrina annetaan haluttu teksti
      */
-    public void printSomething(String text) {
+    public void printLine(String text) {
         System.out.println(text);
     }
 

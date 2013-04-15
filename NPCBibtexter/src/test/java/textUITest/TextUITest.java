@@ -17,7 +17,7 @@ public class TextUITest extends TestCase {
                 return command;
             }
 
-            public void printSomething(String text) {
+            public void printLine(String text) {
             }
 
             public void printLineChange() {
@@ -60,17 +60,5 @@ public class TextUITest extends TestCase {
     public void testLoopEndsWhenExiting() {
         command = 9;
         ui.run();
-    }
-
-    public void testAddingReferenceReturnsTrue() {
-        assertTrue(ui.checkCommand(1));
-    }
-
-    public void testprintingReferenceReturnsTrue() {
-        assertTrue(ui.checkCommand(2));
-    }
-    
-    public void testPrintingReferenceReturnsTrue() {
-        assertTrue(ui.checkCommand(3));
     }
 }

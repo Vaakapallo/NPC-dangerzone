@@ -1,5 +1,7 @@
 package textUI;
 
+import CommandInterpreter.CommandInterpreter;
+
 /**
  * Tekstikäyttöliittymä Bibtext viitteiden hallintaan
  *
@@ -8,7 +10,6 @@ package textUI;
 public class TextUI {
 
     private IO io;
-    private Bibtextifier bib;
 
     /**
      * Konstruktori tekstikäyttöliittymää varten
@@ -18,7 +19,6 @@ public class TextUI {
      */
     public TextUI(IO io) {
         this.io = io;
-        this.bib = new Bibtextifier(io);
     }
 
     /**
@@ -26,62 +26,34 @@ public class TextUI {
      * kunnes suljetaan.
      */
     public void run() {
+        CommandInterpreter commands = new CommandInterpreter(io);
         while (true) {
+
             printCommands();
 
-            io.printSomething("Anna komento: ");
-
-            int command = io.readInt();
+            io.printLine("Anna komento: ");
 
             io.printLineChange();
 
-            if (command == 9) {
-                io.printSomething("suljetaan");
-                break;
-            }
-            checkCommand(command);
-        }
-    }
+            Integer input = io.readInt();
 
-    /*
-     * Tarkistaa komennon ja toimii sen mukaan
-     * @param command Saa parametrina komennon numeroarvon
-     */
-    public boolean checkCommand(int command) {
-        switch (command) {
-            case 1:
-                bib.addReference();
-                io.printLineChange();
-                return true;
-            case 2:
-                bib.saveReferences();
-                io.printLineChange();
-                return true;
-            case 3:
-                bib.printReferences();
-                io.printLineChange();
-                return true;
-            case 4:
-                bib.readReferencesToMemory();
-                io.printLineChange();
-                return true;
-            default:
-                io.printSomething("Väärä komento");
-                io.printLineChange();
-                printCommands();
+            if (input == 9) {
+                break;
+            } else {
+                commands.getCommand(input).run();
+            }
         }
-        return false;
     }
 
     /*
      * Metodin ainoa tarkoitus on tulostaa lista sallituista komennoista
      */
     private void printCommands() {
-        io.printSomething("1. Lisää uusi viite");
-        io.printSomething("2. Tallenna viitteet");
-        io.printSomething("3. Tulosta viitteet");
-        io.printSomething("4. Lue viitteet tiedostosta ja siirrä ohjelmaan");
-        io.printSomething("9. Lopeta");
+        io.printLine("1. Lisää uusi viite");
+        io.printLine("2. Tallenna viitteet");
+        io.printLine("3. Tulosta viitteet");
+        io.printLine("4. Lue viitteet tiedostosta ja siirrä ohjelmaan");
+        io.printLine("9. Lopeta");
         io.printLineChange();
     }
 }

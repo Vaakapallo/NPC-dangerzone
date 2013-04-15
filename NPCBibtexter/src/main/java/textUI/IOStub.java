@@ -31,7 +31,7 @@ public class IOStub implements IO {
         return input[inputIndex++];
     }
     
-    public void printSomething(String text) {
+    public void printLine(String text) {
         output.add(text);
     }
     

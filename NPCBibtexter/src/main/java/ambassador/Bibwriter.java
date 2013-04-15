@@ -35,7 +35,7 @@ public class Bibwriter {
      *
      * @param referenceList
      */
-    public void writeReferencesFromList(List<Entry> referenceList) {
+    public static void writeReferencesFromList(List<Entry> referenceList) {
 
         List<Entry> allEntries = new ArrayList<Entry>();
         try {
@@ -77,7 +77,7 @@ public class Bibwriter {
      * @Inproceedings.
      * @return A list of Entries (references).
      */
-    public List<Entry> readAndListReferences() throws NullPointerException {
+    public static List<Entry> readAndListReferences() throws NullPointerException {
         try {
             Scanner s = new Scanner(new File(referenceFileName));
             ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -100,7 +100,7 @@ public class Bibwriter {
      * @return Entry-object of the
      * @Inproceedings.
      */
-    private Entry parseInproceedings(Scanner s) {
+    private static Entry parseInproceedings(Scanner s) {
         String tag = s.nextLine();
         ScandicConverter.convertScandicsToBibText(tag = tag.substring(16, tag.length() - 1));
 
