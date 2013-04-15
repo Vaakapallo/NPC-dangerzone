@@ -1,5 +1,7 @@
 package Fields;
 
+import java.util.List;
+
 /**
  * Supports Inproceedings for now.
  */
@@ -27,5 +29,14 @@ public class CiteKeyGen {
         }
         
         return toReturn;
+    }
+    
+    public static boolean isUnique(List<String> citekeys, String citekey) {
+        for (String string : citekeys) {
+            if (citekey.equals(string)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

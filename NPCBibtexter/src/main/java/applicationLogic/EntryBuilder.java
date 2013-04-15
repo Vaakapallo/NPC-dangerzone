@@ -4,10 +4,10 @@
  */
 package applicationLogic;
 
-
 import Entries.Inproceedings;
 import Fields.Author;
 import Fields.Booktitle;
+import Fields.CiteKeyGen;
 import Fields.Field;
 import Fields.Title;
 import Fields.Year;
@@ -27,5 +27,15 @@ public class EntryBuilder {
         constructor.put(Booktitle.class, new Booktitle(booktitle));
 
         return new Inproceedings(constructor, tag);
+    }
+
+    public static Inproceedings buildInproceedings(String author, String title, String booktitle, int year) {
+        HashMap<Class<? extends Field>, Field> constructor = new HashMap();
+        constructor.put(Author.class, new Author(author));
+        constructor.put(Title.class, new Title(title));
+        constructor.put(Year.class, new Year(year));
+        constructor.put(Booktitle.class, new Booktitle(booktitle));
+
+        return new Inproceedings(constructor, CiteKeyGen.generateCitationKey((Author)constructor.get(Author.class), (Year)constructor.get(Year.class), (Title)constructor.get(Title.class)));
     }
 }
