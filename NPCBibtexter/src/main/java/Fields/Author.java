@@ -1,13 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Fields;
 
-/**
- *
- * @author jjoonia
- */
 public class Author extends Field{
     private String name;
     
@@ -17,7 +9,7 @@ public class Author extends Field{
 
     @Override
     public String getField() {
-        return name; //To change body of generated methods, choose Tools | Templates.
+        return name;
     }
     @Override
     public String toString(){
