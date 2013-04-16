@@ -18,14 +18,14 @@ import java.util.HashMap;
  */
 public class Build {
 
-    public static Inproceedings Inproceedings(String author, String title, String booktitle, int year, String tag) {
+    public static Inproceedings Inproceedings(String author, String title, String booktitle, int year, String citationKey) {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
         constructor.put(Title.class, new Title(title));
         constructor.put(Year.class, new Year(year));
         constructor.put(Booktitle.class, new Booktitle(booktitle));
 
-        return new Inproceedings(constructor, tag);
+        return new Inproceedings(constructor, citationKey);
     }
 
     /**

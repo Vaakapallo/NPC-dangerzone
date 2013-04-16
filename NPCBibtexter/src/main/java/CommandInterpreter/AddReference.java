@@ -11,12 +11,12 @@ import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- * Asks the user for the necessary information and adds an Inproceedings-Entry 
+ * Asks the user for the necessary information and adds an Inproceedings-Entry
  * to EntryStorage
- * 
+ *
  * @see EntryStorage
  * @see Inproceedings
- * 
+ *
  * @author lvapaaka
  */
 public class AddReference extends Command {
@@ -27,22 +27,27 @@ public class AddReference extends Command {
 
     @Override
     public void run() {
-        io.printLine("Give the citation key:");
-        String tag = io.readString();
-        io.printLine("Give the author(s):");
+        io.printLine("Anna viiteavain (pelkkä väliyönti generoi)");
+        String citationKey = io.readString();
+        io.printLine("Anna kirjoittaja(t):");
         String author = io.readString();
-        io.printLine("Give the title:");
+        io.printLine("Anna kirjoituksen nimi:");
         String title = io.readString();
-        io.printLine("Give the booktitle:");
+        io.printLine("Anna kirjan nimi:");
         String booktitle = io.readString();
-        io.printLine("Give the year:");
+        io.printLine("Anna vuosi:");
         int year = io.readInt();
-        Entry entry = Build.Inproceedings(author, title, booktitle, year, tag);
+        Entry entry;
+        if (citationKey.equals(" ")) {
+            entry = Build.Inproceedings(author, title, booktitle, year);
+        } else {
+            entry = Build.Inproceedings(author, title, booktitle, year, citationKey);
+        }
         if (entry.isValid()) {
             EntryStorage.addEntry(entry);
             io.printLine(entry.toString());
         } else {
-            io.printLine("Invalid information. Back to menu.");
+            io.printLine("Väärää infoa, takaisin valikkoon");
         }
 
     }

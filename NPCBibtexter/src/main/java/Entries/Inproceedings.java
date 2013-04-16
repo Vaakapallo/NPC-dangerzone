@@ -15,11 +15,11 @@ public class Inproceedings extends Entry {
     final static private Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    String tag;
+    private String citationKey;
 
     public Inproceedings(HashMap<Class<? extends Field>, Field> map, String tag) {
         list = map;
-        this.tag = tag;
+        this.citationKey = tag;
 
     }
     @Override
@@ -44,7 +44,7 @@ public class Inproceedings extends Entry {
 
     @Override
     public String toString() {
-        String resString = "@Inproceedings{ " + tag + ",\n";
+        String resString = "@Inproceedings{ " + citationKey + ",\n";
         for (Class class1 : requiredFields) {
             if (list.containsKey(class1)) {
                 resString = resString + list.get(class1);

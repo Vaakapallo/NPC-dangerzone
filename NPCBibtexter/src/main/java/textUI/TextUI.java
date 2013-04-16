@@ -28,19 +28,12 @@ public class TextUI {
     public void run() {
         CommandInterpreter commands = new CommandInterpreter(io);
         while (true) {
-
             printCommands();
-
             io.printLine("Anna komento: ");
-
-            io.printLineChange();
-
-            Integer input = io.readInt();
-
+            int input = io.readInt();
+            commands.getCommand(input).run();
             if (input == 9) {
                 break;
-            } else {
-                commands.getCommand(input).run();
             }
         }
     }
