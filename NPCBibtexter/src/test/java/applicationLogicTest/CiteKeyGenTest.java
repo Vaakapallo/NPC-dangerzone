@@ -5,7 +5,7 @@
 package applicationLogicTest;
 
 import Fields.Author;
-import Fields.CiteKeyGen;
+import applicationLogic.Generate;
 import Fields.Title;
 import Fields.Year;
 import java.util.ArrayList;
@@ -32,13 +32,13 @@ public class CiteKeyGenTest extends TestCase {
 
     public void testIfSubstringsWork() {
         String shouldBe = "jjooni1995-robots";
-        String whatWeGet = CiteKeyGen.generateCitationKey(new Author("jjoonia"), new Year(1995), new Title("robots on mars"));
+        String whatWeGet = Generate.identifier("jjoonia", 1995, "robots on mars");
         assertEquals(shouldBe, whatWeGet);
     }
 
     public void testIfItWorksWithShortOnes() {
         String shouldBe = "dax2001-lol";
-        String whatWeGet = CiteKeyGen.generateCitationKey(new Author("dax"), new Year(2001), new Title("lol"));
+        String whatWeGet = Generate.identifier("dax", 2001, "lol");
         assertEquals(shouldBe, whatWeGet);
     }
 
@@ -46,14 +46,14 @@ public class CiteKeyGenTest extends TestCase {
         ArrayList<String> cites = new ArrayList<String>();
         cites.add("lol");
         cites.add("auto");
-        assertTrue(CiteKeyGen.isUnique(cites, "jackpot"));
+        assertTrue(Generate.isUnique(cites, "jackpot"));
     }
 
     public void testIfUniqueWhenNot() {
         ArrayList<String> cites = new ArrayList<String>();
         cites.add("lol");
         cites.add("auto");
-        assertFalse(CiteKeyGen.isUnique(cites, "auto"));
+        assertFalse(Generate.isUnique(cites, "auto"));
     }
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}

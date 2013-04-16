@@ -7,7 +7,8 @@ package CommandInterpreter;
 import textUI.IO;
 
 /**
- *
+ * A runnable command for the menu.
+ * 
  * @author lvapaaka
  */
 public abstract class Command {

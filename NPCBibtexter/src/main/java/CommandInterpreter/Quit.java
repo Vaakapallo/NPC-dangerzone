@@ -7,7 +7,8 @@ package CommandInterpreter;
 import textUI.IO;
 
 /**
- *
+ * Shuts down the program. EasyB hates it.
+ * 
  * @author lvapaaka
  */
 public class Quit extends Command {

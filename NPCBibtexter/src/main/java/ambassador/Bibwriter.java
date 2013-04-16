@@ -1,7 +1,7 @@
 package ambassador;
 
 import Entries.Entry;
-import applicationLogic.EntryBuilder;
+import applicationLogic.Build;
 import applicationLogic.ScandicConverter;
 import java.io.*;
 import java.util.ArrayList;
@@ -120,6 +120,6 @@ public class Bibwriter {
         s.nextLine();
         s.nextLine();
 
-        return EntryBuilder.buildInproceedings(author, title, booktitle, year, tag);
+        return Build.Inproceedings(author, title, booktitle, year, tag);
     }
 }

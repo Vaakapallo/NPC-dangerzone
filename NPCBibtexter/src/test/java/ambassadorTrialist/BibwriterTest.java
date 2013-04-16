@@ -3,7 +3,7 @@ package ambassadorTrialist;
 import Entries.Entry;
 import Entries.Inproceedings;
 import ambassador.Bibwriter;
-import applicationLogic.EntryBuilder;
+import applicationLogic.Build;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

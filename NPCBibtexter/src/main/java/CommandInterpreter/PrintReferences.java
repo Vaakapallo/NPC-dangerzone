@@ -4,13 +4,13 @@
  */
 package CommandInterpreter;
 
-import CommandInterpreter.Command;
 import Entries.Entry;
 import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- *
+ * Prints all the references in EntryStorage
+ * 
  * @author lvapaaka
  */
 public class PrintReferences extends Command {

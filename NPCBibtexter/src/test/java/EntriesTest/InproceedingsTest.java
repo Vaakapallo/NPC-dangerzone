@@ -8,7 +8,7 @@ package EntriesTest;
 import Entries.Inproceedings;
 import Fields.Author;
 import Fields.Field;
-import applicationLogic.EntryBuilder;
+import applicationLogic.Build;
 import junit.framework.TestCase;
 
 /**
@@ -39,7 +39,7 @@ public class InproceedingsTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         
-        inproceedings = EntryBuilder.buildInproceedings("Luukkainen, Matti", "Extreme Apprenticeship Method in Teaching Programming for Beginners.", "SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education", 2011, "VPL11");
+        inproceedings = Build.Inproceedings("Luukkainen, Matti", "Extreme Apprenticeship Method in Teaching Programming for Beginners.", "SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education", 2011, "VPL11");
     }
     
     @Override

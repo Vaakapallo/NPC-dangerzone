@@ -9,6 +9,9 @@ import java.util.Map;
 import textUI.IO;
 
 /**
+ * Holds and dispenses the Command-objects.
+ *
+ * @see Command
  *
  * @author lvapaaka
  */

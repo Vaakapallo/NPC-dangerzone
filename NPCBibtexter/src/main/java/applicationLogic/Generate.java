@@ -1,15 +1,15 @@
-package Fields;
+package applicationLogic;
 
 import java.util.List;
 
 /**
  * Supports Inproceedings for now.
  */
-public class CiteKeyGen {
+public class Generate {
     
-    public static String generateCitationKey(Author author, Year year, Title title) {
+    public static String identifier(String author, int year, String title) {
         String toReturn = "";
-        String auth = author.getField().toLowerCase().trim();
+        String auth = author.toLowerCase().trim();
         
         if (auth.length() < 6) {
             toReturn += auth;
@@ -17,10 +17,10 @@ public class CiteKeyGen {
             toReturn += auth.substring(0, 6);
         }
         
-        toReturn += year.getField();
+        toReturn += year;
         toReturn += "-";
         
-        String tit = title.getField().toLowerCase().trim();
+        String tit = title.toLowerCase().trim();
         
         if (tit.length() < 6) {
             toReturn += tit;

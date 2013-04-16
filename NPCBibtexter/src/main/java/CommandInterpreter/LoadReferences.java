@@ -10,7 +10,8 @@ import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- *
+ * Loads all the references in a .bib-file to EntryStorage.
+ * 
  * @author lvapaaka
  */
 public class LoadReferences extends Command {

@@ -9,7 +9,8 @@ import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- *
+ * Saves all the Entries in EntryStorage to a .bib-file.
+ * 
  * @author lvapaaka
  */
 public class SaveReferences extends Command {

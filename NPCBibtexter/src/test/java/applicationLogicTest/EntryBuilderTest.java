@@ -4,7 +4,7 @@
  */
 package applicationLogicTest;
 
-import applicationLogic.EntryBuilder;
+import applicationLogic.Build;
 import junit.framework.TestCase;
 
 /**
@@ -30,14 +30,14 @@ public class EntryBuilderTest extends TestCase {
     // public void testHello() {}
 
     public void testBuildInproceedingsNotNullWithContent() {
-        assertNotNull(EntryBuilder.buildInproceedings("Vaakapallo", "Palloja n-ulottuvuudessa", "Palloja yleensä", 0, "VPK90"));
+        assertNotNull(Build.Inproceedings("Vaakapallo", "Palloja n-ulottuvuudessa", "Palloja yleensä", 0, "VPK90"));
     }
     
     public void testBuilderBuildsAValidInproceedings(){
-        assertTrue(EntryBuilder.buildInproceedings("Vaakapallo", "Palloja n-ulottuvuudessa", "Palloja yleensä", 0, "VPK90").isValid());
+        assertTrue(Build.Inproceedings("Vaakapallo", "Palloja n-ulottuvuudessa", "Palloja yleensä", 0, "VPK90").isValid());
     }
     
     public void testBuildInproceedingsNotNullWithNulls() {
-        assertNotNull(EntryBuilder.buildInproceedings(null, null, null, 0, null));
+        assertNotNull(Build.Inproceedings(null, null, null, 0, null));
     }
 }
