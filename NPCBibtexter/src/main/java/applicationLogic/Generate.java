@@ -9,7 +9,7 @@ public class Generate {
     
     public static String identifier(String author, int year, String title) {
         String toReturn = "";
-        String auth = author.toLowerCase().trim();
+        String auth = author.toLowerCase().trim().replaceAll("\\s", "").replaceAll("\\W", "");
         
         if (auth.length() < 6) {
             toReturn += auth;
