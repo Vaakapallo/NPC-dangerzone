@@ -9,7 +9,7 @@ package Fields;
  *
  * @author lauri
  */
-public class Booktitle extends Field {
+public class Booktitle implements Field {
     
     private String name;
     

@@ -8,7 +8,7 @@ package Fields;
  *
  * @author jjoonia
  */
-public class Year extends Field {
+public class Year implements Field {
     private int year;
     
     public Year(int year) {

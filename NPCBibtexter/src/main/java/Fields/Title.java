@@ -8,7 +8,7 @@ package Fields;
  *
  * @author jjoonia
  */
-public class Title extends Field {
+public class Title implements Field {
     private String name;
     
     public Title(String name) {

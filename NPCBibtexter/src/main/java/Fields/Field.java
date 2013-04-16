@@ -1,8 +1,9 @@
 package Fields;
 
-public abstract class Field {
+public interface Field {
 
-    public abstract String getField();
+    public String getField();
+
     @Override
-    public abstract String toString();
+    public String toString();
 }

@@ -8,7 +8,7 @@ package Fields;
  *
  * @author laursuom
  */
-public class Publisher extends Field {
+public class Publisher implements Field {
     
     private String name;
     

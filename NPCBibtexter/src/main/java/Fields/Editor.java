@@ -8,7 +8,7 @@ package Fields;
  *
  * @author laursuom
  */
-public class Editor extends Field {
+public class Editor implements Field {
     private String name;
     
     public Editor(String name) {

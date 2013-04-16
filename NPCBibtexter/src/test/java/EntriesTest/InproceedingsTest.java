@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 public class InproceedingsTest extends TestCase {
     Inproceedings inproceedings;
     
-    private class TestField extends Field {
+    private class TestField implements Field {
 
         @Override
         public String getField() {

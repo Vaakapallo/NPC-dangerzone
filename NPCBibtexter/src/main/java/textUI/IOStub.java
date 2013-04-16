@@ -23,18 +23,22 @@ public class IOStub implements IO {
         output = new ArrayList();
     }
     
+    @Override
     public int readInt() {
         return Integer.parseInt(input[inputIndex++]);
     }
     
+    @Override
     public String readString() {
         return input[inputIndex++];
     }
     
+    @Override
     public void printLine(String text) {
         output.add(text);
     }
     
+    @Override
     public void printLineChange() {
         output.add("\n");
     }
