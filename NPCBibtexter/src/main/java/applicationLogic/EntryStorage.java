@@ -23,4 +23,8 @@ public class EntryStorage {
     public static List<Entry> getEntries() {
         return entries;
     }
+    
+    public static void empty(){
+        entries.clear();
+    }
 }
