@@ -44,7 +44,7 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
-    public void testEditingWorks() {
+    public void testEditingAddsNewReference() {
         String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
             "2013", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
         IOStub io = new IOStub(input);
@@ -57,6 +57,16 @@ public class EditReferenceTest extends TestCase {
         }
 
         assertTrue(output.contains("Starre II"));
+        EntryStorage.empty();
+    }
+    
+    public void testEditingGivesCorrectSizeList() {
+        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
+            "2013", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
+        IOStub io = new IOStub(input);
+        new AddReference(io).run();
+        new EditReference(io).run();
+        
         assertTrue(EntryStorage.getEntries().size()==1);
         EntryStorage.empty();
     }
