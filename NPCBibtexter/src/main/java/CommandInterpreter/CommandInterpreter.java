@@ -24,6 +24,7 @@ public class CommandInterpreter {
         commands.put(2, new SaveReferences(io));
         commands.put(3, new PrintReferences(io));
         commands.put(4, new LoadReferences(io));
+        commands.put(5, new EditReference(io));
         commands.put(9, new Quit(io));
     }
 
