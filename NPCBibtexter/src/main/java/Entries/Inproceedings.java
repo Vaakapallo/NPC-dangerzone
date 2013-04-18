@@ -71,4 +71,9 @@ public class Inproceedings extends Entry {
     public static Class[] getOptionalFields() {
         return optionalFields;
     }
+    
+    @Override
+    public String getCitationKey(){
+        return this.citationKey;
+    }
 }

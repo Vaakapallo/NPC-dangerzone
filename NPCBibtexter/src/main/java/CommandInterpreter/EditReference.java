@@ -4,6 +4,8 @@
  */
 package CommandInterpreter;
 
+import Entries.Entry;
+import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
@@ -18,7 +20,17 @@ public class EditReference extends Command {
     
     @Override
     public void run() {
-        System.out.println("not implemented yet");
+        System.out.println("Anna muokattavan viitteen viiteavain ");
+        String citationKey = io.readString();
+        
+        int index = 0;
+        for (Entry entry : EntryStorage.getEntries()) {
+            if(citationKey.equals(entry.getCitationKey())){
+                EntryStorage.getEntries().remove(index);
+                new AddReference(io).run();
+                break;
+            }
+            index++;
+        }
     }
-    
 }

@@ -76,4 +76,8 @@ public class Article extends Entry {
     public static Class[] getOptionalFields() {
         return optionalFields;
     }
+    @Override
+    public String getCitationKey(){
+        return this.tag;
+    }
 }

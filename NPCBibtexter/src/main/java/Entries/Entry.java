@@ -16,7 +16,7 @@ public abstract class Entry {
     @Override
     public abstract String toString();
     public abstract boolean isValid();
-    
+    public abstract String getCitationKey();
 
 }
 
