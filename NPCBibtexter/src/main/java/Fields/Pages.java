@@ -27,7 +27,7 @@ public class Pages implements Field {
     }
 
     @Override
-    public String getField() {
+    public String toString() {
         String returnString = "pages = { ";
         for (int i = 0; i < pages.size(); i++) {
             String tempString;
@@ -42,6 +42,11 @@ public class Pages implements Field {
         }
         returnString = returnString + "},\n";
         return returnString;
+    }
+
+    @Override
+    public String getField() {
+        return pages.toString();
     }
 
     private class PageCollection {
