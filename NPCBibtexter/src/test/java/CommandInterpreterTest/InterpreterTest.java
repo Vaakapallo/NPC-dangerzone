@@ -32,7 +32,7 @@ public class InterpreterTest extends TestCase {
     // public void testHello() {}
     
     public void testOneEqualsAdd(){
-        assertTrue(AddReference.class == interpreter.getCommand(1).getClass());
+        assertTrue(ReferenceType.class == interpreter.getCommand(1).getClass());
     }
     
     public void testTwoEqualsSave(){
