@@ -20,7 +20,12 @@ public class EditReference extends Command {
     
     @Override
     public void run() {
-        System.out.println("Anna muokattavan viitteen viiteavain ");
+        if(EntryStorage.getEntries().isEmpty()){
+            io.printLine("Muokattavia viitteitä ei ole. ");
+            return;
+        }
+        
+        io.printLine("Anna muokattavan viitteen viiteavain ");
         String citationKey = io.readString();
         
         int index = 0;
