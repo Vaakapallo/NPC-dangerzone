@@ -54,7 +54,7 @@ public class Bibmakeupartist {
         System.out.println("Entry: Article");
         System.out.println("Citation key: " + a.getCitationKey());
         for (Field f : a.getList().values()) {
-            String toSplit = a.toString();
+            String toSplit = f.toString();
             toSplit = toSplit.split("=")[0].trim();
             System.out.println(toSplit + ": " + f.getField());
         }
@@ -64,7 +64,7 @@ public class Bibmakeupartist {
         System.out.println("Entry: Book");
         System.out.println("Citation key: " + b.getCitationKey());
         for (Field f : b.getList().values()) {
-            String toSplit = b.toString();
+            String toSplit = f.toString();
             toSplit = toSplit.split("=")[0].trim();
             System.out.println(toSplit + ": " + f.getField());
         }

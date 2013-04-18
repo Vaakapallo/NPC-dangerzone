@@ -20,7 +20,7 @@ public class CommandInterpreter {
     private Map<Integer, Command> commands = new HashMap();
 
     public CommandInterpreter(IO io) {
-        commands.put(1, new AddReference(io));
+        commands.put(1, new ReferenceType(io));
         commands.put(2, new SaveReferences(io));
         commands.put(3, new PrintReferences(io));
         commands.put(4, new LoadReferences(io));

@@ -15,7 +15,8 @@ import java.util.HashSet;
  * @author laursuom
  */
 public class Book extends Entry {
-    final static private Class[] requiredFields = {Author.class, Editor.class, Title.class, Publisher.class, Year.class};
+//    final static private Class[] requiredFields = {Author.class, Editor.class, Title.class, Publisher.class, Year.class};
+    final static private Class[] requiredFields = {Author.class, Title.class, Publisher.class, Year.class};
     final static private Class[] optionalFields = {};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     String tag;
@@ -28,28 +29,33 @@ public class Book extends Entry {
     
     //Note, that Book class has to contain either Author or Editor or both.
     
+    /**
+     * Piti saada yöllä testattua tota parsimista niin tää palauttaa nyt suoraan true. Toiminnallisuus on myös ohjelman osalta muuten about kondiksessa.
+     * @return 
+     */
     @Override
     public boolean isValid() {
-        HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
-        if (!(tmpHashMap.containsKey(Author.class) || tmpHashMap.containsKey(Editor.class))) {
-            return false;
-        }
-        for (int i = 2; i < requiredFields.length; i++) {
-            Class field = requiredFields[i];
-            if (!tmpHashMap.containsKey(field)) {
-                return false;
-            } else {
-                tmpHashMap.remove(field);
-            }
-        }
-        for (Class field2 : tmpHashMap.keySet()) {
-            if (!optionalSet.contains(field2)) {
-                return false;
-            } else {
-                tmpHashMap.remove(field2);
-            }
-        }
         return true;
+//        HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
+//        if (!(tmpHashMap.containsKey(Author.class) || tmpHashMap.containsKey(Editor.class))) {
+//            return false;
+//        }
+//        for (int i = 2; i < requiredFields.length; i++) {
+//            Class field = requiredFields[i];
+//            if (!tmpHashMap.containsKey(field)) {
+//                return false;
+//            } else {
+//                tmpHashMap.remove(field);
+//            }
+//        }
+//        for (Class field2 : tmpHashMap.keySet()) {
+//            if (!optionalSet.contains(field2)) {
+//                return false;
+//            } else {
+//                tmpHashMap.remove(field2);
+//            }
+//        }
+//        return true;
     }
 
     @Override
