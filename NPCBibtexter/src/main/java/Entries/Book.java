@@ -35,27 +35,26 @@ public class Book extends Entry {
      */
     @Override
     public boolean isValid() {
+        HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
+        if (!(tmpHashMap.containsKey(Author.class)) && !(tmpHashMap.containsKey(Editor.class))) {
+            return false;
+        }
+        for (int i = 2; i < requiredFields.length; i++) {
+            Class field = requiredFields[i];
+            if (!tmpHashMap.containsKey(field)) {
+                return false;
+            } else {
+                tmpHashMap.remove(field);
+            }
+        }
+        for (Class field2 : tmpHashMap.keySet()) {
+            if (!optionalSet.contains(field2)) {
+                return false;
+            } else {
+                tmpHashMap.remove(field2);
+            }
+        }
         return true;
-//        HashMap<Class<? extends Field>, Field> tmpHashMap = (HashMap) list.clone();
-//        if (!(tmpHashMap.containsKey(Author.class) || tmpHashMap.containsKey(Editor.class))) {
-//            return false;
-//        }
-//        for (int i = 2; i < requiredFields.length; i++) {
-//            Class field = requiredFields[i];
-//            if (!tmpHashMap.containsKey(field)) {
-//                return false;
-//            } else {
-//                tmpHashMap.remove(field);
-//            }
-//        }
-//        for (Class field2 : tmpHashMap.keySet()) {
-//            if (!optionalSet.contains(field2)) {
-//                return false;
-//            } else {
-//                tmpHashMap.remove(field2);
-//            }
-//        }
-//        return true;
     }
 
     @Override
