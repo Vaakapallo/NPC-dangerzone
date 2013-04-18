@@ -8,6 +8,7 @@ import Entries.Entry;
 import Entries.Inproceedings;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;
+import applicationLogic.Generate;
 import textUI.IO;
 
 /**
@@ -45,6 +46,7 @@ public class AddReference extends Command {
         }
         if (entry.isValid()) {
             EntryStorage.addEntry(entry);
+            EntryStorage.addCiteKey(entry.getCitationKey());
             io.printLine(entry.toString());
         } else {
             io.printLine("Väärää infoa, takaisin valikkoon");

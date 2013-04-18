@@ -4,12 +4,20 @@
  */
 package applicationLogicTest;
 
+import Entries.Inproceedings;
 import Fields.Author;
 import applicationLogic.Generate;
 import Fields.Title;
 import Fields.Year;
+import applicationLogic.Build;
 import java.util.ArrayList;
 import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -54,6 +62,15 @@ public class CiteKeyGenTest extends TestCase {
         cites.add("lol");
         cites.add("auto");
         assertFalse(Generate.isUnique(cites, "auto"));
+    }
+
+    @Test
+    public void addTwoWithTheSameSpecs() {
+        Inproceedings eka = Build.Inproceedings("yks", "kaks", "kol", 1);
+        Inproceedings toka = Build.Inproceedings("yks", "kaks", "kol", 1);
+        System.out.println("TOIMIIXMITÄVITTUA");
+        System.out.println(eka.getCitationKey());
+        System.out.println(toka.getCitationKey());
     }
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}
