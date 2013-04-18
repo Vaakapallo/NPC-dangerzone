@@ -64,14 +64,6 @@ public class CiteKeyGenTest extends TestCase {
         assertFalse(Generate.isUnique(cites, "auto"));
     }
 
-    @Test
-    public void addTwoWithTheSameSpecs() {
-        Inproceedings eka = Build.Inproceedings("yks", "kaks", "kol", 1);
-        Inproceedings toka = Build.Inproceedings("yks", "kaks", "kol", 1);
-        System.out.println("TOIMIIXMITÄVITTUA");
-        System.out.println(eka.getCitationKey());
-        System.out.println(toka.getCitationKey());
-    }
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}
 }
