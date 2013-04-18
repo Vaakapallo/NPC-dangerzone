@@ -42,6 +42,10 @@ public class AddReference extends Command {
         if (citationKey.equals(" ")) {
             entry = Build.Inproceedings(author, title, booktitle, year);
         } else {
+            while (!Generate.isUnique(EntryStorage.getCiteKeys(), citationKey)) {
+                io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
+                citationKey = io.readString();
+            }
             entry = Build.Inproceedings(author, title, booktitle, year, citationKey);
         }
         if (entry.isValid()) {
