@@ -4,7 +4,7 @@
  */
 package CommandInterpreterTest;
 
-import CommandInterpreter.AddReference;
+import CommandInterpreter.AddInproceedings;
 import CommandInterpreter.EditReference;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
@@ -45,12 +45,12 @@ public class EditReferenceTest extends TestCase {
     }
 
     public void testEditingAddsNewReferenceWhenRightKey() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
-            "2013", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
+        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "en halua", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "en halua"};
         IOStub io = new IOStub(input);
-        new AddReference(io).run();
+        new AddInproceedings(io).run();
         new EditReference(io).run();
-        
+
         String output = "";
         for (String string : io.getOutput()) {
             output += string;
@@ -59,14 +59,14 @@ public class EditReferenceTest extends TestCase {
         assertTrue(output.contains("Starre II"));
         EntryStorage.empty();
     }
-    
+
     public void testEditingDoesntAddNewReferenceWhenWrongKey() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
-            "2013", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
+        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "en halua vaihtoehtoisia ", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
         IOStub io = new IOStub(input);
-        new AddReference(io).run();
+        new AddInproceedings(io).run();
         new EditReference(io).run();
-        
+
         String output = "";
         for (String string : io.getOutput()) {
             output += string;
@@ -75,15 +75,15 @@ public class EditReferenceTest extends TestCase {
         assertTrue(!output.contains("Starre II"));
         EntryStorage.empty();
     }
-    
+
     public void testEditingGivesCorrectSizeList() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
-            "2013", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
+        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "en halua vaihtoehtoisia ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
         IOStub io = new IOStub(input);
-        new AddReference(io).run();
+        new AddInproceedings(io).run();
         new EditReference(io).run();
-        
-        assertTrue(EntryStorage.getEntries().size()==1);
+
+        assertTrue(EntryStorage.getEntries().size() == 1);
         EntryStorage.empty();
     }
 }

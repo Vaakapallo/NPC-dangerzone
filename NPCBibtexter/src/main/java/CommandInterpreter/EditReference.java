@@ -35,7 +35,7 @@ public class EditReference extends Command {
                 io.printLine(entry.toString());
                 EntryStorage.getEntries().remove(index);
                 EntryStorage.getCiteKeys().remove(entry.getCitationKey());
-                new AddReference(io).run();
+                new AddInproceedings(io).run();
                 break;
             }
             index++;

@@ -7,12 +7,20 @@ package applicationLogic;
 import Entries.Article;
 import Entries.Book;
 import Entries.Inproceedings;
+import Fields.Address;
 import Fields.Author;
+import Fields.BibNumber;
 import Fields.Booktitle;
 import Fields.Field;
 import Fields.Journal;
+import Fields.Key;
+import Fields.Month;
+import Fields.Note;
+import Fields.Pages;
 import Fields.Publisher;
+import Fields.Series;
 import Fields.Title;
+import Fields.Volume;
 import Fields.Year;
 import java.util.HashMap;
 
@@ -41,7 +49,7 @@ public class Build {
 
         return new Book(constructor, citationKey);
     }
-    
+
     public static Article Article(String author, String title, String journal, int year, String citationKey) {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
@@ -51,6 +59,84 @@ public class Build {
 
         return new Article(constructor, citationKey);
     }
+
+    public static Article optionalFieldsArticle(String author, String title, String journal, int year, String volume, int number, int[] pages, String month, String note) {
+        HashMap<Class<? extends Field>, Field> constructor = new HashMap();
+        constructor.put(Author.class, new Author(author));
+        constructor.put(Title.class, new Title(title));
+        constructor.put(Journal.class, new Journal(journal));
+        constructor.put(Year.class, new Year(year));
+
+        if (volume != null) {
+            constructor.put(Volume.class, new Volume(volume));
+        }
+        if (number != 0) {
+            constructor.put(BibNumber.class, new BibNumber(number));
+        }
+        if (pages.length != 0) {
+            constructor.put(Pages.class, new Pages(pages));
+        }
+        if (month != null) {
+            constructor.put(Month.class, new Month(month));
+        }
+        if (note != null) {
+            constructor.put(Note.class, new Note(note));
+        }
+
+        return new Article(constructor, Generate.identifier(author, year, title));
+    }
+//       Volume.class, Series.class, Address.class, Edition.class, Month.class, Note.class, Key.class
+
+    public static Book optionalFieldsBook(String author, String title, String publisher, int year, String volume, String series, String address, String edition, String month, String note) {
+        HashMap<Class<? extends Field>, Field> constructor = new HashMap();
+        constructor.put(Author.class, new Author(author));
+        constructor.put(Title.class, new Title(title));
+        constructor.put(Publisher.class, new Publisher(publisher));
+        constructor.put(Year.class, new Year(year));
+
+        if (volume != null) {
+            constructor.put(Volume.class, new Volume(volume));
+        }
+        if (series != null) {
+            constructor.put(Series.class, new Series(series));
+        }
+        if (address != null) {
+            constructor.put(Address.class, new Address(address));
+        }
+        if (month != null) {
+            constructor.put(Month.class, new Month(month));
+        }
+        if (note != null) {
+            constructor.put(Note.class, new Note(note));
+        }
+
+        return new Book(constructor, Generate.identifier(author, year, title));
+    }
+    //                                                      Editor.class, Pages.class, Organization.class, Publisher.class, Address.class, Month.class, Key.class 
+
+    public static Inproceedings optionalFieldsInproceedings(String author, String title, String booktitle, int year, String editor, int[] pages, String organization, String address, String publisher, String month, String note) {
+        HashMap<Class<? extends Field>, Field> constructor = new HashMap();
+        constructor.put(Author.class, new Author(author));
+        constructor.put(Title.class, new Title(title));
+        constructor.put(Booktitle.class, new Booktitle(booktitle));
+        constructor.put(Year.class, new Year(year));
+
+        if (publisher != null) {
+            constructor.put(Publisher.class, new Publisher(publisher));
+        }
+        if (address != null) {
+            constructor.put(Address.class, new Address(address));
+        }
+        if (month != null) {
+            constructor.put(Month.class, new Month(month));
+        }
+        if (note != null) {
+            constructor.put(Note.class, new Note(note));
+        }
+
+        return new Inproceedings(constructor, Generate.identifier(author, year, title));
+    }
+
     /**
      * Makes an Inproceedings
      *
@@ -67,7 +153,7 @@ public class Build {
     public static Book Book(String author, String title, String publisher, int year) {
         return Book(author, title, publisher, year, Generate.identifier(author, year, title));
     }
-    
+
     public static Article Article(String author, String title, String journal, int year) {
         return Article(author, title, journal, year, Generate.identifier(author, year, title));
     }

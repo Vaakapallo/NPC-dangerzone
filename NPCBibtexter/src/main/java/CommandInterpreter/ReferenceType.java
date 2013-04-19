@@ -16,7 +16,7 @@ public class ReferenceType extends Command {
         io.printLine("3 - Article");
         String entryType = io.readString();
         if (entryType.equals("1")) {
-            new AddReference(io).run();
+            new AddInproceedings(io).run();
         } else if (entryType.equals("2")) {
             new AddBook(io).run();
         } else if (entryType.equals("3")) {
