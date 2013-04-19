@@ -62,17 +62,9 @@ public class PagesTest {
         assertEquals("[10, 12] [20] ", pages.getField());
     }
 
-    /**
-     * Test of getField method, of class Pages.
-     */
-//    @Test
-//    public void testGetField() {
-//        System.out.println("getField");
-//        Pages instance = null;
-//        String expResult = "";
-//        String result = instance.getField();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+@Test
+public void toStringToimii() {
+    pages = new Pages(10,12,20,20);
+        assertEquals("pages = { 10--12, 20},\n", pages.toString());
+}
 }
