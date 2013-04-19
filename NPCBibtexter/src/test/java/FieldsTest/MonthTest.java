@@ -32,7 +32,7 @@ public class MonthTest {
     
     @Before
     public void setUp() {
-        month = new Month(Month.MonthConstant.mar);
+        month = new Month("mar");
     }
     
     @After

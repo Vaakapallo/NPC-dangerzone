@@ -4,7 +4,7 @@
  */
 package CommandInterpreterTest;
 
-import CommandInterpreter.AddReference;
+import CommandInterpreter.AddInproceedings;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
 import textUI.IOStub;
@@ -30,9 +30,9 @@ public class AddReferenceTest extends TestCase {
     }
 
     public void testAddingWorksWithValidInfo() {
-        String[] input = {"ma231", "Mayra, Tero", "EasyB made Easy", "Frustrations of a CS Student", "2012"};
+        String[] input = {"ma231", "Mayra, Tero", "EasyB made Easy", "Frustrations of a CS Student", "2012", "en halua vaihtoehtoja"};
         IOStub io = new IOStub(input);
-        new AddReference(io).run();
+        new AddInproceedings(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -45,9 +45,9 @@ public class AddReferenceTest extends TestCase {
     }
 
     public void testAddingWorksWithGenerategKey() {
-        String[] input = {" ", "Mayra, Tero", "EasyB made Easy", "Frustrations of a CS Student", "2012"};
+        String[] input = {" ", "Mayra, Tero", "EasyB made Easy", "Frustrations of a CS Student", "2012", "en halua vaihtoehtoja"};
         IOStub io = new IOStub(input);
-        new AddReference(io).run();
+        new AddInproceedings(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
