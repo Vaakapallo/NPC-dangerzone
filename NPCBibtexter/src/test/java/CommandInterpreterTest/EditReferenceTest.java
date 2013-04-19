@@ -44,7 +44,7 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
-//    public void testEditingAddsNewReference() {
+//    public void testEditingAddsNewReferenceWhenRightKey() {
 //        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101", 
 //            "2013", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage",  "Starre II", "1337"};
 //        IOStub io = new IOStub(input);

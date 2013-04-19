@@ -1,5 +1,6 @@
 package textUI;
 
+import CommandInterpreter.Command;
 import CommandInterpreter.CommandInterpreter;
 
 /**
@@ -8,7 +9,7 @@ import CommandInterpreter.CommandInterpreter;
  * @author vito
  */
 public class TextUI {
-
+    
     private IO io;
 
     /**
@@ -31,7 +32,12 @@ public class TextUI {
             printCommands();
             io.printLine("Anna komento: ");
             int input = io.readInt();
-            commands.getCommand(input).run();
+            Command com = commands.getCommand(input);
+            if (com != null) {
+                com.run();
+            } else {
+                io.printLine("Komentoa ei löytynyt, yritä uudelleen");
+            }
             if (input == 9) {
                 break;
             }

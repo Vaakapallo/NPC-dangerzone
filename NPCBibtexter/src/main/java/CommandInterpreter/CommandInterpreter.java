@@ -30,6 +30,11 @@ public class CommandInterpreter {
     }
 
     public Command getCommand(int command) {
-        return commands.get(command);
+        try {
+            return commands.get(command);
+        } catch (NullPointerException e) {
+            return null;
+        }
+
     }
 }
