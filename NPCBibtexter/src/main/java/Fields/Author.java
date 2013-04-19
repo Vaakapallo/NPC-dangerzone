@@ -17,4 +17,9 @@ public class Author implements Field {
     public String toString() {
         return "author = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }

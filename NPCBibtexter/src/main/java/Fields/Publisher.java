@@ -25,5 +25,10 @@ public class Publisher implements Field {
     public String toString() {
         return "publisher = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
     
 }

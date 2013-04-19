@@ -25,6 +25,11 @@ public class Series implements Field {
     public String toString() {
         return "series = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }
     
 

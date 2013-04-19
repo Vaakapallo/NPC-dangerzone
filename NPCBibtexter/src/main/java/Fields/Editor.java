@@ -24,5 +24,10 @@ public class Editor implements Field {
     public String toString() {
         return "editor = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
     
 }

@@ -25,4 +25,9 @@ public class Address implements Field {
     public String toString() {
         return "address = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }

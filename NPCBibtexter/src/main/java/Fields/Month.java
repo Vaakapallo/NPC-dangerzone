@@ -26,6 +26,11 @@ public class Month implements Field {
         return "month = {" + month.toString() + "},\n";
     }
 
+    @Override
+    public void setField(String value) {
+        this.month = value;
+    }
+
     public enum MonthConstant {
 
         jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec

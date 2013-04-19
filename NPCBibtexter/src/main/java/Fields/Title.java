@@ -24,5 +24,10 @@ public class Title implements Field {
     public String toString() {
         return "title = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
     
 }

@@ -25,5 +25,10 @@ public class Organization implements Field{
     public String toString() {
         return "organization = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
     
 }

@@ -25,4 +25,9 @@ public class Edition implements Field {
     public String toString() {
         return "edition = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }

@@ -25,5 +25,10 @@ public class Journal implements Field {
     public String toString() {
         return "journal = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
     
 }

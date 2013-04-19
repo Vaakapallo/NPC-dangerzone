@@ -25,4 +25,9 @@ public class Note implements Field {
     public String toString() {
         return "note = {" + note + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.note = value;
+    }
 }

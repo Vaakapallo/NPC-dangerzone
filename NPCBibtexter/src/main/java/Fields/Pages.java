@@ -53,6 +53,11 @@ public class Pages implements Field {
         return resString;
     }
 
+    @Override
+    public void setField(String value) {
+        
+    }
+
     private class PageCollection {
 
         private int startPage;

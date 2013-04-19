@@ -25,4 +25,9 @@ public class BibNumber implements Field {
     public String toString() {
         return "number = {" + number + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.number = Integer.parseInt(value);
+    }
 }

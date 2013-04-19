@@ -26,4 +26,9 @@ public class Booktitle implements Field {
     public String toString() {
         return "booktitle = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }

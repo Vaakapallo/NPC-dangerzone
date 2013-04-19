@@ -29,6 +29,10 @@ public class InproceedingsTest extends TestCase {
         public String toString() {
             return ("I AM ERROR! MY NAME IS TestField!");
         }
+
+        @Override
+        public void setField(String value) {
+        }
         
     }
     

@@ -25,6 +25,11 @@ public class Year implements Field {
     public String toString() {
         return "year = {" + year + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.year = Integer.parseInt(value);
+    }
     
 }
 

@@ -25,4 +25,9 @@ public class Key implements Field {
     public String toString() {
         return "key = {" + key + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.key = value;
+    }
 }

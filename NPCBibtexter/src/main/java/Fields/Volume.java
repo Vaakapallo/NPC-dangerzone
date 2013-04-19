@@ -25,4 +25,9 @@ public class Volume implements Field {
     public String toString() {
         return "volume = {" + name + "},\n";
     }
+
+    @Override
+    public void setField(String value) {
+        this.name = value;
+    }
 }
