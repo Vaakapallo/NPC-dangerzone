@@ -46,7 +46,11 @@ public class Pages implements Field {
 
     @Override
     public String getField() {
-        return pages.toString();
+        String resString = "";
+        for (PageCollection pageCollection : pages) {
+            resString = resString + pageCollection;
+        }
+        return resString;
     }
 
     private class PageCollection {
@@ -70,6 +74,14 @@ public class Pages implements Field {
 
         public int getEndPage() {
             return endPage;
+        }
+        @Override
+        public String toString() {
+            if (startPage != endPage) {
+                return "[" + startPage + ", " + endPage + "] ";
+            } else {
+                return "[" + startPage +"] ";
+            }
         }
     }
 }
