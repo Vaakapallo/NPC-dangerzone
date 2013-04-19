@@ -8,6 +8,21 @@ package Fields;
  *
  * @author Lauri
  */
-public class Key {
+public class Key implements Field {
     
+    String key;
+    
+    public Key(String key) {
+        this.key = key;
+    }
+    
+    @Override
+    public String getField() {
+        return key;
+    }
+    
+    @Override
+    public String toString() {
+        return "key = {" + key + "},\n";
+    }
 }
