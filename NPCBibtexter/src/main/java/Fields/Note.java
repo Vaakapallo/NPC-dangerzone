@@ -8,22 +8,21 @@ package Fields;
  *
  * @author Lauri
  */
-public class Organization implements Field{
+public class Note implements Field {
     
-    public String name;
+    String note;
     
-    public Organization(String name) {
-        this.name = name;
+    public Note(String note) {
+        this.note = note;
     }
-
+    
     @Override
     public String getField() {
-        return name;
+        return note;
     }
     
     @Override
     public String toString() {
-        return "organization = {" + name + "},\n";
+        return "note = {" + note + "},\n";
     }
-    
 }
