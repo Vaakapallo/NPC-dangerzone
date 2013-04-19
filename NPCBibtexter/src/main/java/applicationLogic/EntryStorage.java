@@ -21,8 +21,16 @@ public class EntryStorage {
         entries.add(entry);
     }
     
+    public static void removeEntry(Entry entry) {
+        entries.remove(entry);
+    }
+    
     public static void addCiteKey(String key) {
         citationKeys.add(key);
+    }
+    
+    public static void removeCiteKey(String key) {
+        citationKeys.remove(key);
     }
 
     public static List<Entry> getEntries() {

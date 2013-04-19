@@ -14,7 +14,11 @@ public interface IO {
      */
     public int readInt();
     
+    public int readPossiblyEmptyInt();
+    
     public String readString();
+    
+    public String readPossiblyEmptyString();
 
     /**
      * Tulostaa System.out.Printin avulla halutun tekstin

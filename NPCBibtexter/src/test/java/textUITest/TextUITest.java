@@ -38,6 +38,16 @@ public class TextUITest extends TestCase {
             public String readString() {
                 return "string";
             }
+
+            @Override
+            public String readPossiblyEmptyString() {
+                return "string";
+            }
+
+            @Override
+            public int readPossiblyEmptyInt() {
+                return command;
+            }
         };
         return io;
     }

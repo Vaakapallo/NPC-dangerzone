@@ -63,4 +63,24 @@ public class userIO implements IO {
         }
         return luettava;
     }
+
+    @Override
+    public String readPossiblyEmptyString() {
+        return scanner.nextLine();
+    }
+
+    @Override
+    public int readPossiblyEmptyInt() {
+        int palautettava = 0;
+        try {
+            palautettava = Integer.parseInt(scanner.nextLine());
+
+        } catch (NumberFormatException e) {
+            printLine("Anna komento numerona");
+        }
+
+        return palautettava;
+    }
+    
+    
 }
