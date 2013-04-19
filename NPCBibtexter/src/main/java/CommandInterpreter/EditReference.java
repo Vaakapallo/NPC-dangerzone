@@ -32,6 +32,7 @@ public class EditReference extends Command {
         for (Entry entry : EntryStorage.getEntries()) {
             if(citationKey.equals(entry.getCitationKey())){
                 EntryStorage.getEntries().remove(index);
+                EntryStorage.getCiteKeys().remove(entry.getCitationKey());
                 new AddReference(io).run();
                 break;
             }
