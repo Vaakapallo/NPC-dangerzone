@@ -35,104 +35,21 @@ public class EditReference extends Command {
                 return;
             }
         }
-
         io.printLine("Viiteavainta ei valitettavasti löytynyt");
-
-//        int index = 0;
-//        for (Entry entry : EntryStorage.getEntries()) {
-//            if (citationKey.equals(entry.getCitationKey())) {
-//                io.printLine("Alkuperäinen viite: ");
-//                io.printLine(entry.toString());
-//                EntryStorage.getEntries().remove(index);
-//                EntryStorage.getCiteKeys().remove(entry.getCitationKey());
-//                new AddReference(io).run();
-//                break;
-//            }
-//            index++;
-//        }
     }
 
     private void editCitation(Entry originalEntry) {
 
-        io.printLine("Aloitetaan muokkaus, tyhjä säilyttää alkuperäisen viitteen");
-        
+        io.printLine("Aloitetaan muokkaus, tyhjä rivi säilyttää alkuperäisen viitteen");
+
         for (Field f : originalEntry.list.values()) {
-//            System.out.println(f.getClass());
-//            System.out.println(f.getField());
-//            System.out.println(f.toString());
             io.printLine("Alkuperäinen viite: ");
             io.printLine(f.toString());
             io.printLine("Anna uusi viite: ");
             String uusi = io.readPossiblyEmptyString();
-            if(!uusi.isEmpty()){
+            if (!uusi.isEmpty()) {
                 f.setField(uusi);
             }
         }
-
-//        String citationKey = originalEntry.getCitationKey();
-//
-//        io.printLine("Anna viiteavain (Välilyönti generoi, tyhjällä säilyttää edellisen)");
-//        String newCitationKey = io.readPossiblyEmptyString();
-//
-//        if (!newCitationKey.isEmpty()) {
-//            citationKey = newCitationKey;
-//        }
-//
-//        io.printLine("Anna kirjoittaja(t): (tyhjä säilyttää edellisen)");
-//        String author = io.readPossiblyEmptyString();
-//        Field originalAuthor = originalEntry.list.get(Author.class);
-//
-//        if (author.isEmpty()) {
-//            author = originalAuthor.getField();
-//        }
-//
-//        io.printLine("Anna kirjoituksen nimi: (tyhjä säilyttää edellisen)");
-//        String title = io.readPossiblyEmptyString();
-//        Field originalTitle = originalEntry.list.get(Title.class);
-//
-//        if (title.isEmpty()) {
-//            title = originalTitle.getField();
-//        }
-//
-//        io.printLine("Anna kirjan nimi: (tyhjä säilyttää edellisen)");
-//        String booktitle = io.readPossiblyEmptyString();
-//        Field originalBookTitle = originalEntry.list.get(Booktitle.class);
-//
-//        if (booktitle.isEmpty()) {
-//            booktitle = originalBookTitle.getField();
-//        }
-//
-//
-//        io.printLine("Anna vuosi: (tyhjä säilyttää edellisen)");
-//        int year = io.readPossiblyEmptyInt();
-//        Field originalYear = originalEntry.list.get(Year.class);
-//
-//        if (year == 0) {
-//            year = Integer.parseInt(originalYear.getField());
-//        }
-//
-//        Entry entry;
-//        if (citationKey.equals(" ")) {
-//            entry = Build.Inproceedings(author, title, booktitle, year);
-//        } else {
-//            while (!Generate.isUnique(EntryStorage.getCiteKeys(), citationKey)) {
-//                if (newCitationKey.isEmpty()) {
-//                    break;
-//                } else {
-//                    io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
-//                    citationKey = io.readString();
-//                }
-//            }
-//            entry = Build.Inproceedings(author, title, booktitle, year, citationKey);
-//        }
-//        if (entry.isValid()) {
-//            EntryStorage.removeCiteKey(originalEntry.getCitationKey());
-//            EntryStorage.removeEntry(originalEntry);
-//            EntryStorage.addEntry(entry);
-//            EntryStorage.addCiteKey(entry.getCitationKey());
-//            io.printLine(entry.toString());
-//        } else {
-//            io.printLine("Väärää infoa, takaisin valikkoon");
-//        }
     }
 }

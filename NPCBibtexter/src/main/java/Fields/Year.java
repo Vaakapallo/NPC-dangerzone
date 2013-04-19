@@ -28,7 +28,12 @@ public class Year implements Field {
 
     @Override
     public void setField(String value) {
-        this.year = Integer.parseInt(value);
+        try {
+            this.year = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            System.out.println("Virhetilanne, anna vain numeroita, viitettä ei muutettu");
+        }
+        
     }
     
 }
