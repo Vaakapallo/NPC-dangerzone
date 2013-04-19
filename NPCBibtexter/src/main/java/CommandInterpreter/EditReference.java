@@ -31,6 +31,8 @@ public class EditReference extends Command {
         int index = 0;
         for (Entry entry : EntryStorage.getEntries()) {
             if(citationKey.equals(entry.getCitationKey())){
+                io.printLine("Alkuperäinen viite: ");
+                io.printLine(entry.toString());
                 EntryStorage.getEntries().remove(index);
                 EntryStorage.getCiteKeys().remove(entry.getCitationKey());
                 new AddReference(io).run();
