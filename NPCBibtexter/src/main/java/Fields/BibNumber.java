@@ -8,11 +8,11 @@ package Fields;
  *
  * @author Lauri
  */
-public class Number implements Field {
+public class BibNumber implements Field {
     
     int number;
     
-    public Number(int number) {
+    public BibNumber(int number) {
         this.number = number;
     }
     

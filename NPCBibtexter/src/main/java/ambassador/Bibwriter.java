@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * Bibwriter is used to communicate with BibTeX -formatted files. It offers
@@ -18,13 +19,16 @@ import java.util.logging.Logger;
 public class Bibwriter {
 
     private static String referenceFileName = "references.bib";
+    private static String[] possibleEntries = {"@Inproceedings",
+        "@Book",
+        "@Article"};
 
     /**
      * Creates a standard Bibwriter.
      */
     public Bibwriter() {
     }
-    
+
     public Bibwriter(String filename) {
         this.referenceFileName = filename;
     }
@@ -122,5 +126,101 @@ public class Bibwriter {
 
         return Build.Inproceedings(author, title, booktitle, year, tag);
     }
-    
+
+    public void entryParserAlpha() throws FileNotFoundException {
+        Scanner s = new Scanner(new File(referenceFileName));
+        String kokoRoska = "";
+        while (s.hasNextLine()) {
+            kokoRoska += s.nextLine();
+        }
+
+        String[] entryt = kokoRoska.split("@");
+        for (int i = 0; i < entryt.length; i++) {
+            entryt[i] = "@" + entryt[i];
+        }
+
+        entryt[0] = null;
+
+        for (String string : entryt) {
+            if (string == null) {
+                continue;
+            }
+            System.out.println(string);
+            String entryType = "";
+            for (int i = 0; i < possibleEntries.length; i++) {
+                if (string.contains(possibleEntries[i])) {
+                    if (possibleEntries[i].equals("@Inproceedings")) {
+                        entryType = possibleEntries[i];
+                    } else if (possibleEntries[i].equals("@Book")) {
+                        entryType = possibleEntries[i];
+                    } else {
+                        entryType = "@Article";
+                    }
+                }
+            }
+
+            String citeKey = string.split("[{]")[1].split(",")[0].trim();
+            System.out.println(citeKey);
+
+            String address = null;
+            String author = null;
+            String booktitle = null;
+            String edition = null;
+            String editor = null;
+            String field = null;
+            String journal = null;
+            String key = null;
+            String month = null;
+            String note = null;
+            String number = null;
+            String organization = null;
+            String pages = null;
+            String publisher = null;
+            String series = null;
+            String title = null;
+            String volume = null;
+            String year = null;
+            if (string.contains("address")) {
+            }
+            if (string.contains("author")) {
+                author = author.split("author = [{].*[}]")[0];
+                
+
+                System.out.println(author);
+                        //Pattern p = Pattern.compile("author = [{].*[}]");
+            }
+            if (string.contains("booktitle")) {
+            }
+            if (string.contains("edition")) {
+            }
+            if (string.contains("editor")) {
+            }
+            if (string.contains("field")) {
+            }
+            if (string.contains("journal")) {
+            }
+            if (string.contains("key")) {
+            }
+            if (string.contains("month")) {
+            }
+            if (string.contains("note")) {
+            }
+            if (string.contains("number")) {
+            }
+            if (string.contains("organization")) {
+            }
+            if (string.contains("pages")) {
+            }
+            if (string.contains("publisher")) {
+            }
+            if (string.contains("series")) {
+            }
+            if (string.contains("title")) {
+            }
+            if (string.contains("volume")) {
+            }
+            if (string.contains("year")) {
+            }
+        }
+    }
 }

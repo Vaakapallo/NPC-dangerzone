@@ -13,9 +13,6 @@ import Fields.Year;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
-import com.sun.imageio.plugins.common.I18N;
-import com.sun.xml.internal.bind.v2.runtime.output.InPlaceDOMOutput;
-import org.omg.CORBA.INTERNAL;
 import textUI.IO;
 
 /**

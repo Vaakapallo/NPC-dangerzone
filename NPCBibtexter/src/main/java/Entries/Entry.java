@@ -18,5 +18,6 @@ public abstract class Entry {
     public abstract boolean isValid();
     public abstract String getCitationKey();
 
+    
 }
 

@@ -20,9 +20,9 @@ import textUI.IO;
  *
  * @author lvapaaka
  */
-public class AddReference extends Command {
+public class AddInproceedings extends Command {
 
-    public AddReference(IO io) {
+    public AddInproceedings(IO io) {
         super(io);
     }
 
@@ -38,6 +38,11 @@ public class AddReference extends Command {
         String booktitle = io.readString();
         io.printLine("Anna vuosi:");
         int year = io.readInt();
+        io.printLine("Haluatko lisätä vaihtoehtoisia kenttiä? (k/e)");
+        if (io.readString().equalsIgnoreCase("k")) {
+            askAndAddOptionalFields(author, title, booktitle, year);
+            return;
+        }
         Entry entry;
         if (citationKey.equals(" ")) {
             entry = Build.Inproceedings(author, title, booktitle, year);
@@ -56,5 +61,25 @@ public class AddReference extends Command {
             io.printLine("Väärää infoa, takaisin valikkoon");
         }
 
+    }
+
+    //  Editor.class, Pages.class, Organization.class, Publisher.class, Address.class, Month.class, Key.class
+    private void askAndAddOptionalFields(String author, String title, String booktitile, int year) {
+        io.printLine("Vaihtoehtoisia tietoja");
+        io.printLine("Anna editoijan nimi:");
+        String editor = io.readString();
+        io.printLine("Anna organisaation nimi:");
+        String organization = io.readString();
+        io.printLine("Anna muistiinpano:");
+        String note = io.readString();
+        io.printLine("Anna julkaisijan nimi:");
+        String publisher = io.readString();
+        io.printLine("Anna julkaisijan osoite:");
+        String address = io.readString();
+        io.printLine("Anna kuukausi:");
+        String month = io.readString();
+        Entry entry = Build.optionalFieldsInproceedings(author, title, booktitile, year, editor, null, organization, address, publisher, month, note);
+        EntryStorage.addEntry(entry);
+        io.printLine(entry.toString());
     }
 }

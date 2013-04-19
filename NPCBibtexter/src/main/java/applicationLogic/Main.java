@@ -4,8 +4,6 @@
  */
 package applicationLogic;
 
-
-import Entries.Inproceedings;
 import textUI.TextUI;
 import textUI.userIO;
 
