@@ -17,7 +17,7 @@ import java.util.HashSet;
 public class Book extends Entry {
 //    final static private Class[] requiredFields = {Author.class, Editor.class, Title.class, Publisher.class, Year.class};
     final static private Class[] requiredFields = {Field.class, Title.class, Publisher.class, Year.class};
-    final static private Class[] optionalFields = {};
+    final static private Class[] optionalFields = {Volume.class, Series.class, Address.class, Edition.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     String tag;
 
