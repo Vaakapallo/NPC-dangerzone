@@ -12,12 +12,15 @@ import java.util.HashMap;
  * @author lauri
  */
 public abstract class Entry {
+
     public HashMap<Class<? extends Field>, Field> list;
+
     @Override
     public abstract String toString();
+
     public abstract boolean isValid();
+
     public abstract String getCitationKey();
 
-    
+    public abstract void setCitationKey(String key);
 }
-
