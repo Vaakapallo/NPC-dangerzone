@@ -60,8 +60,6 @@ public class EditReference extends Command {
             originalEntry.setCitationKey(newCitation);
         }
 
-
-
         for (Class c : originalEntry.getRequiredFields()) {
             io.printLine("Alkuperäinen viite: ");
             io.printLine(originalEntry.list.get(c).toString());
@@ -92,44 +90,29 @@ public class EditReference extends Command {
 
                 Field f = createNewField(c);
                 if (f != null) {
-                    System.out.println(f.getClass());
+                    io.printLine("Anna uusi " + f.getClass().getSimpleName() + " viite: (tyhjä ohittaa)");
+                    String uusi = io.readPossiblyEmptyString();
+                    if (!uusi.isEmpty()) {
+                        f.setField(uusi);
+                        originalEntry.list.put(c, f);
+                    }
                 }
             }
         }
-
-//        for (Field f : originalEntry.list.values()) {
-//            io.printLine("Alkuperäinen viite: ");
-//            io.printLine(f.toString());
-//            io.printLine("Anna uusi viite: ");
-//            String uusi = io.readPossiblyEmptyString();
-//            if (!uusi.isEmpty()) {
-//                f.setField(uusi);
-//            }
-//        }
     }
 
     private Field createNewField(Class c) {
-        Constructor[] ctors = c.getConstructors();
-        Constructor ctor = null;
-        Field f;
-        for (int i = 0; i < ctors.length; i++) {
-            ctor = ctors[i];
-            if (ctor.getGenericParameterTypes().length == 0) {
-                break;
-            }
-        }
         try {
-            f = (Field) ctor.newInstance(ctors);
+            Field f = (Field) c.getDeclaredConstructor(String.class).newInstance("testi");
             return f;
+        } catch (NoSuchMethodException ex) {
+        } catch (SecurityException ex) {
         } catch (InstantiationException ex) {
-            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalArgumentException ex) {
-            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvocationTargetException ex) {
-            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return null;
 
     }
