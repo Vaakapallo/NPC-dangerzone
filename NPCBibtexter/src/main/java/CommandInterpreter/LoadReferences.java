@@ -7,6 +7,9 @@ package CommandInterpreter;
 import Entries.Entry;
 import ambassador.Bibwriter;
 import applicationLogic.EntryStorage;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import textUI.IO;
 
 /**
@@ -22,8 +25,12 @@ public class LoadReferences extends Command {
 
     @Override
     public void run() {
-        for (Entry entry: Bibwriter.readAndListReferences()) {
-            EntryStorage.addEntry(entry);
+        try {
+            for (Entry entry: Bibwriter.readAndListReferences()) {
+                EntryStorage.addEntry(entry);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LoadReferences.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

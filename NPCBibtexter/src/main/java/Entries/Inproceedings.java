@@ -60,11 +60,13 @@ public class Inproceedings extends Entry {
         return list;
     }
 
-    public static Class[] getRequiredFields() {
+    @Override
+    public Class[] getRequiredFields() {
         return requiredFields;
     }
 
-    public static Class[] getOptionalFields() {
+    @Override
+    public Class[] getOptionalFields() {
         return optionalFields;
     }
     
