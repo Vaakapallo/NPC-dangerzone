@@ -101,5 +101,10 @@ public class Book extends Entry {
     public String getCitationKey(){
         return this.tag;
     }
+
+    @Override
+    public void setCitationKey(String key) {
+        this.tag = key;
+    }
 }
 

@@ -7,6 +7,7 @@ package CommandInterpreter;
 import Entries.Entry;
 import Fields.Field;
 import applicationLogic.EntryStorage;
+import applicationLogic.Generate;
 import textUI.IO;
 
 /**
@@ -41,6 +42,20 @@ public class EditReference extends Command {
     private void editCitation(Entry originalEntry) {
 
         io.printLine("Aloitetaan muokkaus, tyhjä rivi säilyttää alkuperäisen viitteen");
+
+        io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
+        io.printLine("Anna uusi viiteavain (tyhjä säilyttää edellisen): ");
+        String newCitation = io.readPossiblyEmptyString();
+        if (!newCitation.isEmpty()) {
+            EntryStorage.getCiteKeys().remove(originalEntry.getCitationKey());
+            while (!Generate.isUnique(EntryStorage.getCiteKeys(), newCitation)) {
+                io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
+                newCitation = io.readString();
+            }
+
+            EntryStorage.addCiteKey(newCitation);
+            originalEntry.setCitationKey(newCitation);
+        }
 
         for (Field f : originalEntry.list.values()) {
             io.printLine("Alkuperäinen viite: ");

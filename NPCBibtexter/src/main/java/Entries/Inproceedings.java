@@ -72,4 +72,9 @@ public class Inproceedings extends Entry {
     public String getCitationKey(){
         return this.citationKey;
     }
+
+    @Override
+    public void setCitationKey(String key) {
+        this.citationKey = key;
+    }
 }
