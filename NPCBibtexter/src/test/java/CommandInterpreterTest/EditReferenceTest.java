@@ -46,7 +46,7 @@ public class EditReferenceTest extends TestCase {
 
 //    public void testEditingAddsNewReferenceWhenRightKey() {
 //        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-//            "2013", "en halua", "jj1", "1", "1", "1", "1", "1"};
+//            "2013", "e ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
 //        IOStub io = new IOStub(input);
 //        new AddInproceedings(io).run();
 //        new EditReference(io).run();
@@ -59,10 +59,9 @@ public class EditReferenceTest extends TestCase {
 //        assertTrue(output.contains("Starre II"));
 //        EntryStorage.empty();
 //    }
-
     public void testEditingDoesntAddNewReferenceWhenWrongKey() {
         String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "en halua vaihtoehtoisia ", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
+            "2013", "e", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();

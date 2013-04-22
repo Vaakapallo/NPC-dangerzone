@@ -46,19 +46,18 @@ public class EditReference extends Command {
         io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
         io.printLine("Anna uusi viiteavain (tyhjä säilyttää edellisen): ");
         String newCitation = io.readPossiblyEmptyString();
-        
+
         newCitation = addNewCitationKey(newCitation, originalEntry);
-        
+
         editRequiredFields(originalEntry);
 
         io.printLine("Haluatko muokata vaihtoehtoisia kenttiä? (k/e)");
-        io.printLine(newCitation);
-
-        if (io.readString().equalsIgnoreCase("e")) {
-            return;
+        String command = io.readString();
+        if (!command.equalsIgnoreCase("e")) {
+            editOptionalFields(originalEntry);
         }
-        
-        editOptionalFields(originalEntry);
+
+
     }
 
     private Field createNewField(Class c) {
