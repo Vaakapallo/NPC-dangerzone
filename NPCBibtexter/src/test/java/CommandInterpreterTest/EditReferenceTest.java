@@ -6,6 +6,7 @@ package CommandInterpreterTest;
 
 import CommandInterpreter.AddInproceedings;
 import CommandInterpreter.EditReference;
+import Fields.Author;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
 import textUI.IOStub;
@@ -31,7 +32,7 @@ public class EditReferenceTest extends TestCase {
     }
 
     public void testEmptyStorageGivesRightMessage() {
-        String[] input = {""};
+        String[] input = {"jj2"};
         IOStub io = new IOStub(input);
         new EditReference(io).run();
 
@@ -44,21 +45,22 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
-//    public void testEditingAddsNewReferenceWhenRightKey() {
-//        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-//            "2013", "e ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
-//        IOStub io = new IOStub(input);
-//        new AddInproceedings(io).run();
-//        new EditReference(io).run();
-//
-//        String output = "";
-//        for (String string : io.getOutput()) {
-//            output += string;
-//        }
-//
-//        assertTrue(output.contains("Starre II"));
-//        EntryStorage.empty();
-//    }
+    public void testEditingAddsNewReferenceWhenRightKey() {
+        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+        IOStub io = new IOStub(input);
+        new AddInproceedings(io).run();
+        new EditReference(io).run();
+
+        String output = "";
+        for (String string : io.getOutput()) {
+            output += string;
+        }
+
+        assertTrue(output.contains("Starre II"));
+        EntryStorage.empty();
+    }
+    
     public void testEditingDoesntAddNewReferenceWhenWrongKey() {
         String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
             "2013", "e", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
@@ -71,7 +73,7 @@ public class EditReferenceTest extends TestCase {
             output += string;
         }
 
-        assertTrue(!output.contains("Starre II"));
+        assertTrue(output.contains("Viiteavainta ei valitettavasti löytynyt"));
         EntryStorage.empty();
     }
 
