@@ -1,9 +1,6 @@
 package ambassador;
 
-import Entries.Article;
-import Entries.Book;
 import Entries.Entry;
-import Entries.Inproceedings;
 import Fields.Address;
 import Fields.Author;
 import Fields.Booktitle;
@@ -24,13 +21,10 @@ import Fields.Year;
 import applicationLogic.Build;
 import applicationLogic.ScandicConverter;
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import javassist.expr.Instanceof;
 
 /**
  * Bibwriter is used to communicate with BibTeX -formatted files. It offers
