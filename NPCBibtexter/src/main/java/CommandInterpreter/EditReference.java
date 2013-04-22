@@ -8,10 +8,7 @@ import Entries.Entry;
 import Fields.Field;
 import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import textUI.IO;
 
 /**
@@ -49,26 +46,10 @@ public class EditReference extends Command {
         io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
         io.printLine("Anna uusi viiteavain (tyhjä säilyttää edellisen): ");
         String newCitation = io.readPossiblyEmptyString();
-        if (!newCitation.isEmpty()) {
-            EntryStorage.getCiteKeys().remove(originalEntry.getCitationKey());
-            while (!Generate.isUnique(EntryStorage.getCiteKeys(), newCitation)) {
-                io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
-                newCitation = io.readString();
-            }
-
-            EntryStorage.addCiteKey(newCitation);
-            originalEntry.setCitationKey(newCitation);
-        }
-
-        for (Class c : originalEntry.getRequiredFields()) {
-            io.printLine("Alkuperäinen viite: ");
-            io.printLine(originalEntry.list.get(c).toString());
-            io.printLine("Anna uusi viite: ");
-            String uusi = io.readPossiblyEmptyString();
-            if (!uusi.isEmpty()) {
-                originalEntry.list.get(c).setField(uusi);
-            }
-        }
+        
+        newCitation = addNewCitationKey(newCitation, originalEntry);
+        
+        editRequiredFields(originalEntry);
 
         io.printLine("Haluatko muokata vaihtoehtoisia kenttiä? (k/e)");
         io.printLine(newCitation);
@@ -76,29 +57,8 @@ public class EditReference extends Command {
         if (io.readString().equalsIgnoreCase("e")) {
             return;
         }
-
-        for (Class c : originalEntry.getOptionalFields()) {
-            if (originalEntry.list.containsKey(c)) {
-                io.printLine("Alkuperäinen viite: ");
-                io.printLine(originalEntry.list.get(c).toString());
-                io.printLine("Anna uusi viite: ");
-                String uusi = io.readPossiblyEmptyString();
-                if (!uusi.isEmpty()) {
-                    originalEntry.list.get(c).setField(uusi);
-                }
-            } else {
-
-                Field f = createNewField(c);
-                if (f != null) {
-                    io.printLine("Anna uusi " + f.getClass().getSimpleName() + " viite: (tyhjä ohittaa)");
-                    String uusi = io.readPossiblyEmptyString();
-                    if (!uusi.isEmpty()) {
-                        f.setField(uusi);
-                        originalEntry.list.put(c, f);
-                    }
-                }
-            }
-        }
+        
+        editOptionalFields(originalEntry);
     }
 
     private Field createNewField(Class c) {
@@ -115,5 +75,55 @@ public class EditReference extends Command {
 
         return null;
 
+    }
+
+    public String addNewCitationKey(String newCitation, Entry originalEntry) {
+        if (!newCitation.isEmpty()) {
+            EntryStorage.getCiteKeys().remove(originalEntry.getCitationKey());
+            while (!Generate.isUnique(EntryStorage.getCiteKeys(), newCitation)) {
+                io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
+                newCitation = io.readString();
+            }
+
+            EntryStorage.addCiteKey(newCitation);
+            originalEntry.setCitationKey(newCitation);
+        }
+        return newCitation;
+    }
+
+    public void editOptionalFields(Entry originalEntry) {
+        for (Class c : originalEntry.getOptionalFields()) {
+            if (originalEntry.list.containsKey(c)) {
+                io.printLine("Alkuperäinen viite: ");
+                io.printLine(originalEntry.list.get(c).toString());
+                io.printLine("Anna uusi viite: ");
+                String uusi = io.readPossiblyEmptyString();
+                if (!uusi.isEmpty()) {
+                    originalEntry.list.get(c).setField(uusi);
+                }
+            } else {
+                Field f = createNewField(c);
+                if (f != null) {
+                    io.printLine("Anna uusi " + f.getClass().getSimpleName() + " viite: (tyhjä ohittaa)");
+                    String uusi = io.readPossiblyEmptyString();
+                    if (!uusi.isEmpty()) {
+                        f.setField(uusi);
+                        originalEntry.list.put(c, f);
+                    }
+                }
+            }
+        }
+    }
+
+    public void editRequiredFields(Entry originalEntry) {
+        for (Class c : originalEntry.getRequiredFields()) {
+            io.printLine("Alkuperäinen viite: ");
+            io.printLine(originalEntry.list.get(c).toString());
+            io.printLine("Anna uusi viite: ");
+            String uusi = io.readPossiblyEmptyString();
+            if (!uusi.isEmpty()) {
+                originalEntry.list.get(c).setField(uusi);
+            }
+        }
     }
 }
