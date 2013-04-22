@@ -206,13 +206,14 @@ public class Bibwriter {
             String key = null;
             String note = null;
             String organization = null;
-            int[] pages = null;
+            int[] pages = new int[1];
+            pages[0] = 0;
             String publisher = null;
             String series = null;
             String title = null;
             String volume = null;
-            String year = null;
-            String number = null;
+            int year = 0;
+            int number = 0;
 
             while (true) {
                 String inUse = reader.nextLine();
@@ -269,25 +270,25 @@ public class Bibwriter {
                     volume = content;
                 }
                 if (type.equals("year")) {
-                    year = content;
+                    year = Integer.parseInt(content);
                 }
                 if (type.equals("number")) {
-                    number = content;
+                    number = Integer.parseInt(content);
                 }
 
 
             }
 
             if (entryType.equals("Inproceedings")) {
-                Entry e = Build.optionalFieldsInproceedings(author, title, booktitle, Integer.parseInt(year), editor, pages, organization, address, publisher, month, note);
+                Entry e = Build.optionalFieldsInproceedings(author, title, booktitle, year, editor, new int[0], organization, address, publisher, month, note);
                 entries.add(e);
             }
             if (entryType.equals("Book")) {
-                Entry e = Build.optionalFieldsBook(author, title, publisher, Integer.parseInt(year), volume, series, address, edition, month, note);
+                Entry e = Build.optionalFieldsBook(author, title, publisher, year, volume, series, address, edition, month, note);
                 entries.add(e);
             }
             if (entryType.equals("Article")) {
-                Entry e = Build.optionalFieldsArticle(author, title, journal, Integer.parseInt(year), volume, Integer.parseInt(number), pages, month, note);
+                Entry e = Build.optionalFieldsArticle(author, title, journal, year, volume, number, new int[0], month, note);
                 entries.add(e);
             }
             
