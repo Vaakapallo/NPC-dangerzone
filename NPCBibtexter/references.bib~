@@ -1,8 +1,14 @@
-@Inproceedings{ skafk,
-author = {asfkasfk},
-title = {asfkaskf},
-booktitle = {sfka},
-year = {1991},
+@Inproceedings{ VPL11,
+author = {Luukkainen, Matti},
+title = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},
+booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},
+year = {2011},
 }
 
+@Inproceedings{ VPL11,
+author = {Luukkainen, Matti},
+title = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},
+booktitle = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},
+year = {2011},
+}
 

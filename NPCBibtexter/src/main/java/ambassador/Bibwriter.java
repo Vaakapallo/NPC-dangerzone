@@ -1,15 +1,36 @@
 package ambassador;
 
+import Entries.Article;
+import Entries.Book;
 import Entries.Entry;
+import Entries.Inproceedings;
+import Fields.Address;
+import Fields.Author;
+import Fields.Booktitle;
+import Fields.Edition;
+import Fields.Editor;
+import Fields.Field;
+import Fields.Journal;
+import Fields.Key;
+import Fields.Month;
+import Fields.Note;
+import Fields.Organization;
+import Fields.Pages;
+import Fields.Publisher;
+import Fields.Series;
+import Fields.Title;
+import Fields.Volume;
+import Fields.Year;
 import applicationLogic.Build;
 import applicationLogic.ScandicConverter;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
+import javassist.expr.Instanceof;
 
 /**
  * Bibwriter is used to communicate with BibTeX -formatted files. It offers
@@ -22,15 +43,36 @@ public class Bibwriter {
     private static String[] possibleEntries = {"@Inproceedings",
         "@Book",
         "@Article"};
+    private static HashMap<String, Class> fields;
 
     /**
      * Creates a standard Bibwriter.
      */
     public Bibwriter() {
+        this.fields = new HashMap<String, Class>();
+        this.fields.put("address", Address.class);
+        this.fields.put("author", Author.class);
+        this.fields.put("booktitle", Booktitle.class);
+        this.fields.put("edition", Edition.class);
+        this.fields.put("editor", Editor.class);
+        this.fields.put("field", Field.class);
+        this.fields.put("journal", Journal.class);
+        this.fields.put("key", Key.class);
+        this.fields.put("month", Month.class);
+        this.fields.put("note", Note.class);
+        this.fields.put("organization", Organization.class);
+        this.fields.put("pages", Pages.class);
+        this.fields.put("publisher", Publisher.class);
+        this.fields.put("series", Series.class);
+        this.fields.put("title", Title.class);
+        this.fields.put("volume", Volume.class);
+        this.fields.put("year", Year.class);
     }
 
     public Bibwriter(String filename) {
+
         this.referenceFileName = filename;
+
     }
 
     /**
@@ -40,6 +82,9 @@ public class Bibwriter {
      * @param referenceList
      */
     public static void writeReferencesFromList(List<Entry> referenceList) {
+
+
+
 
         List<Entry> allEntries = new ArrayList<Entry>();
         try {
@@ -81,7 +126,7 @@ public class Bibwriter {
      * @Inproceedings.
      * @return A list of Entries (references).
      */
-    public static List<Entry> readAndListReferences() throws NullPointerException {
+    public static List<Entry> readAndListReferences1() throws NullPointerException {
         try {
             Scanner s = new Scanner(new File(referenceFileName));
             ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -127,100 +172,130 @@ public class Bibwriter {
         return Build.Inproceedings(author, title, booktitle, year, tag);
     }
 
-    public void entryParserAlpha() throws FileNotFoundException {
-        Scanner s = new Scanner(new File(referenceFileName));
-        String kokoRoska = "";
-        while (s.hasNextLine()) {
-            kokoRoska += s.nextLine();
-        }
+    public static List<Entry> readAndListReferences() throws FileNotFoundException{
+        ArrayList<Entry> entries = new ArrayList<Entry>();
+        Scanner reader = new Scanner(new File(referenceFileName));
+        while (reader.hasNextLine()) {
+            String definingLine = reader.nextLine();
+            String entryType = definingLine.split("[{]")[0].substring(1);
+            String citationKey = definingLine.split("[{]")[1].trim();
 
-        String[] entryt = kokoRoska.split("@");
-        for (int i = 0; i < entryt.length; i++) {
-            entryt[i] = "@" + entryt[i];
-        }
-
-        entryt[0] = null;
-
-        for (String string : entryt) {
-            if (string == null) {
-                continue;
-            }
-            System.out.println(string);
-            String entryType = "";
-            for (int i = 0; i < possibleEntries.length; i++) {
-                if (string.contains(possibleEntries[i])) {
-                    if (possibleEntries[i].equals("@Inproceedings")) {
-                        entryType = possibleEntries[i];
-                    } else if (possibleEntries[i].equals("@Book")) {
-                        entryType = possibleEntries[i];
-                    } else {
-                        entryType = "@Article";
-                    }
-                }
-            }
-
-            String citeKey = string.split("[{]")[1].split(",")[0].trim();
-            System.out.println(citeKey);
-
+//            Method requs = Class.forName("Entries."+entryType).getMethod("getRequiredFields", null);
+//            Method opts = Class.forName("Entries."+entryType).getMethod("getOptionalFields", null);
+//            Class[] requireds = (Class[]) requs.invoke(null, null);
+//            Class[] optionals = (Class[]) opts.invoke(null, null);
+//            
+//            HashMap<Class<? extends Field>, Field> constructor = new HashMap();
+//            constructor.put(Author.class, new Author("amigamies"));
+//            Class<?> c = Class.forName("Entries."+entryType);
+//            Constructor<?> cons = c.getConstructor(entryTypes.get(entryType));
+//            Entry e = (Entry) cons.newInstance(constructor);
+//            
+//            String methodName = "optionalFields"+entryType;
+//            
+//            Method m = entryTypes.get(entryType).getMethod(methodName, null);
+//            Entry newEntry = (Entry) m.invoke(null, possibleEntries);
+//            Class[] paramTypes = m.getParameterTypes();
             String address = null;
             String author = null;
             String booktitle = null;
             String edition = null;
             String editor = null;
-            String field = null;
             String journal = null;
-            String key = null;
             String month = null;
+            String key = null;
             String note = null;
-            String number = null;
             String organization = null;
-            String pages = null;
+            int[] pages = null;
             String publisher = null;
             String series = null;
             String title = null;
             String volume = null;
             String year = null;
-            if (string.contains("address")) {
-            }
-            if (string.contains("author")) {
-                author = author.split("author = [{].*[}]")[0];
-                
+            String number = null;
 
-                System.out.println(author);
-                        //Pattern p = Pattern.compile("author = [{].*[}]");
+            while (true) {
+                String inUse = reader.nextLine();
+                if (inUse.equals("}")) {
+                    break;
+                }
+                String field[] = inUse.split("=");
+                String type = field[0].trim();
+                String content = field[1].trim().substring(1, field[1].length() - 3);
+
+                if (type.equals("address")) {
+                    address = content;
+                }
+                if (type.equals("author")) {
+                    author = content;
+                }
+                if (type.equals("booktitle")) {
+                    booktitle = content;
+                }
+                if (type.equals("edition")) {
+                    edition = content;
+                }
+                if (type.equals("editor")) {
+                    editor = content;
+                }
+                if (type.equals("journal")) {
+                    journal = content;
+                }
+                if (type.equals("key")) {
+                    key = content;
+                }
+                if (type.equals("month")) {
+                    month = content;
+                }
+                if (type.equals("note")) {
+                    note = content;
+                }
+                if (type.equals("organization")) {
+                    organization = content;
+                }
+                if (type.equals("pages")) {
+                    pages[0] = Integer.parseInt(content);
+                }
+                if (type.equals("publisher")) {
+                    publisher = content;
+                }
+                if (type.equals("series")) {
+                    series = content;
+                }
+                if (type.equals("title")) {
+                    title = content;
+                }
+                if (type.equals("volume")) {
+                    volume = content;
+                }
+                if (type.equals("year")) {
+                    year = content;
+                }
+                if (type.equals("number")) {
+                    number = content;
+                }
+
+
             }
-            if (string.contains("booktitle")) {
+
+            if (entryType.equals("Inproceedings")) {
+                Entry e = Build.optionalFieldsInproceedings(author, title, booktitle, Integer.parseInt(year), editor, pages, organization, address, publisher, month, note);
+                entries.add(e);
             }
-            if (string.contains("edition")) {
+            if (entryType.equals("Book")) {
+                Entry e = Build.optionalFieldsBook(author, title, publisher, Integer.parseInt(year), volume, series, address, edition, month, note);
+                entries.add(e);
             }
-            if (string.contains("editor")) {
+            if (entryType.equals("Article")) {
+                Entry e = Build.optionalFieldsArticle(author, title, journal, Integer.parseInt(year), volume, Integer.parseInt(number), pages, month, note);
+                entries.add(e);
             }
-            if (string.contains("field")) {
-            }
-            if (string.contains("journal")) {
-            }
-            if (string.contains("key")) {
-            }
-            if (string.contains("month")) {
-            }
-            if (string.contains("note")) {
-            }
-            if (string.contains("number")) {
-            }
-            if (string.contains("organization")) {
-            }
-            if (string.contains("pages")) {
-            }
-            if (string.contains("publisher")) {
-            }
-            if (string.contains("series")) {
-            }
-            if (string.contains("title")) {
-            }
-            if (string.contains("volume")) {
-            }
-            if (string.contains("year")) {
-            }
+            
+            reader.nextLine();
+
         }
+        
+        return entries;
+
     }
 }
