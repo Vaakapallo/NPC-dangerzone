@@ -23,4 +23,7 @@ public abstract class Entry {
     public abstract String getCitationKey();
 
     public abstract void setCitationKey(String key);
+    
+    public abstract Class[] getOptionalFields();
+    public abstract Class[] getRequiredFields();
 }

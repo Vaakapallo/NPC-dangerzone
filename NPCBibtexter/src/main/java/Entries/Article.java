@@ -69,11 +69,11 @@ public class Article extends Entry {
         return list;
     }
 
-    public static Class[] getRequiredFields() {
+    public Class[] getRequiredFields() {
         return requiredFields;
     }
 
-    public static Class[] getOptionalFields() {
+    public Class[] getOptionalFields() {
         return optionalFields;
     }
     @Override

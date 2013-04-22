@@ -8,6 +8,10 @@ import Entries.Entry;
 import Fields.Field;
 import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import textUI.IO;
 
 /**
@@ -40,7 +44,6 @@ public class EditReference extends Command {
     }
 
     private void editCitation(Entry originalEntry) {
-
         io.printLine("Aloitetaan muokkaus, tyhjä rivi säilyttää alkuperäisen viitteen");
 
         io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
@@ -57,14 +60,77 @@ public class EditReference extends Command {
             originalEntry.setCitationKey(newCitation);
         }
 
-        for (Field f : originalEntry.list.values()) {
+
+
+        for (Class c : originalEntry.getRequiredFields()) {
             io.printLine("Alkuperäinen viite: ");
-            io.printLine(f.toString());
+            io.printLine(originalEntry.list.get(c).toString());
             io.printLine("Anna uusi viite: ");
             String uusi = io.readPossiblyEmptyString();
             if (!uusi.isEmpty()) {
-                f.setField(uusi);
+                originalEntry.list.get(c).setField(uusi);
             }
         }
+
+        io.printLine("Haluatko muokata vaihtoehtoisia kenttiä? (k/e)");
+        io.printLine(newCitation);
+
+        if (io.readString().equalsIgnoreCase("e")) {
+            return;
+        }
+
+        for (Class c : originalEntry.getOptionalFields()) {
+            if (originalEntry.list.containsKey(c)) {
+                io.printLine("Alkuperäinen viite: ");
+                io.printLine(originalEntry.list.get(c).toString());
+                io.printLine("Anna uusi viite: ");
+                String uusi = io.readPossiblyEmptyString();
+                if (!uusi.isEmpty()) {
+                    originalEntry.list.get(c).setField(uusi);
+                }
+            } else {
+
+                Field f = createNewField(c);
+                if (f != null) {
+                    System.out.println(f.getClass());
+                }
+            }
+        }
+
+//        for (Field f : originalEntry.list.values()) {
+//            io.printLine("Alkuperäinen viite: ");
+//            io.printLine(f.toString());
+//            io.printLine("Anna uusi viite: ");
+//            String uusi = io.readPossiblyEmptyString();
+//            if (!uusi.isEmpty()) {
+//                f.setField(uusi);
+//            }
+//        }
+    }
+
+    private Field createNewField(Class c) {
+        Constructor[] ctors = c.getConstructors();
+        Constructor ctor = null;
+        Field f;
+        for (int i = 0; i < ctors.length; i++) {
+            ctor = ctors[i];
+            if (ctor.getGenericParameterTypes().length == 0) {
+                break;
+            }
+        }
+        try {
+            f = (Field) ctor.newInstance(ctors);
+            return f;
+        } catch (InstantiationException ex) {
+            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(EditReference.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
     }
 }
