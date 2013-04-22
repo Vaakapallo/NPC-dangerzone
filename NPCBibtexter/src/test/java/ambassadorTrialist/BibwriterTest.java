@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import junit.framework.Test;
 import junit.framework.TestCase;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 public class BibwriterTest extends TestCase {
 
@@ -30,5 +31,16 @@ public class BibwriterTest extends TestCase {
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
+    }
+    
+    @Test
+    public void testisWrittenFileInThere() throws FileNotFoundException {
+        Inproceedings i = Build.Inproceedings("Jerry", "Julkaisu", "SUPERSIISTIMIES", 1992);
+        ArrayList<Entry> ents = new ArrayList<Entry>();
+        ents.add(i);
+        Bibwriter.writeReferencesFromList(ents);
+        List<Entry> juniorEnts = Bibwriter.readAndListReferences();
+        System.out.println(juniorEnts.get(juniorEnts.size()-1).toString());
+        assertTrue(juniorEnts.get(juniorEnts.size()-1).toString().contains("SUPERSIISTIMIES"));
     }
 }

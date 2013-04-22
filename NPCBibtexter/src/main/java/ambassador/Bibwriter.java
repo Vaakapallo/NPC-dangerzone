@@ -34,33 +34,11 @@ import java.util.Scanner;
 public class Bibwriter {
 
     private static String referenceFileName = "references.bib";
-    private static String[] possibleEntries = {"@Inproceedings",
-        "@Book",
-        "@Article"};
-    private static HashMap<String, Class> fields;
 
     /**
      * Creates a standard Bibwriter.
      */
     public Bibwriter() {
-        this.fields = new HashMap<String, Class>();
-        this.fields.put("address", Address.class);
-        this.fields.put("author", Author.class);
-        this.fields.put("booktitle", Booktitle.class);
-        this.fields.put("edition", Edition.class);
-        this.fields.put("editor", Editor.class);
-        this.fields.put("field", Field.class);
-        this.fields.put("journal", Journal.class);
-        this.fields.put("key", Key.class);
-        this.fields.put("month", Month.class);
-        this.fields.put("note", Note.class);
-        this.fields.put("organization", Organization.class);
-        this.fields.put("pages", Pages.class);
-        this.fields.put("publisher", Publisher.class);
-        this.fields.put("series", Series.class);
-        this.fields.put("title", Title.class);
-        this.fields.put("volume", Volume.class);
-        this.fields.put("year", Year.class);
     }
 
     public Bibwriter(String filename) {
@@ -76,10 +54,6 @@ public class Bibwriter {
      * @param referenceList
      */
     public static void writeReferencesFromList(List<Entry> referenceList) {
-
-
-
-
         List<Entry> allEntries = new ArrayList<Entry>();
         try {
             File referenceFile = new File(referenceFileName);
@@ -166,7 +140,7 @@ public class Bibwriter {
         return Build.Inproceedings(author, title, booktitle, year, tag);
     }
 
-    public static List<Entry> readAndListReferences() throws FileNotFoundException{
+    public static List<Entry> readAndListReferences() throws FileNotFoundException {
         ArrayList<Entry> entries = new ArrayList<Entry>();
         Scanner reader = new Scanner(new File(referenceFileName));
         while (reader.hasNextLine()) {
@@ -285,11 +259,11 @@ public class Bibwriter {
                 Entry e = Build.optionalFieldsArticle(author, title, journal, year, volume, number, new int[0], month, note);
                 entries.add(e);
             }
-            
+
             reader.nextLine();
 
         }
-        
+
         return entries;
 
     }
