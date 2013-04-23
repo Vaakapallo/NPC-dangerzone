@@ -60,9 +60,9 @@ public class Build {
         if (number != 0) {
             constructor.put(BibNumber.class, new BibNumber(number));
         }
-        if (pages.length != 0) {
-            constructor.put(Pages.class, new Pages(pages));
-        }
+//        if (pages.length != 0) {
+//            constructor.put(Pages.class, new Pages(pages));
+//        }
         if (month != null) {
             constructor.put(Month.class, new Month(month));
         }
@@ -105,8 +105,8 @@ public class Build {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
         constructor.put(Title.class, new Title(title));
-        constructor.put(Booktitle.class, new Booktitle(booktitle));
         constructor.put(Year.class, new Year(year));
+        constructor.put(Booktitle.class, new Booktitle(booktitle));
 
         if (editor != null) {
             constructor.put(Editor.class, new Editor(editor));

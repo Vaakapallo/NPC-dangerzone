@@ -16,7 +16,7 @@ public class AddBook extends Command {
     public void run() {
         io.printLine("Anna viiteavain (pelkkä väliyönti generoi)");
         String citationKey = io.readString();
-        io.printLine("Anna kirjoittaja(t):");
+        io.printLine("Anna kirjoittaja(t) tai toimittaja:");
         String author = io.readString();
         io.printLine("Anna kirjoituksen nimi:");
         String title = io.readString();
