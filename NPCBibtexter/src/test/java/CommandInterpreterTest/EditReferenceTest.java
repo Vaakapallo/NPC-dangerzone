@@ -63,7 +63,7 @@ public class EditReferenceTest extends TestCase {
     public void testEditingOptionalFieldsWorksWithoutPreviousOptionals() {
         String[] input = {"opti", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
             "2013", "e", "opti", "opti2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
-            "k", "edi", "org", "pub", "add", "mon", "key"};
+            "k", "edi", "org", "pub", "add", "", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();
@@ -74,13 +74,14 @@ public class EditReferenceTest extends TestCase {
         }
 
         assertTrue(output.contains("{key}"));
+        assertTrue(!output.contains("month"));
         EntryStorage.empty();
     }
 
     public void testEditingOptionalFieldsWorksWithPreviousOptionals() {
         String[] input = {" ", "esa", "kirjot", "Starcraft II Ownage 101",
             "123", "k", "edi", "org", "pub", "add", "kuukausi", "avain", "esa123-kirjot", "optit2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
-            "k", "edi", "org", "pub", "add", "mon", "key"};
+            "k", "edi", "org", "pub", "add", "", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();
@@ -91,6 +92,7 @@ public class EditReferenceTest extends TestCase {
         }
 
         assertTrue(output.contains("{key}"));
+        assertTrue(output.contains("{kuukausi}"));
         EntryStorage.empty();
     }
 
