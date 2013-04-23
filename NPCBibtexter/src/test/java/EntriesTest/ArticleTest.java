@@ -68,6 +68,7 @@ import junit.framework.TestCase;
 
    
     public void testToString() {
+        
         String expString = "@Article{ VPL11,\nauthor = {Luukkainen, Matti},\ntitle = {Extreme Apprenticeship Method in Teaching Programming for Beginners.},\n"
                 + "journal = {SIGCSE '11: Proceedings of the 42nd SIGCSE technical symposium on Computer science education},\nyear = {2011},\n}";
         assertEquals(expString, article.toString());    

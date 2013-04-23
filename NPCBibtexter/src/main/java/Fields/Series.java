@@ -8,28 +8,14 @@ package Fields;
  *
  * @author Lauri
  */
-public class Series implements Field {
+public class Series extends GenericField {
     
-    String name;
     
     public Series(String name) {
-        this.name = name;
-    }
-    
-    @Override
-    public String getField() {
-        return name;
-    }
-    
-    @Override
-    public String toString() {
-        return "series = {" + name + "},\n";
+        super(name);
+        fieldName = "series";
     }
 
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
 }
     
 
