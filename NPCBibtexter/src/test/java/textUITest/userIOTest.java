@@ -14,6 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import textUI.userIO;
 
+import static org.mockito.Mockito.*;
+
 /**
  *
  * @author Cobrelli
@@ -54,5 +56,14 @@ public class userIOTest extends TestCase {
     public void testPrintLineChangeWorks() {
         io.printLineChange();
         assertTrue(outContent.toString().contains(""));
+    }
+
+    public void testReadingIntegerWorks() {
+        userIO mockIO = mock(userIO.class);
+        when(mockIO.readInt()).thenReturn(5);
+
+        int testattava = mockIO.readInt();
+
+        assertEquals(5, testattava);
     }
 }
