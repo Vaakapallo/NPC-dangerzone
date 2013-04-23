@@ -1,10 +1,7 @@
 package textUITest;
 
-import CommandInterpreter.AddInproceedings;
-import CommandInterpreter.EditReference;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
-import textUI.IO;
 import textUI.IOStub;
 import textUI.TextUI;
 
