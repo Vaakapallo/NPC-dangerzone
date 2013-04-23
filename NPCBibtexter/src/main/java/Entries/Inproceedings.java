@@ -13,9 +13,9 @@ public class Inproceedings extends Entry {
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     private String citationKey;
 
-    public Inproceedings(HashMap<Class<? extends Field>, Field> map, String tag) {
+    public Inproceedings(HashMap<Class<? extends Field>, Field> map, String citationKey) {
         list = map;
-        this.citationKey = tag;
+        this.citationKey = citationKey;
 
     }
     @Override

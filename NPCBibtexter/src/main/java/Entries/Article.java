@@ -19,11 +19,11 @@ public class Article extends Entry {
     final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
     final static private Class[] optionalFields = {Volume.class, Fields.BibNumber.class, Pages.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    String tag;
+    String citationKey;
 
-    public Article(HashMap<Class<? extends Field>, Field> map, String tag) {
+    public Article(HashMap<Class<? extends Field>, Field> map, String citeKey) {
         list = map;
-        this.tag = tag;
+        this.citationKey = citeKey;
 
     }
 
@@ -49,7 +49,7 @@ public class Article extends Entry {
 
     @Override
     public String toString() {
-        String resString = "@Article{ " + tag + ",\n";
+        String resString = "@Article{ " + citationKey + ",\n";
         for (Class class1 : requiredFields) {
             if (list.containsKey(class1)) {
                 resString = resString + list.get(class1);
@@ -69,20 +69,22 @@ public class Article extends Entry {
         return list;
     }
 
+    @Override
     public Class[] getRequiredFields() {
         return requiredFields;
     }
 
+    @Override
     public Class[] getOptionalFields() {
         return optionalFields;
     }
     @Override
     public String getCitationKey(){
-        return this.tag;
+        return this.citationKey;
     }
 
     @Override
     public void setCitationKey(String key) {
-        this.tag = key;
+        this.citationKey = key;
     }
 }

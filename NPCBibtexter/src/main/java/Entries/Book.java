@@ -19,11 +19,11 @@ public class Book extends Entry {
     final static private Class[] requiredFields = {Field.class, Title.class, Publisher.class, Year.class};
     final static private Class[] optionalFields = {Volume.class, Series.class, Address.class, Edition.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    String tag;
+    String citationKey;
 
-    public Book(HashMap<Class<? extends Field>, Field> map, String tag) {
+    public Book(HashMap<Class<? extends Field>, Field> map, String citeKey) {
         list = map;
-        this.tag = tag;
+        this.citationKey = citeKey;
 
     }
     
@@ -65,7 +65,7 @@ public class Book extends Entry {
     @Override
     public String toString() {
         
-        String resString = "@Book{ " + tag + ",\n";
+        String resString = "@Book{ " + citationKey + ",\n";
         if(list.containsKey(Author.class.asSubclass(Field.class))){
             resString = resString + list.get(Author.class.asSubclass(Field.class));
         } else {
@@ -99,12 +99,12 @@ public class Book extends Entry {
     }
     @Override
     public String getCitationKey(){
-        return this.tag;
+        return this.citationKey;
     }
 
     @Override
     public void setCitationKey(String key) {
-        this.tag = key;
+        this.citationKey = key;
     }
 }
 
