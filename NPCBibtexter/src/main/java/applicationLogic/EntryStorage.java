@@ -43,5 +43,6 @@ public class EntryStorage {
     
     public static void empty(){
         entries.clear();
+        citationKeys.clear();
     }
 }

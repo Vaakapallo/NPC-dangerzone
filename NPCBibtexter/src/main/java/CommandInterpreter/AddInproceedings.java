@@ -80,6 +80,7 @@ public class AddInproceedings extends Command {
         String month = io.readString();
         Entry entry = Build.optionalFieldsInproceedings(author, title, booktitile, year, editor, null, organization, address, publisher, month, note);
         EntryStorage.addEntry(entry);
+        EntryStorage.addCiteKey(entry.getCitationKey());
         io.printLine(entry.toString());
     }
 }

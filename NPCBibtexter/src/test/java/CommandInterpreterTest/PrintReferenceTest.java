@@ -33,6 +33,7 @@ public class PrintReferenceTest extends TestCase {
     public void testEmptyPrint() {
         String[] input = {""};
         IOStub io = new IOStub(input);
+        EntryStorage.empty();
         new PrintReferences(io).run();
         assertTrue(io.getOutput().isEmpty());
     }

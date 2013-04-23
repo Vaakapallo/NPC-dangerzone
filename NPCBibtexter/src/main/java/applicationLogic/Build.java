@@ -7,20 +7,7 @@ package applicationLogic;
 import Entries.Article;
 import Entries.Book;
 import Entries.Inproceedings;
-import Fields.Address;
-import Fields.Author;
-import Fields.BibNumber;
-import Fields.Booktitle;
-import Fields.Field;
-import Fields.Journal;
-import Fields.Key;
-import Fields.Month;
-import Fields.Note;
-import Fields.Pages;
-import Fields.Publisher;
-import Fields.Series;
-import Fields.Title;
-import Fields.Volume;
+import Fields.*;
 import Fields.Year;
 import java.util.HashMap;
 
@@ -121,8 +108,14 @@ public class Build {
         constructor.put(Booktitle.class, new Booktitle(booktitle));
         constructor.put(Year.class, new Year(year));
 
+        if (editor != null) {
+            constructor.put(Editor.class, new Editor(editor));
+        }
         if (publisher != null) {
             constructor.put(Publisher.class, new Publisher(publisher));
+        }
+        if (organization != null) {
+            constructor.put(Organization.class, new Organization(organization));
         }
         if (address != null) {
             constructor.put(Address.class, new Address(address));

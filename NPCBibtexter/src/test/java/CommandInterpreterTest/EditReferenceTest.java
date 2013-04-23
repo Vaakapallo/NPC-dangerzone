@@ -184,7 +184,7 @@ public class EditReferenceTest extends TestCase {
 
     public void testEditingGivesCorrectSizeList() {
         String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "en halua vaihtoehtoisia ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
+            "2013", "en halua vaihtoehtoisia ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();
