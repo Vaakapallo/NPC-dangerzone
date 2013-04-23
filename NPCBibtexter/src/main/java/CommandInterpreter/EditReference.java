@@ -61,7 +61,7 @@ public class EditReference extends Command {
 
     private Field createNewField(Class c) {
         try {
-            Field f = (Field) c.getDeclaredConstructor(String.class).newInstance("testi");
+            Field f = (Field) c.getDeclaredConstructor(String.class).newInstance("alustus");
             return f;
         } catch (NoSuchMethodException ex) {
         } catch (SecurityException ex) {
