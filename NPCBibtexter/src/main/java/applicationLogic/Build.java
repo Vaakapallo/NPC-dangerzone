@@ -105,8 +105,8 @@ public class Build {
         HashMap<Class<? extends Field>, Field> constructor = new HashMap();
         constructor.put(Author.class, new Author(author));
         constructor.put(Title.class, new Title(title));
-        constructor.put(Booktitle.class, new Booktitle(booktitle));
         constructor.put(Year.class, new Year(year));
+        constructor.put(Booktitle.class, new Booktitle(booktitle));
 
         if (editor != null) {
             constructor.put(Editor.class, new Editor(editor));
