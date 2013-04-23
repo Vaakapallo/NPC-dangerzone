@@ -16,21 +16,21 @@ import textUI.IO;
  * @author Cobrelli
  */
 public class EditReference extends Command {
-    
+
     public EditReference(IO io) {
         super(io);
     }
-    
+
     @Override
     public void run() {
         if (EntryStorage.getEntries().isEmpty()) {
             io.printLine("Muokattavia viitteitä ei ole. ");
             return;
         }
-        
+
         io.printLine("Anna muokattavan viitteen viiteavain ");
         String citationKey = io.readString();
-        
+
         for (Entry entry : EntryStorage.getEntries()) {
             if (entry.getCitationKey().equals(citationKey)) {
                 editCitation(entry);
@@ -40,27 +40,25 @@ public class EditReference extends Command {
         }
         io.printLine("Viiteavainta ei valitettavasti löytynyt");
     }
-    
+
     private void editCitation(Entry originalEntry) {
         io.printLine("Aloitetaan muokkaus, tyhjä rivi säilyttää alkuperäisen viitteen");
-        
+
         io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
         io.printLine("Anna uusi viiteavain (tyhjä säilyttää edellisen): ");
         String newCitation = io.readPossiblyEmptyString();
-        
-        newCitation = addNewCitationKey(newCitation, originalEntry);
-        
+
+        addNewCitationKey(newCitation, originalEntry);
+
         editRequiredFields(originalEntry);
-        
+
         io.printLine("Haluatko muokata vaihtoehtoisia kenttiä? (k/e)");
         String command = io.readString();
-        if (!command.equalsIgnoreCase("e")) {
+        if (command.equalsIgnoreCase("k")) {
             editOptionalFields(originalEntry);
         }
-        
-        
     }
-    
+
     private Field createNewField(Class c) {
         try {
             Field f = (Field) c.getDeclaredConstructor(String.class).newInstance("testi");
@@ -72,25 +70,24 @@ public class EditReference extends Command {
         } catch (IllegalArgumentException ex) {
         } catch (InvocationTargetException ex) {
         }
-        
+
         return null;
-        
+
     }
-    
-    public String addNewCitationKey(String newCitation, Entry originalEntry) {
+
+    public void addNewCitationKey(String newCitation, Entry originalEntry) {
         if (!newCitation.isEmpty()) {
             EntryStorage.getCiteKeys().remove(originalEntry.getCitationKey());
             while (!Generate.isUnique(EntryStorage.getCiteKeys(), newCitation)) {
                 io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
                 newCitation = io.readString();
             }
-            
+
             EntryStorage.addCiteKey(newCitation);
             originalEntry.setCitationKey(newCitation);
         }
-        return newCitation;
     }
-    
+
     public void editOptionalFields(Entry originalEntry) {
         for (Class c : originalEntry.getOptionalFields()) {
             if (originalEntry.list.containsKey(c)) {
@@ -114,7 +111,7 @@ public class EditReference extends Command {
             }
         }
     }
-    
+
     public void editRequiredFields(Entry originalEntry) {
         for (Class c : originalEntry.getRequiredFields()) {
             io.printLine("Alkuperäinen viite: ");
