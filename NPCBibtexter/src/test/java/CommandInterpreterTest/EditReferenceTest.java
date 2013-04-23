@@ -60,9 +60,9 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
-    public void testEditingOptionalFieldsWorks() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
+    public void testEditingOptionalFieldsWorksWithoutPreviousOptionals() {
+        String[] input = {"opti", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "opti", "opti2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
             "k", "edi", "org", "pub", "add", "mon", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
@@ -73,13 +73,14 @@ public class EditReferenceTest extends TestCase {
             output += string;
         }
 
-        assertTrue(output.contains("edi"));
+        assertTrue(output.contains("{key}"));
         EntryStorage.empty();
     }
 
-    public void testEditingCitationKeyAllowed() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "e", "jj1", "esa", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+    public void testEditingOptionalFieldsWorksWithPreviousOptionals() {
+        String[] input = {" ", "esa", "kirjot", "Starcraft II Ownage 101",
+            "123", "k", "edi", "org", "pub", "add", "kuukausi", "avain", "esa123-kirjot", "optit2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
+            "k", "edi", "org", "pub", "add", "mon", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();
@@ -89,13 +90,29 @@ public class EditReferenceTest extends TestCase {
             output += string;
         }
 
-        assertTrue(output.contains("esa"));
+        assertTrue(output.contains("{key}"));
+        EntryStorage.empty();
+    }
+
+    public void testEditingCitationKeyAllowed() {
+        String[] input = {"nawbi", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "nawbi", "newba", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+        IOStub io = new IOStub(input);
+        new AddInproceedings(io).run();
+        new EditReference(io).run();
+
+        String output = "";
+        for (String string : io.getOutput()) {
+            output += string;
+        }
+
+        assertTrue(output.contains("newba"));
         EntryStorage.empty();
     }
 
     public void testEditingAllowsToKeepOldReferenceWithEmpty() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "e", "jj1", "jj1", "Nawb, Jerry", "", "a",
+        String[] input = {"empt", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "empt", "", "Nawb, Jerry", "", "a",
             "", "e"};
 
         IOStub io = new IOStub(input);
@@ -130,9 +147,28 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
+    public void testEditingWorksWhenCiteKeyNotUniqueButGivenNewAfterCheck() {
+        String[] input = {"esa", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "esa1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "esa1", "esa", "vesa", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+        IOStub io = new IOStub(input);
+        new AddInproceedings(io).run();
+        new AddInproceedings(io).run();
+        new EditReference(io).run();
+
+        String output = "";
+        for (String string : io.getOutput()) {
+            output += string;
+        }
+
+        assertTrue(output.contains("Anna uusi viiteavain, vanha ei ole uniikki"));
+        assertTrue(output.contains("vesa"));
+        EntryStorage.empty();
+    }
+
     public void testEditingDoesntAddNewReferenceWhenWrongKey() {
-        String[] input = {"jj1", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
-            "2013", "e", "jj23", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
+        String[] input = {"wrong", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "right", "wrong", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditReference(io).run();

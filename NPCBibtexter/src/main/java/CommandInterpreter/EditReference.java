@@ -63,16 +63,9 @@ public class EditReference extends Command {
         try {
             Field f = (Field) c.getDeclaredConstructor(String.class).newInstance("alustus");
             return f;
-        } catch (NoSuchMethodException ex) {
-        } catch (SecurityException ex) {
-        } catch (InstantiationException ex) {
-        } catch (IllegalAccessException ex) {
-        } catch (IllegalArgumentException ex) {
-        } catch (InvocationTargetException ex) {
+        } catch (Exception ex) {
         }
-
         return null;
-
     }
 
     public void addNewCitationKey(String newCitation, Entry originalEntry) {
