@@ -60,6 +60,38 @@ public class EditReferenceTest extends TestCase {
         EntryStorage.empty();
     }
 
+    public void testEditingWorksWithBook() {
+        String[] input = {"jj1", "", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+        IOStub io = new IOStub(input);
+        new AddInproceedings(io).run();
+        new EditReference(io).run();
+
+        String output = "";
+        for (String string : io.getOutput()) {
+            output += string;
+        }
+
+        assertTrue(output.contains("Starre II"));
+        EntryStorage.empty();
+    }
+
+    public void testEditingWorksWithArticle() {
+        String[] input = {"jj1", "esa", "Starcraft ownage", "Starcraft II Ownage 101",
+            "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
+        IOStub io = new IOStub(input);
+        new AddInproceedings(io).run();
+        new EditReference(io).run();
+
+        String output = "";
+        for (String string : io.getOutput()) {
+            output += string;
+        }
+
+        assertTrue(output.contains("Starre II"));
+        EntryStorage.empty();
+    }
+
     public void testEditingOptionalFieldsWorksWithoutPreviousOptionals() {
         String[] input = {"opti", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
             "2013", "e", "opti", "opti2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
