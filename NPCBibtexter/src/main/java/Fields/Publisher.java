@@ -8,27 +8,12 @@ package Fields;
  *
  * @author laursuom
  */
-public class Publisher implements Field {
-    
-    private String name;
-    
+public class Publisher extends GenericField {
+
     public Publisher(String name) {
-        this.name = name;
+        super(name);
+        fieldName = "publisher";
     }
 
-    @Override
-    public String getField() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "publisher = {" + name + "},\n";
-    }
-
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
     
 }

@@ -8,26 +8,11 @@ package Fields;
  *
  * @author Lauri
  */
-public class Edition implements Field {
+public class Edition extends GenericField {
     
-    String name;
-    
-    public Edition(String name) {
-        this.name = name;
-    }
-    
-    @Override
-    public String getField() {
-        return name;
-    }
-    
-    @Override
-    public String toString() {
-        return "edition = {" + name + "},\n";
+   public Edition(String name) {
+        super(name);
+        fieldName = "edition";
     }
 
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
 }

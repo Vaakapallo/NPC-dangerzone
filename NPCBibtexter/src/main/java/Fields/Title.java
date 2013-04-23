@@ -8,26 +8,12 @@ package Fields;
  *
  * @author jjoonia
  */
-public class Title implements Field {
-    private String name;
+public class Title extends GenericField {
     
     public Title(String name) {
-        this.name = name;
+        super(name);
+        fieldName = "title";
     }
 
-    @Override
-    public String getField() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "title = {" + name + "},\n";
-    }
-
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
     
 }

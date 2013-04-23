@@ -8,26 +8,11 @@ package Fields;
  *
  * @author Lauri
  */
-public class Note implements Field {
-    
-    String note;
-    
-    public Note(String note) {
-        this.note = note;
-    }
-    
-    @Override
-    public String getField() {
-        return note;
-    }
-    
-    @Override
-    public String toString() {
-        return "note = {" + note + "},\n";
+public class Note extends GenericField {
+
+    public Note(String name) {
+       super(name);
+       fieldName = "note";
     }
 
-    @Override
-    public void setField(String value) {
-        this.note = value;
-    }
 }
