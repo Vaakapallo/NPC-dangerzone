@@ -7,11 +7,6 @@ import textUI.TextUI;
 
 public class TextUITest extends TestCase {
 
-    public int testCommandInt;
-    public int command;
-//    public String testCommandString;
-    TextUI ui;
-
     public TextUITest(String testName) {
         super(testName);
     }
