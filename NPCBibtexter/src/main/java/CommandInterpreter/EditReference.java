@@ -107,13 +107,17 @@ public class EditReference extends Command {
 
     public void editRequiredFields(Entry originalEntry) {
         for (Class c : originalEntry.getRequiredFields()) {
-            io.printLine("Alkuperäinen viite: ");
-            io.printLine(originalEntry.list.get(c).toString());
-            io.printLine("Anna uusi viite: ");
-            String uusi = io.readPossiblyEmptyString();
-            if (!uusi.isEmpty()) {
-                originalEntry.list.get(c).setField(uusi);
+
+            if (originalEntry.list.containsKey(c)) {
+                io.printLine("Alkuperäinen viite: ");
+                io.printLine(originalEntry.list.get(c).toString());
+                io.printLine("Anna uusi viite: ");
+                String uusi = io.readPossiblyEmptyString();
+                if (!uusi.isEmpty()) {
+                    originalEntry.list.get(c).setField(uusi);
+                }
             }
+
         }
     }
 }

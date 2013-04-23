@@ -8,26 +8,11 @@ package Fields;
  *
  * @author Lauri
  */
-public class Volume implements Field {
-    
-    String name;
+public class Volume extends GenericField {
     
     public Volume(String name) {
-        this.name = name;
-    }
-    
-    @Override
-    public String getField() {
-        return name;
-    }
-    
-    @Override
-    public String toString() {
-        return "volume = {" + name + "},\n";
+        super(name);
+        fieldName = "volume";
     }
 
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
 }

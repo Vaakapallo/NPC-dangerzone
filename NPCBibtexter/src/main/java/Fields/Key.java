@@ -8,26 +8,13 @@ package Fields;
  *
  * @author Lauri
  */
-public class Key implements Field {
+public class Key extends GenericField {
     
-    String key;
     
-    public Key(String key) {
-        this.key = key;
-    }
     
-    @Override
-    public String getField() {
-        return key;
-    }
-    
-    @Override
-    public String toString() {
-        return "key = {" + key + "},\n";
+    public Key(String name) {
+        super(name);
+        fieldName = "key";
     }
 
-    @Override
-    public void setField(String value) {
-        this.key = value;
-    }
 }

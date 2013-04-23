@@ -9,26 +9,10 @@ package Fields;
  *
  * @author lauri
  */
-public class Booktitle implements Field {
-    
-    private String name;
+public class Booktitle extends GenericField {
     
     public Booktitle(String name) {
-    this.name = name;
-    }
-    
-    @Override
-    public String getField() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "booktitle = {" + name + "},\n";
-    }
-
-    @Override
-    public void setField(String value) {
-        this.name = value;
+    super(name);
+    fieldName = "booktitle";
     }
 }

@@ -8,27 +8,12 @@ package Fields;
  *
  * @author laursuom
  */
-public class Journal implements Field {
-    
-    private String name;
-    
+public class Journal extends GenericField {
+       
     public Journal(String name) {
-        this.name = name;
+        super(name);
+        fieldName = "journal";
     }
 
-    @Override
-    public String getField() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "journal = {" + name + "},\n";
-    }
-
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
     
 }

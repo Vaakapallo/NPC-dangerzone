@@ -8,26 +8,11 @@ package Fields;
  *
  * @author laursuom
  */
-public class Editor implements Field {
-    private String name;
+public class Editor extends GenericField {
+    
     
     public Editor(String name) {
-        this.name = name;
+        super(name);
+        fieldName = "editor";
     }
-
-    @Override
-    public String getField() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "editor = {" + name + "},\n";
-    }
-
-    @Override
-    public void setField(String value) {
-        this.name = value;
-    }
-    
 }

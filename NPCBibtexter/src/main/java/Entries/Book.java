@@ -16,6 +16,7 @@ import java.util.HashSet;
  */
 public class Book extends Entry {
 //    final static private Class[] requiredFields = {Author.class, Editor.class, Title.class, Publisher.class, Year.class};
+
     final static private Class[] requiredFields = {Field.class, Title.class, Publisher.class, Year.class};
     final static private Class[] optionalFields = {Volume.class, Series.class, Address.class, Edition.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
@@ -26,12 +27,13 @@ public class Book extends Entry {
         this.citationKey = citeKey;
 
     }
-    
+
     //Note, that Book class has to contain either Author or Editor or both.
-    
     /**
-     * Piti saada yöllä testattua tota parsimista niin tää palauttaa nyt suoraan true. Toiminnallisuus on myös ohjelman osalta muuten about kondiksessa.
-     * @return 
+     * Piti saada yöllä testattua tota parsimista niin tää palauttaa nyt suoraan
+     * true. Toiminnallisuus on myös ohjelman osalta muuten about kondiksessa.
+     *
+     * @return
      */
     @Override
     public boolean isValid() {
@@ -39,7 +41,7 @@ public class Book extends Entry {
         if (!(tmpHashMap.containsKey(Author.class.asSubclass(Field.class))) && !(tmpHashMap.containsKey(Editor.class.asSubclass(Field.class))) || ((tmpHashMap.containsKey(Author.class.asSubclass(Field.class))) && (tmpHashMap.containsKey(Editor.class.asSubclass(Field.class))))) {
             return false;
         }
-        if(tmpHashMap.containsKey(Author.class.asSubclass(Field.class))){
+        if (tmpHashMap.containsKey(Author.class.asSubclass(Field.class))) {
             tmpHashMap.remove(Author.class.asSubclass(Field.class));
         } else {
             tmpHashMap.remove((Editor.class.asSubclass(Field.class)));
@@ -64,12 +66,12 @@ public class Book extends Entry {
 
     @Override
     public String toString() {
-        
+
         String resString = "@Book{ " + citationKey + ",\n";
-        if(list.containsKey(Author.class.asSubclass(Field.class))){
+        if (list.containsKey(Author.class.asSubclass(Field.class))) {
             resString = resString + list.get(Author.class.asSubclass(Field.class));
         } else {
-           resString = resString + list.get(Editor.class.asSubclass(Field.class));
+            resString = resString + list.get(Editor.class.asSubclass(Field.class));
         }
         for (int i = 1; i < requiredFields.length; i++) {
             if (list.containsKey(requiredFields[i])) {
@@ -85,7 +87,7 @@ public class Book extends Entry {
         resString = ScandicConverter.convertScandicsToBibText(resString);
         return resString;
     }
-    
+
     public HashMap<Class<? extends Field>, Field> getList() {
         return list;
     }
@@ -97,8 +99,9 @@ public class Book extends Entry {
     public Class[] getOptionalFields() {
         return optionalFields;
     }
+
     @Override
-    public String getCitationKey(){
+    public String getCitationKey() {
         return this.citationKey;
     }
 
@@ -107,4 +110,3 @@ public class Book extends Entry {
         this.citationKey = key;
     }
 }
-
