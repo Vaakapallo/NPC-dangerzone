@@ -15,9 +15,9 @@ import textUI.IO;
  *
  * @author Cobrelli
  */
-public class EditReference extends Command {
+public class EditEntry extends Command {
 
-    public EditReference(IO io) {
+    public EditEntry(IO io) {
         super(io);
     }
 

@@ -32,19 +32,19 @@ public class InterpreterTest extends TestCase {
     // public void testHello() {}
     
     public void testOneEqualsAdd(){
-        assertTrue(ReferenceType.class == interpreter.getCommand(1).getClass());
+        assertTrue(EntryType.class == interpreter.getCommand(1).getClass());
     }
     
     public void testTwoEqualsSave(){
-        assertTrue(SaveReferences.class == interpreter.getCommand(2).getClass());
+        assertTrue(SaveEntries.class == interpreter.getCommand(2).getClass());
     }
     
     public void testThreeEqualsPrint(){
-        assertTrue(PrintReferences.class == interpreter.getCommand(3).getClass());
+        assertTrue(PrintEntries.class == interpreter.getCommand(3).getClass());
     }
     
     public void testFourEqualsLoad(){
-        assertTrue(LoadReferences.class == interpreter.getCommand(4).getClass());
+        assertTrue(LoadEntries.class == interpreter.getCommand(4).getClass());
     }
     public void testNineEqualsQuit(){
         assertTrue(Quit.class == interpreter.getCommand(9).getClass());

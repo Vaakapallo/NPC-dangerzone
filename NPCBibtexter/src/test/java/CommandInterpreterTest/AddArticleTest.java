@@ -22,6 +22,16 @@ public class AddArticleTest extends TestCase {
         super(testName);
     }
 
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        EntryStorage.empty();
+        super.tearDown();
+    }
 
     public void testAddingWorksWithValidInfo() {
         String[] input = {"MTEBMB2012", "Mayra, Tero", "EasyB made Easy", "Journal of Awesome", "2012", "en halua vaihtoehtoja"};
@@ -38,7 +48,6 @@ public class AddArticleTest extends TestCase {
         assertTrue(output.contains("journal = {Journal of Awesome}"));
         assertTrue(output.contains("@Article"));
         assertTrue(output.contains("MTEBMB2012"));
-        EntryStorage.empty();
     }
 
     public void testAddingWorksWithGeneratedKey() {
@@ -55,7 +64,6 @@ public class AddArticleTest extends TestCase {
         assertTrue(output.contains("journal = {Journal of Awesome}"));
         assertTrue(output.contains("@Article"));
         assertFalse(output.contains("MTEBMB2012"));
-        EntryStorage.empty();
     }
 
     public void testAddingWithOptionalFields() {
@@ -74,6 +82,5 @@ public class AddArticleTest extends TestCase {
         assertTrue(output.contains("month = {January}"));
         assertTrue(output.contains("volume = {Supervoluumi}"));
         assertTrue(output.contains("number = {5}"));
-        EntryStorage.empty();
     }
 }

@@ -4,24 +4,25 @@
  */
 package CommandInterpreter;
 
-import ambassador.Bibwriter;
+import Entries.Entry;
 import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- * Saves all the Entries in EntryStorage to a .bib-file.
+ * Prints all the references in EntryStorage
  * 
  * @author lvapaaka
  */
-public class SaveReferences extends Command {
+public class PrintEntries extends Command {
 
-    public SaveReferences(IO io) {
+    public PrintEntries(IO io) {
         super(io);
     }
 
     @Override
     public void run() {
-        Bibwriter.writeReferencesFromList(EntryStorage.getEntries());
+        for (Entry entry : EntryStorage.getEntries()) {
+            io.printLine(entry.toString());
+        }
     }
-    
 }

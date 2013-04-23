@@ -5,7 +5,7 @@
 package CommandInterpreterTest;
 
 import CommandInterpreter.AddInproceedings;
-import CommandInterpreter.EditReference;
+import CommandInterpreter.EditEntry;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
 import textUI.IOStub;
@@ -14,9 +14,9 @@ import textUI.IOStub;
  *
  * @author Cobrelli
  */
-public class EditReferenceTest extends TestCase {
+public class EditEntryTest extends TestCase {
 
-    public EditReferenceTest(String testName) {
+    public EditEntryTest(String testName) {
         super(testName);
     }
 
@@ -33,7 +33,7 @@ public class EditReferenceTest extends TestCase {
     public void testEmptyStorageGivesRightMessage() {
         String[] input = {""};
         IOStub io = new IOStub(input);
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -49,7 +49,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -65,7 +65,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -81,7 +81,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "e", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -98,7 +98,7 @@ public class EditReferenceTest extends TestCase {
             "k", "edi", "org", "pub", "add", "", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -116,7 +116,7 @@ public class EditReferenceTest extends TestCase {
             "k", "edi", "org", "pub", "add", "", "key"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -133,7 +133,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "e", "nawbi", "newba", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -151,7 +151,7 @@ public class EditReferenceTest extends TestCase {
 
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -170,7 +170,7 @@ public class EditReferenceTest extends TestCase {
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -188,7 +188,7 @@ public class EditReferenceTest extends TestCase {
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -205,7 +205,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "e", "right", "wrong", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         String output = "";
         for (String string : io.getOutput()) {
@@ -221,7 +221,7 @@ public class EditReferenceTest extends TestCase {
             "2013", "en halua vaihtoehtoisia ", "jj1", "jj1", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337", "e"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
-        new EditReference(io).run();
+        new EditEntry(io).run();
 
         assertTrue(EntryStorage.getEntries().size() == 1);
         EntryStorage.empty();

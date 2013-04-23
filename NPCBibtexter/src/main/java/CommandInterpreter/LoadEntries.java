@@ -17,9 +17,9 @@ import textUI.IO;
  * 
  * @author lvapaaka
  */
-public class LoadReferences extends Command {
+public class LoadEntries extends Command {
 
-    public LoadReferences(IO io) {
+    public LoadEntries(IO io) {
         super(io);
     }
 
@@ -30,7 +30,7 @@ public class LoadReferences extends Command {
                 EntryStorage.addEntry(entry);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(LoadReferences.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoadEntries.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

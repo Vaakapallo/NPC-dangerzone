@@ -20,21 +20,16 @@ public class CommandInterpreter {
     private Map<Integer, Command> commands = new HashMap();
 
     public CommandInterpreter(IO io) {
-        commands.put(1, new ReferenceType(io));
-        commands.put(2, new SaveReferences(io));
-        commands.put(3, new PrintReferences(io));
-        commands.put(4, new LoadReferences(io));
-        commands.put(5, new EditReference(io));
-        commands.put(6, new PrintSexyReferences(io));
+        commands.put(1, new EntryType(io));
+        commands.put(2, new SaveEntries(io));
+        commands.put(3, new PrintEntries(io));
+        commands.put(4, new LoadEntries(io));
+        commands.put(5, new EditEntry(io));
+        commands.put(6, new PrintSexyEntries(io));
         commands.put(9, new Quit(io));
     }
 
     public Command getCommand(int command) {
-        try {
-            return commands.get(command);
-        } catch (NullPointerException e) {
-            return null;
-        }
-
+        return commands.get(command);
     }
 }

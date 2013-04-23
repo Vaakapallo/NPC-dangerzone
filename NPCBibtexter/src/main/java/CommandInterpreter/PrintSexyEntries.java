@@ -4,9 +4,9 @@ import ambassador.Bibmakeupartist;
 import applicationLogic.EntryStorage;
 import textUI.IO;
 
-class PrintSexyReferences extends Command {
+class PrintSexyEntries extends Command {
 
-    public PrintSexyReferences(IO io) {
+    public PrintSexyEntries(IO io) {
         super(io);
     }
 
