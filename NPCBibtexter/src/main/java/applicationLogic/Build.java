@@ -60,9 +60,9 @@ public class Build {
         if (number != 0) {
             constructor.put(BibNumber.class, new BibNumber(number));
         }
-        if (pages.length != 0) {
-            constructor.put(Pages.class, new Pages(pages));
-        }
+//        if (pages.length != 0) {
+//            constructor.put(Pages.class, new Pages(pages));
+//        }
         if (month != null) {
             constructor.put(Month.class, new Month(month));
         }

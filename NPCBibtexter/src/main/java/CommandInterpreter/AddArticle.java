@@ -49,7 +49,7 @@ public class AddArticle extends Command {
         }
     }
 // Volume.class, Fields.BibNumber.class, Pages.class, Month.class, Note.class, Key.class
-    private void askAndAddOptionalFields(String author, String title,String journal, int year) {
+    private void askAndAddOptionalFields(String author, String title, String journal, int year) {
         io.printLine("Vaihtoehtoisia tietoja");
         io.printLine("Anna volyymin nimi:");
         String volume = io.readString();
