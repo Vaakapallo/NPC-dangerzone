@@ -14,7 +14,14 @@ import java.util.List;
 public class Pages implements Field {
 
     private List<PageCollection> pages;
-
+    
+    /*
+     * Konstruktoriin annetaan haluttu määrä numeropareja, 
+     * joissa parin ensimmäinen numero on viitten aloitussivu, jälkimmäinen
+     * loppusivu. Mikäli halutaan lisätä vain yksi sivu, annetaan sivunumero
+     * kahdesti peräkkäin. Parittomissa määrissä sivunumeroita viimeinen syöte 
+     * hylätään.
+     */
     public Pages(int... pagenumbers) {
         pages = new ArrayList();
         for (int i = 0; i < pagenumbers.length; i = i+2) {
