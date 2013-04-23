@@ -8,7 +8,6 @@ import Entries.Entry;
 import Fields.Field;
 import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
-import java.lang.reflect.InvocationTargetException;
 import textUI.IO;
 
 /**
@@ -27,7 +26,6 @@ public class EditReference extends Command {
             io.printLine("Muokattavia viitteitä ei ole. ");
             return;
         }
-
         io.printLine("Anna muokattavan viitteen viiteavain ");
         String citationKey = io.readString();
 
@@ -43,13 +41,11 @@ public class EditReference extends Command {
 
     private void editCitation(Entry originalEntry) {
         io.printLine("Aloitetaan muokkaus, tyhjä rivi säilyttää alkuperäisen viitteen");
-
         io.printLine("alkuperäinen viiteavain: " + originalEntry.getCitationKey());
         io.printLine("Anna uusi viiteavain (tyhjä säilyttää edellisen): ");
         String newCitation = io.readPossiblyEmptyString();
 
         addNewCitationKey(newCitation, originalEntry);
-
         editRequiredFields(originalEntry);
 
         io.printLine("Haluatko muokata vaihtoehtoisia kenttiä? (k/e)");
@@ -75,7 +71,6 @@ public class EditReference extends Command {
                 io.printLine("Anna uusi viiteavain, vanha ei ole uniikki");
                 newCitation = io.readString();
             }
-
             EntryStorage.addCiteKey(newCitation);
             originalEntry.setCitationKey(newCitation);
         }
@@ -117,7 +112,6 @@ public class EditReference extends Command {
                     originalEntry.list.get(c).setField(uusi);
                 }
             }
-
         }
     }
 }
