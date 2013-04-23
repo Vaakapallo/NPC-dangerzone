@@ -66,4 +66,31 @@ public class userIOTest extends TestCase {
 
         assertEquals(5, testattava);
     }
+
+    public void testReadingPossiblyEmptyIntegerWorks() {
+        userIO mockIO = mock(userIO.class);
+        when(mockIO.readPossiblyEmptyInt()).thenReturn(5);
+
+        int testattava = mockIO.readPossiblyEmptyInt();
+
+        assertEquals(5, testattava);
+    }
+
+    public void testReadingStringWorks() {
+        userIO mockIO = mock(userIO.class);
+        when(mockIO.readString()).thenReturn("toimii");
+
+        String testattava = mockIO.readString();
+
+        assertEquals("toimii", testattava);
+    }
+
+    public void testReadingPossiblyEmptyStringWorks() {
+        userIO mockIO = mock(userIO.class);
+        when(mockIO.readPossiblyEmptyString()).thenReturn("toimii");
+
+        String testattava = mockIO.readPossiblyEmptyString();
+
+        assertEquals("toimii", testattava);
+    }
 }
