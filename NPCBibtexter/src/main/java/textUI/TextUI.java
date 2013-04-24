@@ -54,6 +54,7 @@ public class TextUI {
         io.printLine("4. Lue viitteet tiedostosta ja siirrä ohjelmaan");
         io.printLine("5. Muokkaa viitettä");
         io.printLine("6. Tulosta viitteet ihmisystävällisesti");
+        io.printLine("7. Muokkaa tageja");
         io.printLine("9. Lopeta");
         io.printLineChange();
     }
