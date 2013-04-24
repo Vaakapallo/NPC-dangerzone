@@ -23,6 +23,7 @@ public class Book extends Entry {
     private String citationKey;
 
     public Book(HashMap<Class<? extends Field>, Field> map, String citeKey) {
+        super();
         list = map;
         this.citationKey = citeKey;
 

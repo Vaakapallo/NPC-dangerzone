@@ -14,6 +14,7 @@ public class Inproceedings extends Entry {
     private String citationKey;
 
     public Inproceedings(HashMap<Class<? extends Field>, Field> map, String citationKey) {
+        super();
         list = map;
         this.citationKey = citationKey;
 
