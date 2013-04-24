@@ -1,4 +1,4 @@
-package ambassadorTrialist;
+package ambassadorTest;
 
 import Entries.Article;
 import Entries.Book;
@@ -42,5 +42,12 @@ public class BibwriterTest extends TestCase {
         List<Entry> juniorEnts = Bibwriter.readAndListReferences();
         System.out.println(juniorEnts.get(juniorEnts.size()-1).toString());
         assertTrue(juniorEnts.get(juniorEnts.size()-1).toString().contains("SUPERSIISTIMIES"));
+    }
+    
+    @Test
+    public void readReferencesWorks(){
+        Build.Inproceedings("Read", "Reference", "Works", 1992);
+        List list = Bibwriter.readAndListReferences1();
+        assertFalse(list.isEmpty());
     }
 }
