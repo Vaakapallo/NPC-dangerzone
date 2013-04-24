@@ -45,9 +45,9 @@ public class BibwriterTest extends TestCase {
     }
     
     @Test
-    public void readReferencesWorks(){
+    public void readReferencesWorks() throws FileNotFoundException{
         Build.Inproceedings("Read", "Reference", "Works", 1992);
-        List list = Bibwriter.readAndListReferences1();
+        List list = Bibwriter.readAndListReferences();
         assertFalse(list.isEmpty());
     }
 }
