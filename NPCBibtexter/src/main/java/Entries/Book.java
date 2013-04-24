@@ -20,7 +20,7 @@ public class Book extends Entry {
     final static private Class[] requiredFields = {Field.class, Title.class, Publisher.class, Year.class};
     final static private Class[] optionalFields = {Volume.class, Series.class, Address.class, Edition.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    String citationKey;
+    private String citationKey;
 
     public Book(HashMap<Class<? extends Field>, Field> map, String citeKey) {
         list = map;

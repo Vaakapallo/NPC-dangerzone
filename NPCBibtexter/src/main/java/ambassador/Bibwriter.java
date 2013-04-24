@@ -1,28 +1,10 @@
 package ambassador;
 
 import Entries.Entry;
-import Fields.Address;
-import Fields.Author;
-import Fields.Booktitle;
-import Fields.Edition;
-import Fields.Editor;
-import Fields.Field;
-import Fields.Journal;
-import Fields.Key;
-import Fields.Month;
-import Fields.Note;
-import Fields.Organization;
-import Fields.Pages;
-import Fields.Publisher;
-import Fields.Series;
-import Fields.Title;
-import Fields.Volume;
-import Fields.Year;
 import applicationLogic.Build;
 import applicationLogic.ScandicConverter;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 

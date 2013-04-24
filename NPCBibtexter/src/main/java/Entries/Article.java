@@ -19,7 +19,7 @@ public class Article extends Entry {
     final static private Class[] requiredFields = {Author.class, Title.class, Journal.class, Year.class};
     final static private Class[] optionalFields = {Volume.class, Fields.BibNumber.class, Pages.class, Month.class, Note.class, Key.class};
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
-    String citationKey;
+    private String citationKey;
 
     public Article(HashMap<Class<? extends Field>, Field> map, String citeKey) {
         list = map;
