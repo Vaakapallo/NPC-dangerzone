@@ -46,4 +46,7 @@ public abstract class Entry {
         }
         return false;
     }
+    public HashSet<String> getTags() {
+        return tags;
+    }
 }
