@@ -43,11 +43,4 @@ public class BibwriterTest extends TestCase {
         System.out.println(juniorEnts.get(juniorEnts.size()-1).toString());
         assertTrue(juniorEnts.get(juniorEnts.size()-1).toString().contains("SUPERSIISTIMIES"));
     }
-    
-    @Test
-    public void readReferencesWorks() throws FileNotFoundException{
-        Build.Inproceedings("Read", "Reference", "Works", 1992);
-        List list = Bibwriter.readAndListReferences();
-        assertFalse(list.isEmpty());
-    }
 }

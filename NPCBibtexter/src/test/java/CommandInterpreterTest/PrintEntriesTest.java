@@ -6,6 +6,7 @@ package CommandInterpreterTest;
 
 import CommandInterpreter.LoadEntries;
 import CommandInterpreter.PrintEntries;
+import applicationLogic.Build;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
 import textUI.IOStub;
@@ -41,9 +42,9 @@ public class PrintEntriesTest extends TestCase {
     public void testPrintAfterLoad() {
         String[] input = {""};
         IOStub io = new IOStub(input);
+        EntryStorage.addEntry(Build.Inproceedings("lol", "sup", "sieni", 1985, "kauan on aikaa siis"));
         new LoadEntries(io).run();
         new PrintEntries(io).run();
-
         String output = "";
         for (String string : io.getOutput()) {
             output += string;

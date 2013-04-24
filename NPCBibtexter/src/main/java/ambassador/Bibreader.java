@@ -15,8 +15,12 @@ public class Bibreader {
     }
 
     public List<Entry> readAndListReferences(String filename) throws FileNotFoundException {
+        File toRead = new File(filename);
+        if (!toRead.exists()) {
+            return new ArrayList<Entry>();
+        }
         ArrayList<Entry> entries = new ArrayList<Entry>();
-        Scanner reader = new Scanner(new File(filename));
+        Scanner reader = new Scanner(toRead);
         while (reader.hasNextLine()) {
             String definingLine = reader.nextLine();
             String entryType = definingLine.split("[{]")[0].substring(1);

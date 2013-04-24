@@ -95,7 +95,7 @@ public class EditEntryTest extends TestCase {
     public void testEditingOptionalFieldsWorksWithoutPreviousOptionals() {
         String[] input = {"opti", "Nawb, Jerry", "Starcraft ownage", "Starcraft II Ownage 101",
             "2013", "e", "opti", "opti2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
-            "k", "edi", "org", "pub", "add", "", "key"};
+            "k", "edi", "org", "pub", "add", "", "key", "oiskonyt"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditEntry(io).run();
@@ -113,7 +113,7 @@ public class EditEntryTest extends TestCase {
     public void testEditingOptionalFieldsWorksWithPreviousOptionals() {
         String[] input = {" ", "esa", "kirjot", "Starcraft II Ownage 101",
             "123", "k", "edi", "org", "pub", "add", "kuukausi", "avain", "esa123-kirjot", "optit2", "Nawb, Jerry", "Starcraft pwnage", "Starre II", "1337",
-            "k", "edi", "org", "pub", "add", "", "key"};
+            "k", "edi", "org", "pub", "add", "", "key", "COOLMANBROTHERSISTHEBLACKSOULBROTHERWHOISYODADDYANDYODASDADDYCUZHELIKEMALCOLMXNMLKINDASAMEYO"};
         IOStub io = new IOStub(input);
         new AddInproceedings(io).run();
         new EditEntry(io).run();

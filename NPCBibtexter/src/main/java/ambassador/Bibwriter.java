@@ -87,4 +87,12 @@ public class Bibwriter {
         }
         return entries;
     }
+    
+    /**
+     * Tests can use 'nukeFile' to remove the existsing bibfile.
+     */
+    public static void nukeFile() {
+        File f = new File(referenceFileName);
+        f.delete();
+    }
 }
