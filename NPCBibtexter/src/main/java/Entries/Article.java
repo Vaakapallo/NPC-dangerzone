@@ -40,9 +40,7 @@ public class Article extends Entry {
         for (Class field2 : tmpHashMap.keySet()) {
             if (!optionalSet.contains(field2)) {
                 return false;
-            } else {
-                tmpHashMap.remove(field2);
-            }
+            } 
         }
         return true;
     }

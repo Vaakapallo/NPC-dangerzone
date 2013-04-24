@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class Inproceedings extends Entry {
 
     final static private Class[] requiredFields = {Author.class, Title.class, Booktitle.class, Year.class};
-    final static private Class[] optionalFields = {Editor.class, Pages.class, Organization.class, Publisher.class, Address.class, Month.class, Key.class };
+    final static private Class[] optionalFields = {Editor.class, Pages.class, Organization.class, Publisher.class, Address.class, Month.class,Note.class, Key.class };
     final public HashSet optionalSet = new HashSet(Arrays.asList(optionalFields));
     private String citationKey;
 
@@ -31,12 +31,11 @@ public class Inproceedings extends Entry {
         for (Class field2 : tmpHashMap.keySet()) {
             if (!optionalSet.contains(field2)) {
                 return false;
-            } else {
-                tmpHashMap.remove(field2);
-            }
+        }
         }
         return true;
     }
+    
 
     @Override
     public String toString() {
