@@ -22,7 +22,6 @@ public class DeleteTag extends Command {
 
     @Override
     public void run() {
-        io.printLine("Viitteen tagit:");
         new PrintTags(io, entry).run();
         io.printLine("Anna poistettava tagi");
         String string = io.readPossiblyEmptyString();
