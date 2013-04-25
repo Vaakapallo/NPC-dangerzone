@@ -30,10 +30,7 @@ public class EditTags extends Command {
         io.printLine("Lisättyjen entryjen viiteavaimet:");
         new PrintIDs(io).run();
 
-        String citationKey = io.readPossiblyEmptyString();
-        if (citationKey.equals("")) {
-            return;
-        }
+        String citationKey = io.readString();
 
         for (Entry entry : EntryStorage.getEntries()) {
             if (entry.getCitationKey().equals(citationKey)) {

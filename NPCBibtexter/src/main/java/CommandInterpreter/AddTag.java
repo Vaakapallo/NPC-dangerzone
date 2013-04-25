@@ -24,9 +24,6 @@ public class AddTag extends Command {
     public void run() {
         io.printLine(entry.toString());
         io.printLine("Anna lisättävä tagi");
-        String string = io.readPossiblyEmptyString();
-        if (!(string.isEmpty())) {
-            entry.addTag(string);
-        }
+        entry.addTag(io.readString());
     }
 }
