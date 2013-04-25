@@ -14,6 +14,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
+import textUI.IOStub;
 
 /**
  *
@@ -21,17 +22,16 @@ import junit.framework.TestCase;
  */
 public class BibmakeupartistTest extends TestCase {
 
-    private final ByteArrayOutputStream outContent;
-
+//    private final ByteArrayOutputStream outContent;
     public BibmakeupartistTest(String testName) {
         super(testName);
-        outContent = new ByteArrayOutputStream();
+//        outContent = new ByteArrayOutputStream();
     }
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        System.setOut(new PrintStream(outContent));
+//        System.setOut(new PrintStream(outContent));
     }
 
     @Override
@@ -40,31 +40,47 @@ public class BibmakeupartistTest extends TestCase {
     }
 
     public void testInproceedingsPrintsWhatAsked() {
-        Bibmakeupartist mu = new Bibmakeupartist();
+        IOStub alexander = new IOStub();
+        Bibmakeupartist mu = new Bibmakeupartist(alexander);
         List<Entry> entries = new ArrayList<Entry>();
         entries.add(Build.Inproceedings("lol", "karhu", "uli", 1556, "sinep"));
         entries.get(0).list.put(Edition.class, new Edition("edition"));
         entries.get(0).list.put(Series.class, new Series("serie"));
         mu.printSexyStringsToUser(entries);
-        assertTrue(outContent.toString().contains("karhu"));
-        assertTrue(outContent.toString().contains("serie"));
-        assertTrue(outContent.toString().contains("edition"));
+        String output = "";
+        for (String string : alexander.getOutput()) {
+            output += string;
+        }
+        assertTrue(output.contains("karhu"));
+        assertTrue(output.contains("serie"));
+        assertTrue(output.contains("edition"));
     }
 
     public void testArticlePrintsWhatAsked() {
-        Bibmakeupartist mu = new Bibmakeupartist();
+        IOStub alexander = new IOStub();
+        Bibmakeupartist mu = new Bibmakeupartist(alexander);
         List<Entry> entries = new ArrayList<Entry>();
         entries.add(Build.Article("lol", "karhu", "uli", 1556, "sinep"));
         mu.printSexyStringsToUser(entries);
-        assertTrue(outContent.toString().contains("sinep"));
+        String output = "";
+        for (String string : alexander.getOutput()) {
+            output += string;
+        }
+        System.out.println(output);
+        assertTrue(output.contains("sinep"));
     }
 
     public void testBookPrintsWhatAsked() {
-        Bibmakeupartist mu = new Bibmakeupartist();
+        IOStub alexander = new IOStub();
+        Bibmakeupartist mu = new Bibmakeupartist(alexander);
         List<Entry> entries = new ArrayList<Entry>();
         entries.add(Build.Book("lol", "karhu", "uli", 1556, "sinep"));
         mu.printSexyStringsToUser(entries);
-        assertTrue(outContent.toString().contains("uli"));
+        String output = "";
+        for (String string : alexander.getOutput()) {
+            output += string;
+        }
+        assertTrue(output.contains("uli"));
     }
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}

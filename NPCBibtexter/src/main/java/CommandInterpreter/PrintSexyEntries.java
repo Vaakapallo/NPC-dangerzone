@@ -12,7 +12,7 @@ class PrintSexyEntries extends Command {
 
     @Override
     public void run() {
-        Bibmakeupartist bma = new Bibmakeupartist();
+        Bibmakeupartist bma = new Bibmakeupartist(io);
         bma.printSexyStringsToUser(EntryStorage.getEntries());
     }
 }

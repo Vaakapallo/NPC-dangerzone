@@ -57,7 +57,7 @@ public class BibreaderTest {
     @Test
     public void readReferenceReturnsManyWhenManyAreWritten() throws FileNotFoundException {
         ArrayList<Entry> entries = new ArrayList<Entry>();
-        entries.add(Build.Inproceedings("Read1", "Reference1", "Works", 1992));
+        entries.add(Build.Inproceedings("Read8", "Reference1", "Works", 1992));
         entries.add(Build.Inproceedings("Read5", "Reference2", "Works", 1992));
         entries.add(Build.Inproceedings("Read3", "Reference3", "Works", 1992));
         entries.add(Build.Inproceedings("Read2", "Reference4", "Works", 1992));
