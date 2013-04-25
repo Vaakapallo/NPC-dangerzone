@@ -5,6 +5,7 @@
 package CommandInterpreter;
 
 import Entries.Entry;
+import java.util.Set;
 import textUI.IO;
 
 /**
@@ -22,7 +23,13 @@ public class PrintTags extends Command {
 
     @Override
     public void run() {
-        for (String tag : entry.getTags()) {
+        Set<String> tags = entry.getTags();
+        if (tags.isEmpty()) {
+            io.printLine("Viitteellä ei ole tageja");
+            return;
+        }
+        io.printLine("Viitteen tagit:");
+        for (String tag : tags) {
             io.printLine(tag);
         }
     }
