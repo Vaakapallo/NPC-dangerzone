@@ -66,8 +66,6 @@ public class BibmakeupartistTest extends TestCase {
         mu.printSexyStringsToUser(entries);
         assertTrue(outContent.toString().contains("uli"));
     }
-    
-    
     // TODO add test methods here. The name must begin with 'test'. For example:
     // public void testHello() {}
 }
