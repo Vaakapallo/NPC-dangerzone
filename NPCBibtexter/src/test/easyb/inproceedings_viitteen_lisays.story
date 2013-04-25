@@ -4,7 +4,7 @@ description 'Käyttäjä voi lisätä inproceedings viitteen'
 
 scenario "Käyttäjä lisää inproceedings-viitteen ja saa sen BibTex-muodossa ", {
     given 'Käyttäjä valitsee lisää viite ja syöttää tiedot', {
-        String[] input = ["1", "1", "Tag","Mr. Tag", "EasyB made Easy", "Frustrations of a CS Student", "2012", "e", "3", "9"]
+        String[] input = ["1", "1", " ","Mr. Tag", "EasyB made Easy", "Frustrations of a CS Student", "2012", "e", "9"]
         io = new IOStub(input)
         UI = new TextUI(io)
     }
