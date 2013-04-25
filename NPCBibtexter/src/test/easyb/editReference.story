@@ -21,7 +21,7 @@ scenario "Käyttäjä haluaa muokata Inproceedings -viitettä ilman vaihtoehtois
 
 scenario "Käyttäjä haluaa muokata Inproceedings -viitettä ilman vaihtoehtoisia kenttiä", {
     given 'Käyttäjä valitsee lisää viite ja syöttää tiedot ja päättää muokata syöttämiään', {
-        String[] input = ["1", "1", "esa", "jake","eki", "japi", "1992", "e", "5", "esa", "esa", "ekaj", "ike", "ipaj", "2991", "e", "9"]
+        String[] input = ["1", "1", "esa", "jake","eki", "japi", "1992", "e", "5", "esa", "esa", "ekaj", "ike", "ipaj", "2991", "e", "3", "9"]
         io = new IOStub(input)
         UI = new TextUI(io)
     }
@@ -35,6 +35,7 @@ scenario "Käyttäjä haluaa muokata Inproceedings -viitettä ilman vaihtoehtois
         io.getOutput().shouldHave("2991")
     }
 }
+
 scenario "Käyttäjä haluaa muokata Book -viitettä ilman vaihtoehtoisia kenttiä", {
     given 'Käyttäjä valitsee lisää viite ja syöttää tiedot ja päättää muokata syöttämiään', {
         String[] input = ["1", "2", "esa", "jake","eki", "japi", "1992", "e", "5", "esa", "esa", "ekaj", "ike", "ipaj", "2991", "e", "9"]
@@ -50,6 +51,7 @@ scenario "Käyttäjä haluaa muokata Book -viitettä ilman vaihtoehtoisia kentti
         io.getOutput().shouldHave("ike")
         io.getOutput().shouldHave("2991")
     }
+}
 
 scenario "Käyttäjä haluaa muokata Article -viitettä ilman vaihtoehtoisia kenttiä", {
     given 'Käyttäjä valitsee lisää viite ja syöttää tiedot ja päättää muokata syöttämiään', {
