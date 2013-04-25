@@ -14,7 +14,7 @@ scenario "Käyttäjä haluaa muokata Inproceedings -viitettä ilman vaihtoehtois
     }
 
     then 'Käyttäjä saa kivan Bibtext-viitteen', {
-        io.getOutput().shouldHave("ikej")
+        io.getOutput().shouldHave("ike")
         io.getOutput().shouldHave("2991")
     }
 }
