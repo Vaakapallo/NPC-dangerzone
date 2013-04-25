@@ -14,7 +14,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
-import textUI.IOStub;
+import stub.IOStub;
 
 /**
  *

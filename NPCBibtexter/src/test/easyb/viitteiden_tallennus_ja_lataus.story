@@ -1,5 +1,6 @@
 import textUI.*
 import ambassador.*
+import stub.*
 
 description 'Käyttäjä voi tallentaa ja ladata käyttämänsä viitteet'
 

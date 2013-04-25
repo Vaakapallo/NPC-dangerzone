@@ -1,5 +1,6 @@
-package CommandInterpreter;
+package CommandInterpreter.EntryMenu;
 
+import CommandInterpreter.Command;
 import Entries.Entry;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;

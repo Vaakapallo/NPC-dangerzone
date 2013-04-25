@@ -9,10 +9,11 @@ import applicationLogic.EntryStorage;
 import textUI.IO;
 
 /**
- *
+ * Prints the IDs of all Entries in the program.
+ * 
  * @author lassi
  */
-class PrintIDs extends Command {
+public class PrintIDs extends Command {
 
     public PrintIDs(IO io) {
         super(io);

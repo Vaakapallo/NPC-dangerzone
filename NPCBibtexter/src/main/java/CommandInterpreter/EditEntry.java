@@ -27,6 +27,8 @@ public class EditEntry extends Command {
             return;
         }
         io.printLine("Anna muokattavan viitteen viiteavain ");
+        new PrintIDs(io).run();
+        
         String citationKey = io.readString();
 
         for (Entry entry : EntryStorage.getEntries()) {

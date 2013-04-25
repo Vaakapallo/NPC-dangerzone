@@ -4,10 +4,10 @@
  */
 package CommandInterpreterTest;
 
-import CommandInterpreter.AddTag;
-import CommandInterpreter.DeleteTag;
-import CommandInterpreter.EditTags;
-import CommandInterpreter.PrintTags;
+import CommandInterpreter.TagMenu.AddTag;
+import CommandInterpreter.TagMenu.DeleteTag;
+import CommandInterpreter.TagMenu.EditTags;
+import CommandInterpreter.TagMenu.PrintTags;
 import Entries.Entry;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;
@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import textUI.IOStub;
+import stub.IOStub;
 
 /**
  *

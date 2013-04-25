@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package CommandInterpreter;
+package CommandInterpreter.EntryMenu;
 
+import CommandInterpreter.Command;
 import Entries.Entry;
 import Entries.Inproceedings;
 import applicationLogic.Build;

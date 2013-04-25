@@ -1,4 +1,5 @@
 import textUI.*
+import stub.*
 
 description 'Käyttäjä voi lisätä inproceedings viitteen'
 

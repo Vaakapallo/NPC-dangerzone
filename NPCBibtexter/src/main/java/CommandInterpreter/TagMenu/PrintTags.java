@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package CommandInterpreter;
+package CommandInterpreter.TagMenu;
 
+import CommandInterpreter.Command;
 import Entries.Entry;
 import java.util.Set;
 import textUI.IO;

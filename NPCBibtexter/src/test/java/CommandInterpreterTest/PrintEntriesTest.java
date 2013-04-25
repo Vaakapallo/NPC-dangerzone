@@ -9,7 +9,7 @@ import CommandInterpreter.PrintEntries;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
-import textUI.IOStub;
+import stub.IOStub;
 
 /**
  *

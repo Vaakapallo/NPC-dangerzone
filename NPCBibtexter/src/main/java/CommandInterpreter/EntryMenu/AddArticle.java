@@ -1,10 +1,17 @@
-package CommandInterpreter;
+package CommandInterpreter.EntryMenu;
 
+import CommandInterpreter.Command;
 import Entries.Entry;
 import applicationLogic.Build;
 import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
 import textUI.IO;
+
+/**
+ * Gathers the information to make a Article-type Entry.
+ * 
+ * @author lvapaaka
+ */
 
 public class AddArticle extends Command {
 
@@ -48,7 +55,15 @@ public class AddArticle extends Command {
             io.printLine("Väärää infoa, takaisin valikkoon");
         }
     }
-// Volume.class, Fields.BibNumber.class, Pages.class, Month.class, Note.class, Key.class
+    
+    /**
+     * 
+     * 
+     * @param author
+     * @param title
+     * @param journal
+     * @param year 
+     */
     private void askAndAddOptionalFields(String author, String title, String journal, int year) {
         io.printLine("Vaihtoehtoisia tietoja");
         io.printLine("Anna volyymin nimi:");

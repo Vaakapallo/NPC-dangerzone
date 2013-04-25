@@ -1,4 +1,5 @@
 import textUI.*
+import stub.*
 
 description 'Käyttäjä muokkaa Entryä'
 

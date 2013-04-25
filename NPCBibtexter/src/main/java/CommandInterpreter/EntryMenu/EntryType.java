@@ -1,5 +1,6 @@
-package CommandInterpreter;
+package CommandInterpreter.EntryMenu;
 
+import CommandInterpreter.Command;
 import java.util.HashMap;
 import java.util.Map;
 import textUI.IO;

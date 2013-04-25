@@ -4,6 +4,8 @@
  */
 package CommandInterpreter;
 
+import CommandInterpreter.TagMenu.EditTags;
+import CommandInterpreter.EntryMenu.EntryType;
 import java.util.HashMap;
 import java.util.Map;
 import textUI.IO;

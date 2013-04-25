@@ -2,7 +2,7 @@ package textUITest;
 
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
-import textUI.IOStub;
+import stub.IOStub;
 import textUI.TextUI;
 
 public class TextUITest extends TestCase {

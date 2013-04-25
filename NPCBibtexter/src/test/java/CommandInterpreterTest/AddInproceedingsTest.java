@@ -4,10 +4,10 @@
  */
 package CommandInterpreterTest;
 
-import CommandInterpreter.AddInproceedings;
+import CommandInterpreter.EntryMenu.AddInproceedings;
 import applicationLogic.EntryStorage;
 import junit.framework.TestCase;
-import textUI.IOStub;
+import stub.IOStub;
 
 /**
  *

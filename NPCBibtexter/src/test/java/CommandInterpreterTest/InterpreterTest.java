@@ -4,6 +4,7 @@
  */
 package CommandInterpreterTest;
 
+import CommandInterpreter.EntryMenu.EntryType;
 import CommandInterpreter.*;
 import junit.framework.TestCase;
 
