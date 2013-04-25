@@ -9,7 +9,7 @@ import CommandInterpreter.CommandInterpreter;
  * @author vito
  */
 public class TextUI {
-    
+
     private IO io;
 
     /**
@@ -55,6 +55,7 @@ public class TextUI {
         io.printLine("5. Muokkaa viitettä");
         io.printLine("6. Tulosta viitteet ihmisystävällisesti");
         io.printLine("7. Muokkaa tageja");
+        io.printLine("8. Tulosta ID:t");
         io.printLine("9. Lopeta");
         io.printLineChange();
     }

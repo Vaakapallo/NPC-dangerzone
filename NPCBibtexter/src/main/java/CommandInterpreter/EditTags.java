@@ -40,7 +40,7 @@ public class EditTags extends Command {
                 io.printLine("3. Tulosta viitteen tagit");
                 int command = io.readInt();
                 getCommand(entry, command).run();
-                break;
+                return;
             }
         }
         io.printLine("Viiteavainta ei valitettavasti löytynyt");

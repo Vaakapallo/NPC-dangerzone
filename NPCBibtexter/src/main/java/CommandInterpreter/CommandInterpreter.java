@@ -27,6 +27,7 @@ public class CommandInterpreter {
         commands.put(5, new EditEntry(io));
         commands.put(6, new PrintSexyEntries(io));
         commands.put(7, new EditTags(io));
+        commands.put(8, new PrintIDs(io));
         commands.put(9, new Quit(io));
     }
 
