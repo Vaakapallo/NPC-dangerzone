@@ -6,6 +6,7 @@ package CommandInterpreterTest;
 
 import CommandInterpreter.AddTag;
 import CommandInterpreter.DeleteTag;
+import CommandInterpreter.EditTags;
 import CommandInterpreter.PrintTags;
 import Entries.Entry;
 import applicationLogic.Build;
@@ -32,7 +33,7 @@ public class TagsTest {
 
     @Before
     public void setUp() {
-        entry = Build.Inproceedings("Hurjaa, Monkel", "Olipa kerran Patu", "Tarinoita", 2012);
+        entry = Build.Inproceedings("Hurjaa, Monkel", "Olipa kerran Patu", "Tarinoita", 2012, "tagis");
         EntryStorage.addEntry(entry);
 
     }
@@ -101,5 +102,56 @@ public class TagsTest {
         io = new IOStub("a");
         new PrintTags(io, entry).run();
         assertTrue(io.outputAsString().contains("Viitteellä ei ole tageja"));
+    }
+
+    @Test
+    public void printTagsPrintsOneTag() {
+        io = new IOStub("aaatagi");
+        new AddTag(io, entry).run();
+        new PrintTags(io, entry).run();
+        assertTrue(io.outputAsString().contains("Viitteen tagit:"));
+        assertTrue(io.outputAsString().contains("aaatagi"));
+    }
+
+    @Test
+    public void printTagsPrintsManyTags() {
+        io = new IOStub("aaatagi", "beetagi");
+        new AddTag(io, entry).run();
+        new AddTag(io, entry).run();
+        new PrintTags(io, entry).run();
+        assertTrue(io.outputAsString().contains("Viitteen tagit:"));
+        assertTrue(io.outputAsString().contains("aaatagi"));
+        assertTrue(io.outputAsString().contains("beetagi"));
+    }
+
+    @Test
+    public void EditTagsCallsAddTag() {
+        io = new IOStub("tagis", "1", "huu");
+        new EditTags(io).run();
+        assertTrue(entry.tagExists("huu"));
+    }
+
+    @Test
+    public void EditTagsCallsDeleteTag() {
+        io = new IOStub("huu", "tagis", "2", "huu");
+        new AddTag(io, entry).run();
+        new EditTags(io).run();
+        assertFalse(entry.tagExists("huu"));
+    }
+    
+    @Test
+    public void EditTagsCallsPrintTag() {
+        io = new IOStub("huu", "tagis", "3");
+        new AddTag(io, entry).run();
+        new EditTags(io).run();
+        assertTrue(io.outputAsString().contains("Viitteen tagit:"));
+        assertTrue(io.outputAsString().contains("huu"));
+    }
+    
+    @Test
+    public void EditTagsCallsNothingWithInvalidCiteKey() {
+        io = new IOStub("sdfknfs");
+        new EditTags(io).run();
+        assertTrue(io.outputAsString().contains("Viiteavainta ei valitettavasti löytynyt"));
     }
 }
