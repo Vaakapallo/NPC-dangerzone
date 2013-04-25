@@ -1,0 +1,35 @@
+@Inproceedings{ read51992-refere,
+author = {Read5},
+title = {Reference2},
+booktitle = {Works},
+year = {1992},
+}
+
+@Inproceedings{ read41992-refere,
+author = {Read4},
+title = {Reference5},
+booktitle = {Works},
+year = {1992},
+}
+
+@Inproceedings{ read31992-refere,
+author = {Read3},
+title = {Reference3},
+booktitle = {Works},
+year = {1992},
+}
+
+@Inproceedings{ read11992-refere,
+author = {Read1},
+title = {Reference6},
+booktitle = {Works},
+year = {1992},
+}
+
+@Inproceedings{ read21992-refere,
+author = {Read2},
+title = {Reference4},
+booktitle = {Works},
+year = {1992},
+}
+
