@@ -21,7 +21,8 @@ class PrintIDs extends Command {
     @Override
     public void run() {
         for (Entry entry : EntryStorage.getEntries()) {
-            System.out.println(entry.getCitationKey());
-        } 
+            io.printLine(entry.getCitationKey());
+        }
+        io.printLineChange();
     } 
 }

@@ -53,7 +53,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ohtu.Main</mainClass>
+                                    <mainClass>applicationLogic.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -21,7 +21,7 @@ scenario "Käyttäjä haluaa tallentaa lisäämänsä viitteet", {
 
 scenario "Käyttäjä lataa viitteen tiedostosta", {
     given 'Käyttäjä on lisännyt viitteitä', {
-        String[] input = ["4","3","9"]
+        String[] input = ["4","3", "", "9"]
         io = new IOStub(input)
         writer = new Bibwriter("test.bib")
         UI = new TextUI(io)

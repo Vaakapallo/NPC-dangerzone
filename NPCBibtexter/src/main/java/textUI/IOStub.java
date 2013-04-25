@@ -17,7 +17,7 @@ public class IOStub implements IO {
     private int inputIndex;
     private List<String> output;
 
-    public IOStub(String[] input) {
+    public IOStub(String... input) {
         this.input = input;
         inputIndex = 0;
         output = new ArrayList();
@@ -55,5 +55,13 @@ public class IOStub implements IO {
     @Override
     public String readPossiblyEmptyString() {
         return input[inputIndex++];
+    }
+    
+    public String outputAsString(){
+        String stringOutput = "";
+        for (String string : output) {
+            stringOutput += string;
+        }
+        return stringOutput;
     }
 }

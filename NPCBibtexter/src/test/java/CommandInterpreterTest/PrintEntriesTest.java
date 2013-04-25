@@ -36,7 +36,7 @@ public class PrintEntriesTest extends TestCase {
         IOStub io = new IOStub(input);
         EntryStorage.empty();
         new PrintEntries(io).run();
-        assertTrue(io.getOutput().isEmpty());
+        assertFalse(io.getOutput().contains("@"));
     }
 
     public void testPrintAfterLoad() {
