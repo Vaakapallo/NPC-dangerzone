@@ -9,8 +9,8 @@ import Entries.Entry;
 import textUI.IO;
 
 /**
- *
- * @author lassi
+ * Asks for a tag and adds it to the given entry.
+ * 
  */
 public class AddTag extends Command {
 

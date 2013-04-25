@@ -3,7 +3,7 @@ package applicationLogic;
 import java.util.List;
 
 /**
- * Supports Inproceedings for now.
+ * Generates identifiers (citekeys) for entries.
  */
 public class Generate {
 
@@ -36,6 +36,13 @@ public class Generate {
         return toReturn;
     }
 
+    /**
+     * Checks the uniqueness of a citekey.
+     * 
+     * @param citekeys
+     * @param citekey
+     * @return 
+     */
     public static boolean isUnique(List<String> citekeys, String citekey) {
         for (String string : citekeys) {
             if (citekey.equals(string)) {

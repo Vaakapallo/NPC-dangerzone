@@ -10,7 +10,8 @@ import java.util.Set;
 import textUI.IO;
 
 /**
- *
+ * Prints all tags of the given entry.
+ * 
  * @author lassi
  */
 public class PrintTags extends Command {

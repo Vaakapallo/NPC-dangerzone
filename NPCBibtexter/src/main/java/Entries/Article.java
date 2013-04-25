@@ -11,7 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- *
+ * Article-type BibTex-entry.
+ * 
  * @author laursuom
  */
 public class Article extends Entry {

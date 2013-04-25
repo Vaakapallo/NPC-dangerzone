@@ -7,8 +7,14 @@ import applicationLogic.EntryStorage;
 import applicationLogic.Generate;
 import textUI.IO;
 
+/**
+ * Gathers information for a Book-Entry.
+ * 
+ * @author lvapaaka
+ */
 public class AddBook extends Command {
 
+    
     public AddBook(IO io) {
         super(io);
     }

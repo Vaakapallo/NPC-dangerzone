@@ -9,7 +9,8 @@ import Entries.Entry;
 import textUI.IO;
 
 /**
- *
+ * Shows tags and asks for on e to be deleted.
+ * 
  * @author lassi
  */
 public class DeleteTag extends Command {

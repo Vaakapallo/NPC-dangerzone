@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import textUI.IO;
 
+/**
+ * Determines the right command to lead the adding to.
+ */
+
 public class EntryType extends Command {
 
     private Map<Integer, Command> referenceTypes = new HashMap();
