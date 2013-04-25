@@ -27,6 +27,7 @@ public class EditTags extends Command {
             return;
         }
         io.printLine("Anna muokattavan viitteen viiteavain, tyhjä lopettaa");
+        new PrintIDs(io).run();
         String citationKey = io.readPossiblyEmptyString();
         if (citationKey.equals("")) {
             return;
