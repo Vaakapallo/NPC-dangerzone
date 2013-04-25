@@ -27,7 +27,9 @@ public class EditTags extends Command {
             return;
         }
         io.printLine("Anna muokattavan viitteen viiteavain, tyhjä lopettaa");
+        io.printLine("Lisättyjen entryjen viiteavaimet:");
         new PrintIDs(io).run();
+
         String citationKey = io.readPossiblyEmptyString();
         if (citationKey.equals("")) {
             return;
