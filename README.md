@@ -8,3 +8,5 @@ Ohtuprojekti - nextPracticeConsulting
 [Alaspalojutui](https://docs.google.com/spreadsheet/ccc?key=0Am9sOgPkgSe9dFBuNDhRVERuS3NXWlJHNURyTjNpUGc#gid=0)
 
 [NPC-Dangerzone Jenkins](http://t-jmesimak.users.cs.helsinki.fi/jenkins/job/NPC-Dangerzone/)
+
+[Ohturaportti](https://github.com/Vaakapallo/NPC-dangerzone/blob/master/OhtuRaportti.pdf)
